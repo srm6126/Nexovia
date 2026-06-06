@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexovia | Earn · Learn · Grow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fb;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #38bdf8, #a855f7);
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            background: white;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #0f172a, #3b82f6);
+            background-clip: text;
+            color: transparent;
+        }
+
+        .btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .card {
+            background: white;
+            padding: 24px;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            background: #0f172a;
+            color: white;
+            padding: 40px;
+            border-radius: 32px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .stats div {
+            flex: 1;
+            min-width: 100px;
+        }
+
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 700px) {
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+            <div class="logo">
+                <h1>Nexovia</h1>
+                <span style="font-size: 12px;"> Earn · Learn · Grow</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Post</a></li>
+                <li><a href="#">Messages</a></li>
+                <li><a href="#">Profile</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="container">
+            <h2>All-in-One Platform <br> Earn, Learn & Grow Your Future</h2>
+            <p style="margin-top: 15px;">Jobs, Freelance, Education, Marketplace, Matrimony & AI Assistance — All in One Place!</p>
+            <a href="#" class="btn">Explore Now →</a>
+            <p style="margin-top: 20px; background: #fef9c3; display: inline-block; padding: 6px 18px; border-radius: 40px;">🎉 Welcome to Nexovia! New users get 100 points!</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="grid-4">
+            <div class="card">💰 <strong>1. Earn Center</strong><br>Find ways to earn online</div>
+            <div class="card">📚 <strong>2. Learn Center</strong><br>Learn new skills for free</div>
+            <div class="card">💼 <strong>3. Job Center</strong><br>Find your dream job</div>
+            <div class="card">🛍️ <strong>4. Marketplace</strong><br>Buy & sell products</div>
+            <div class="card">💍 <strong>5. Matrimony</strong><br>Find your life partner</div>
+            <div class="card">🤖 <strong>6. AI Center</strong><br>AI tools for your daily life</div>
+            <div class="card">👤 <strong>7. Profile</strong><br>Manage your account</div>
+            <div class="card">⚡ <strong>8. More</strong><br>Explore more features</div>
+        </div>
+
+        <div class="stats">
+            <div><strong>125K+</strong><br>Users</div>
+            <div><strong>8,250+</strong><br>Active Jobs</div>
+            <div><strong>15K+</strong><br>Freelancers</div>
+            <div><strong>12K+</strong><br>Products</div>
+            <div><strong>3,500+</strong><br>Courses</div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; margin: 40px 0;">
+            <div class="card">
+                <strong>🔥 Popular Jobs</strong><br><br>
+                UI/UX Designer – Remote<br>$500 - $800<br><br>
+                Full Stack Developer – Dhaka<br>$800 - $1200<br><br>
+                Digital Marketer – Remote<br>$300 - $600
+            </div>
+            <div class="card">
+                <strong>📱 Popular Products</strong><br><br>
+                iPhone 15 Pro Max<br>$1,099<br><br>
+                MacBook Air M2<br>$1,249<br><br>
+                Sony WH-1000XM5<br>$349
+            </div>
+            <div class="card">
+                <strong>🎓 Free Learning</strong><br><br>
+                Bangla to English Speaking<br>Beginner – Free<br><br>
+                Digital Marketing Full Course<br>Beginner – Free<br><br>
+                Web Development Bootcamp<br>Beginner – Free
+            </div>
+        </div>
+
+        <div class="card" style="text-align: center; margin: 40px 0;">
+            <strong>📢 Latest Updates</strong><br><br>
+            • New job posted: UI Designer<br>
+            • Payment system maintenance on 25 May<br>
+            • New course added in Learn Center
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Nexovia. All in one platform.</p>
+        <p style="margin-top: 10px;">Home | Jobs | Post | Messages | Profile</p>
+    </footer>
+</body>
+</html>
