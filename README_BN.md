@@ -21,3 +21,11 @@ Supabase Dashboard → Project Settings → API থেকে পাবেন। 
 - পুরোনো `shahin_master_db` ডাটা browser Local Storage-এ থাকে; অন্য ফোনে নিজে থেকে যাবে না।
 - বর্তমান PIN ব্যবস্থা browser-side; production cloud authentication-এর বিকল্প নয়।
 - বাস্তব ডাটা ব্যবহারের আগে test account, stock, DSR issue/return/damage, deposit এবং backup/restore পরীক্ষা করুন।
+
+
+## DSR Sales & Settlement আপডেট
+- ইস্যু, ফেরত, ড্যামেজ ও নগদ জমার ইনপুট Edit করুন বাটন দিয়ে সক্রিয় করুন।
+- বিক্রি = ইস্যু − ফেরত − ড্যামেজ।
+- বিক্রয় রেট Product List-এর বিক্রয় মূল্য থেকে স্বয়ংক্রিয়ভাবে আসে।
+- মোট দাম, মোট বিক্রয়, আজকের বকেয়া ও সর্বমোট বকেয়া স্বয়ংক্রিয়ভাবে হিসাব হয়।
+- Save করলে স্টক, নগদ জমা এবং DSR বকেয়া লেজার আপডেট হয়।
