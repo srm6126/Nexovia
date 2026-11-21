@@ -10,7 +10,22 @@
 @media(min-width:700px){.wrap{padding:20px}.quickgrid{grid-template-columns:repeat(4,1fr)}.tablewrap{max-height:65vh}.top{padding-left:max(18px,calc((100vw - 1000px)/2))}.cards{gap:12px}.metric{padding:15px}}
 @media(max-width:380px){.cards{gap:5px}.metric{padding:9px 5px}.metric b{font-size:14px}.quickgrid{grid-template-columns:repeat(4,1fr)}.quick{font-size:11px}.formgrid{gap:7px}}
 @media print{.top,.stickybottom,.no-print,.drawer{display:none!important}.app{padding:0}.wrap{max-width:none;padding:0}.section{box-shadow:none;break-inside:avoid}.tablewrap{max-height:none;overflow:visible}table{min-width:0;font-size:10px}td input{border:0;background:transparent}.printhead{display:block!important}}
-</style></head>
+</style>
+<style id="dsr-layout-fix">
+/* DSR: product list scrolls independently; totals remain visible */
+#page-dsr:not(.hiddenpage){height:calc(100dvh - 145px);min-height:420px;display:flex;flex-direction:column;overflow:hidden}
+#page-dsr>.section:first-child{flex:0 0 auto;margin:6px 0 8px;padding:9px}
+#page-dsr>.section:last-child{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow:hidden;margin:0;padding:8px}
+#page-dsr .dsr-products-scroll{flex:1 1 auto;min-height:0;max-height:none!important;overflow:auto;overscroll-behavior:contain}
+#page-dsr #dsrSummary{flex:0 0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:7px;max-height:34%;overflow:auto;padding-bottom:2px}
+#page-dsr #dsrSummary .sumitem{padding:7px;font-size:12px;min-height:34px}
+#page-dsr #dsrSummary .sumitem input{max-width:90px}
+#page-dsr .actions{flex:0 0 auto;margin-top:7px}
+#page-dsr .actions button{padding:8px;font-size:12px}
+@media(max-height:650px){#page-dsr:not(.hiddenpage){height:calc(100dvh - 125px)}#page-dsr #dsrSummary{max-height:30%}}
+@media(max-width:390px){#page-dsr #dsrSummary .sumitem{font-size:11px;padding:6px;gap:3px}}
+</style>
+</head>
 <body>
 <div id="login" class="login"><div class="loginbox"><div class="brandmark">S</div><h1>SHAHIN APP</h1><div class="tag">Smart Business Management</div><div class="field"><label>অ্যাডমিন লগইন PIN</label><input id="pin" type="password" inputmode="numeric" placeholder="৬ সংখ্যার PIN" maxlength="12"></div><button class="btn" style="width:100%;margin-top:8px" onclick="login()">লগইন করুন</button></div></div>
 <div id="app" class="app hidden">
@@ -133,5 +148,46 @@ function shareDsrStatement(){const aid=Number($('dsrSelect').value),date=$('dsrD
 window.addEventListener('beforeunload',()=>{try{sessionStorage.setItem('shahin_last_page',currentPage)}catch(e){}});
 const savedRole=sessionStorage.getItem('shahin_auth_role');if(savedRole){activeRole=savedRole;const savedId=Number(sessionStorage.getItem('shahin_auth_account'));activeAccount=db.accounts.find(a=>a.id===savedId)||null;if(activeRole==='Admin'||activeAccount){$('login').classList.add('hidden');$('app').classList.remove('hidden');history.replaceState({page:'home'},'','#home');init();go('home',false);}}
 if('serviceWorker' in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script>
+
+<script id="dsr-fixed-summary-and-pwa-fix">
+// Keep DSR product rows in their own scroll area.
+(function(){
+ const section=document.querySelector('#page-dsr>.section:last-child');
+ const tableWrap=document.querySelector('#dsrTable')?.closest('.tablewrap');
+ if(section&&tableWrap){tableWrap.classList.add('dsr-products-scroll');tableWrap.style.maxHeight='none';}
+})();
+const _renderDsrFixedBase=renderDsr;
+function renderDsr(){
+ _renderDsrFixedBase();
+ const summary=$('dsrSummary');
+ if(!summary || !$('dsrSelect').value) return;
+ const aid=Number($('dsrSelect').value), account=db.accounts.find(x=>x.id===aid);
+ const date=$('dsrDate').value||today(), rec=getRecord();
+ // A saved statement keeps its own opening due; a new date carries forward the account balance.
+ const openingDue=Number(rec?.previousDue ?? account?.due ?? 0);
+ const admin=(activeRole==='Admin');
+ const old=summary.querySelector('#prevDueInput');
+ if(old){
+   const item=old.closest('.sumitem');
+   item.innerHTML=admin
+    ? `পূর্বের বকেয়া <input id="prevDueInput" type="number" min="0" value="${openingDue}" oninput="calcDsr()" style="width:90px">`
+    : `পূর্বের বকেয়া <b id="prevDueDisplay">${money(openingDue)}</b><input id="prevDueInput" type="hidden" value="${openingDue}">`;
+ }
+ const tableWrap=$('dsrTable')?.closest('.tablewrap');
+ if(tableWrap){tableWrap.classList.add('dsr-products-scroll');tableWrap.style.maxHeight='none';}
+ calcDsr();
+}
+// On save, preserve the displayed opening due as the carry-forward basis.
+const _readDsrFixedBase=readDsr;
+function readDsr(){const x=_readDsrFixedBase();const v=$('prevDueInput');x.previousDue=Number(v?.value)||0;x.grandDue=x.previousDue+x.todayDue;return x;}
+// Ensure admin's previous-due edit is applied, while DSR sees a non-editable figure.
+const _calcDsrFixedBase=calcDsr;
+function calcDsr(){_calcDsrFixedBase();const display=$('prevDueDisplay');if(display){const n=Number($('prevDueInput')?.value)||0;display.textContent=money(n);}}
+// A real PWA install prompt is offered when Chrome fires it; the browser menu is enabled by valid manifest + SW on HTTPS.
+let shahinInstallPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();shahinInstallPrompt=e;let b=$('installAppBtn');if(b)b.hidden=false;});
+window.addEventListener('appinstalled',()=>{shahinInstallPrompt=null;let b=$('installAppBtn');if(b)b.hidden=true;});
+function installShahinApp(){if(!shahinInstallPrompt){toast('Chrome-এর ইনস্টল সুবিধা এখনো প্রস্তুত নয়। HTTPS ঠিকানা ও manifest যাচাই করুন।');return;}shahinInstallPrompt.prompt();shahinInstallPrompt.userChoice.finally(()=>{shahinInstallPrompt=null;});}
 </script>
 </body></html>
