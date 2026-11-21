@@ -10,11 +10,12 @@
 @media(min-width:700px){.wrap{padding:20px}.quickgrid{grid-template-columns:repeat(4,1fr)}.tablewrap{max-height:65vh}.top{padding-left:max(18px,calc((100vw - 1000px)/2))}.cards{gap:12px}.metric{padding:15px}}
 @media(max-width:380px){.cards{gap:5px}.metric{padding:9px 5px}.metric b{font-size:14px}.quickgrid{grid-template-columns:repeat(4,1fr)}.quick{font-size:11px}.formgrid{gap:7px}}
 @media print{.top,.stickybottom,.no-print,.drawer{display:none!important}.app{padding:0}.wrap{max-width:none;padding:0}.section{box-shadow:none;break-inside:avoid}.tablewrap{max-height:none;overflow:visible}table{min-width:0;font-size:10px}td input{border:0;background:transparent}.printhead{display:block!important}}
-</style></head>
+</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
 <body>
-<div id="login" class="login"><div class="loginbox"><div class="brandmark">S</div><h1>SHAHIN APP</h1><div class="tag">Smart Business Management</div><div class="field"><label>অ্যাডমিন লগইন PIN</label><input id="pin" type="password" inputmode="numeric" placeholder="৬ সংখ্যার PIN" maxlength="12"></div><button class="btn" style="width:100%;margin-top:8px" onclick="login()">লগইন করুন</button><p class="muted" style="font-size:11px;margin-top:16px">প্রাথমিক PIN: 612600</p></div></div>
+<div id="login" class="login"><div class="loginbox"><div class="brandmark">S</div><h1>SHAHIN APP</h1><div class="tag">Smart Business Management · Cloud</div><div class="field"><label>ইমেইল</label><input id="authEmail" type="email" autocomplete="username" placeholder="আপনার ইমেইল"></div><div class="field"><label>পাসওয়ার্ড</label><input id="authPassword" type="password" autocomplete="current-password" placeholder="Supabase পাসওয়ার্ড"></div><button class="btn" style="width:100%;margin-top:8px" onclick="login()">নিরাপদ লগইন</button><p class="muted" style="font-size:11px;margin-top:16px">Admin-এর তৈরি করা Supabase User দিয়ে লগইন করুন</p></div></div>
 <div id="app" class="app hidden">
-<header class="top"><button class="hamb" onclick="toggleDrawer()">☰</button><div class="topname"><strong id="appTitle">SHAHIN APP</strong><small id="appTag">Smart Business Management</small></div><div class="targettop"><span id="topPercent">0%</span><small>মাসিক টার্গেট</small></div><button id="shahinInstallBtn" class="hamb hidden" title="অ্যাপ ইনস্টল" onclick="installShahinApp()">⬇</button><button class="hamb" onclick="go('home')">⌂</button></header>
+<header class="top"><button class="hamb" onclick="toggleDrawer()">☰</button><div class="topname"><strong id="appTitle">SHAHIN APP</strong><small id="appTag">Smart Business Management</small></div><div class="targettop"><span id="topPercent">0%</span><small>মাসিক টার্গেট</small></div><button class="hamb" onclick="go('home')">⌂</button></header>
 <main class="wrap">
 <section id="page-home">
 <div class="hero"><div><h2>ড্যাশবোর্ড</h2><small id="todayLabel"></small></div><div class="amount" id="monthSalesHero">৳ ০</div></div>
@@ -42,7 +43,7 @@
 <section id="page-accounts" class="hiddenpage"><div class="section"><div class="sectionhead">একাউন্ট তৈরি ও ব্যবস্থাপনা</div><div class="formgrid"><div class="field"><label>একাউন্টের ধরন</label><select id="aRole"><option>DSR</option><option>Dealer</option><option>Manager</option></select></div><div class="field"><label>নাম</label><input id="aName"></div><div class="field"><label>মোবাইল</label><input id="aPhone" inputmode="tel"></div><div class="field"><label>লগইন PIN</label><input id="aPin" inputmode="numeric"></div><div class="field"><label>এলাকা</label><input id="aArea"></div><div class="field"><label>মাসিক টার্গেট (৳)</label><input id="aTarget" type="number" value="0"></div></div><button class="btn green" onclick="addAccount()">একাউন্ট তৈরি করুন</button><div id="accountRows"></div></div></section>
 <section id="page-dues" class="hiddenpage"><div class="section"><div class="sectionhead">বকেয়া ও ব্যালেন্স সমন্বয়</div><div class="field"><label>DSR / একাউন্ট</label><select id="dueAccount"></select></div><div class="row2"><div class="field"><label>সমন্বয়ের পরিমাণ (৳)</label><input id="dueAmount" type="number"></div><div class="field"><label>ধরন</label><select id="dueType"><option value="plus">বকেয়া যোগ (+)</option><option value="minus">বকেয়া কম (−)</option></select></div></div><div class="field"><label>কারণ</label><input id="dueNote"></div><button class="btn green" onclick="adjustDue()">সমন্বয় সেভ করুন</button><div id="dueRows"></div></div></section>
 <section id="page-reports" class="hiddenpage"><div class="section"><div class="sectionhead">রিপোর্ট ও স্টেটমেন্ট</div><div class="formgrid"><div class="field"><label>রিপোর্টের ধরন</label><select id="reportType"><option value="all">সার্বিক হিসাব</option><option value="dsr">DSR স্টেটমেন্ট</option><option value="stock">স্টক রিপোর্ট</option><option value="company">কোম্পানি চালান</option><option value="expense">খরচ রিপোর্ট</option></select></div><div class="field"><label>তারিখ</label><input id="reportDate" type="date"></div></div><button class="btn" onclick="makeReport()">রিপোর্ট দেখুন</button><button class="btn green" onclick="printPage()">PDF / প্রিন্ট</button><div id="reportOutput"></div></div></section>
-<section id="page-settings" class="hiddenpage"><div class="section"><div class="sectionhead">⚙️ অ্যাপ সেটিংস</div><div class="formgrid"><div class="field"><label>অ্যাপের নাম</label><input id="sTitle"></div><div class="field"><label>স্লোগান</label><input id="sTag"></div><div class="field"><label>প্রতিষ্ঠানের নাম (রিপোর্টে)</label><input id="sCompany"></div><div class="field"><label>মাসিক মোট টার্গেট (৳)</label><input id="sTarget" type="number"></div><div class="field"><label>নতুন অ্যাডমিন PIN</label><input id="sPin" type="password" placeholder="পরিবর্তন করতে চাইলে লিখুন"></div></div><button class="btn green" onclick="saveSettings()">সেটিংস সেভ করুন</button></div><div class="section"><div class="sectionhead">ডেটা ব্যাকআপ</div><p class="muted">এই সংস্করণে তথ্য এই ব্রাউজারের ডিভাইসেই সংরক্ষিত হয়। নিয়মিত JSON ব্যাকআপ ডাউনলোড করুন।</p><div class="actions"><button class="btn" onclick="exportData()">ব্যাকআপ ডাউনলোড</button><label class="btn gray center">ব্যাকআপ ইমপোর্ট<input type="file" accept="application/json" onchange="importData(event)" hidden></label></div><button class="btn red no-print" style="margin-top:12px;width:100%" onclick="resetData()">সব ডেটা রিসেট</button></div></section>
+<section id="page-settings" class="hiddenpage"><div class="section"><div class="sectionhead">⚙️ অ্যাপ সেটিংস</div><div class="formgrid"><div class="field"><label>অ্যাপের নাম</label><input id="sTitle"></div><div class="field"><label>স্লোগান</label><input id="sTag"></div><div class="field"><label>প্রতিষ্ঠানের নাম (রিপোর্টে)</label><input id="sCompany"></div><div class="field"><label>মাসিক মোট টার্গেট (৳)</label><input id="sTarget" type="number"></div><div class="field"><label>নতুন অ্যাডমিন PIN</label><input id="sPin" type="password" placeholder="পরিবর্তন করতে চাইলে লিখুন"></div></div><button class="btn green" onclick="saveSettings()">সেটিংস সেভ করুন</button></div><div class="section"><div class="sectionhead">ডেটা ব্যাকআপ</div><p class="muted">তথ্য Supabase কেন্দ্রীয় ডেটাবেসে সংরক্ষিত হয়। নিরাপত্তার জন্য নিয়মিত JSON ব্যাকআপ ডাউনলোড করুন।</p><div class="actions"><button class="btn" onclick="exportData()">ব্যাকআপ ডাউনলোড</button><label class="btn gray center">ব্যাকআপ ইমপোর্ট<input type="file" accept="application/json" onchange="importData(event)" hidden></label></div><button class="btn red no-print" style="margin-top:12px;width:100%" onclick="resetData()">সব ডেটা রিসেট</button></div></section>
 </main>
 <nav class="stickybottom no-print"><button class="navbtn active" data-page="home" onclick="go('home')"><span>⌂</span>হোম</button><button class="navbtn" data-page="challan" onclick="go('challan')"><span>▤</span>চালান</button><button class="navbtn" data-page="dsr" onclick="go('dsr')"><span>▦</span>সেলস স্টেটমেন্ট</button><button class="navbtn" data-page="settings" onclick="go('settings')"><span>⚙</span>সেটিং</button><button class="navbtn" onclick="logout()"><span>⇥</span>লগআউট</button></nav>
 </div>
@@ -53,12 +54,19 @@ const defaultProducts=[
 ['ফুল ক্রিম 1L','লিটার',70,94,100],['টোন হাফ 500ml','মিলি',32,43,150],['টক দই','কেজি',70,100,50],['কফি মিক্স','মিলি',68,90,80],['বাটার 100g','গ্রাম',95,130,60],['UHT 200ml','মিলি',18,26,200],['UHT 500ml','মিলি',38,55,120],['চকলেট মিল্ক','মিলি',20,28,100],['আম ম্যাংগো','মিলি',20,28,100],['লাবান 200ml','মিলি',16,24,80],['লাবান 500ml','মিলি',30,50,100],['সাদা দুধ 1L','লিটার',35,85,70],['সাদা দুধ 500ml','মিলি',23,45,100],['ঘি 200g','গ্রাম',150,210,40],['মাখন 100g','গ্রাম',90,130,50],['দই (মিষ্টি)','কেজি',60,80,60],['দই (টক)','কেজি',50,80,50],['কফি লাবান','মিলি',28,42,70],['ম্যাঙ্গো মিল্ক','মিলি',20,28,80],['স্ট্রবেরি মিল্ক','মিলি',20,28,60]
 ];
 const seed=()=>({settings:{title:'SHAHIN APP',tag:'Smart Business Management',company:'আপনার ট্রেডিং কর্পোরেশন',pin:'612600',target:0},products:defaultProducts.map((p,i)=>({id:i+1,name:p[0],unit:p[1],buy:p[2],sell:p[3],stock:p[4],opening:p[4]})),accounts:[{id:1,role:'DSR',name:'জুনায়েদ',phone:'',pin:'1234',area:'ঢাকা উদ্যান',target:0,due:0,active:true}],dsr:[],newstock:[],challans:[],expenses:[],adjustments:[]});
-let db;try{db=JSON.parse(localStorage.getItem('shahin_app_data'))||seed()}catch(e){db=seed()}function persist(){localStorage.setItem('shahin_app_data',JSON.stringify(db))}
-let currentPage='home';
-function toast(s){$('toast').textContent=s;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),2400)}
-function login(){if($('pin').value===db.settings.pin){$('login').classList.add('hidden');$('app').classList.remove('hidden');init();}else toast('ভুল PIN। আবার চেষ্টা করুন।')}
-$('pin').addEventListener('keydown',e=>{if(e.key==='Enter')login()});
-function logout(){$('app').classList.add('hidden');$('login').classList.remove('hidden');$('pin').value='';}
+// Supabase cloud configuration
+const SUPABASE_URL='https://ulpgwwmijxjaxphwkhyn.supabase.co';
+const SUPABASE_ANON_KEY='sb_publishable_WrHdvuCxrx0nJnbG12KcNg_og4IkZwn';
+const cloud=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+let db;try{db=JSON.parse(localStorage.getItem('shahin_app_data'))||seed()}catch(e){db=seed()}
+let currentPage='home', cloudBusinessId=null, cloudUser=null, cloudRole=null, cloudChannel=null, cloudSaving=false;
+function persist(){localStorage.setItem('shahin_app_data',JSON.stringify(db)); if(cloudBusinessId && cloudUser) saveCloudState();}
+let saveTimer=null;
+async function saveCloudState(){clearTimeout(saveTimer);saveTimer=setTimeout(async()=>{try{cloudSaving=true;const {error}=await cloud.rpc('save_shahin_state',{p_business_id:cloudBusinessId,p_data:db});if(error)throw error; }catch(e){console.error(e);toast('ক্লাউডে সেভ হয়নি: '+(e.message||'সংযোগ পরীক্ষা করুন'));}finally{cloudSaving=false}},450)}
+function toast(s){$('toast').textContent=s;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),3000)}
+async function login(){const email=$('authEmail').value.trim(),password=$('authPassword').value;if(!email||!password)return toast('ইমেইল ও পাসওয়ার্ড লিখুন');try{const {data,error}=await cloud.auth.signInWithPassword({email,password});if(error)throw error;cloudUser=data.user;const {data:membership,error:me}=await cloud.from('business_members').select('business_id,role,account_name').eq('user_id',cloudUser.id).limit(1).single();if(me||!membership)throw new Error('এই User-কে SHAHIN APP-এর ব্যবসায় যুক্ত করা হয়নি। Admin-কে membership যোগ করতে হবে।');cloudBusinessId=membership.business_id;cloudRole=membership.role;const {data:state,error:se}=await cloud.from('app_state').select('data').eq('business_id',cloudBusinessId).single();if(se)throw se;if(state?.data && Object.keys(state.data).length){db=state.data;localStorage.setItem('shahin_app_data',JSON.stringify(db));}else{const {error:sv}=await cloud.rpc('save_shahin_state',{p_business_id:cloudBusinessId,p_data:db});if(sv)throw sv;}$('login').classList.add('hidden');$('app').classList.remove('hidden');init();startRealtime();toast('ক্লাউড লগইন সফল · '+cloudRole);}catch(e){await cloud.auth.signOut();cloudUser=null;cloudBusinessId=null;toast(e.message||'লগইন ব্যর্থ');}}
+async function logout(){if(cloudChannel)await cloud.removeChannel(cloudChannel);await cloud.auth.signOut();cloudUser=null;cloudBusinessId=null;cloudRole=null;$('app').classList.add('hidden');$('login').classList.remove('hidden');$('authPassword').value='';}
+function startRealtime(){if(cloudChannel)cloud.removeChannel(cloudChannel);cloudChannel=cloud.channel('shahin-live-'+cloudBusinessId).on('postgres_changes',{event:'UPDATE',schema:'public',table:'app_state',filter:'business_id=eq.'+cloudBusinessId},payload=>{if(payload.new?.data && !cloudSaving){db=payload.new.data;localStorage.setItem('shahin_app_data',JSON.stringify(db));init();toast('অন্য ডিভাইসের আপডেট এসেছে');}}).subscribe();}
 const pages=[['home','হোম'],['dsr','DSR সেল'],['newstock','আজকের নতুন মাল'],['stock','স্টক'],['products','পণ্য'],['expenses','খরচ'],['accounts','একাউন্ট'],['dues','বকেয়া'],['challan','চালান'],['reports','রিপোর্ট'],['settings','সেটিং']];
 function init(){ $('appTitle').textContent=db.settings.title;$('appTag').textContent=db.settings.tag;$('todayLabel').textContent=new Date().toLocaleDateString('bn-BD',{dateStyle:'full'});$('dsrDate').value=today();$('stockDate').value=today();$('chDate').value=today();$('exDate').value=today();$('reportDate').value=today();$('sTitle').value=db.settings.title;$('sTag').value=db.settings.tag;$('sCompany').value=db.settings.company;$('sTarget').value=db.settings.target;fillSelects();renderHome();renderDsr();renderNewStock();renderStock();renderProducts();renderAccounts();renderChallans();renderExpenses();renderDues();renderDrawer();}
 function go(p){currentPage=p;pages.forEach(([id])=>$('page-'+id).classList.toggle('hiddenpage',id!==p));document.querySelectorAll('.navbtn[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===p));$('drawer').classList.add('hidden');if(p==='home')renderHome();if(p==='dsr')renderDsr();if(p==='newstock')renderNewStock();if(p==='stock')renderStock();if(p==='products')renderProducts();if(p==='accounts')renderAccounts();if(p==='challan')renderChallans();if(p==='expenses')renderExpenses();if(p==='dues')renderDues();}
@@ -99,60 +107,4 @@ function printPage(){window.print()}
 function exportData(){let blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='shahin-app-backup-'+today()+'.json';a.click();URL.revokeObjectURL(a.href)}
 function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!d.products||!d.settings)throw 0;db=d;persist();init();toast('ব্যাকআপ ইমপোর্ট হয়েছে')}catch(_){toast('ভুল ব্যাকআপ ফাইল')}};r.readAsText(f)}
 function resetData(){if(!confirm('সব হিসাব ও ডেটা মুছে যাবে। নিশ্চিত?'))return;db=seed();persist();init();toast('ডেটা রিসেট হয়েছে')}
-</script>
-<link rel="manifest" href="./manifest.webmanifest">
-<meta name="theme-color" content="#0646b5">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="SHAHIN APP">
-<style id="shahin-dsr-layout-fix">
-/* Keep the original DSR design; only the product table scrolls. */
-#page-dsr{height:calc(100dvh - 116px);min-height:420px;display:flex;flex-direction:column;overflow:hidden;}
-#page-dsr.hiddenpage{display:none!important}
-#page-dsr>.section:first-child{flex:0 0 auto;margin-bottom:6px}
-#page-dsr>.section:nth-child(2){flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow:hidden;margin-top:6px;padding:8px}
-#page-dsr .dsr-products-scroll{flex:1 1 auto;min-height:70px;max-height:none!important;overflow-y:auto;overflow-x:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
-#page-dsr #dsrTable{width:100%;}
-#page-dsr #dsrSummary{flex:0 0 auto;position:sticky;bottom:0;z-index:4;background:#fff;padding:7px 0 4px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin-top:6px;border-top:2px solid #d8e4f4}
-#page-dsr #dsrSummary .sumitem{min-width:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;padding:7px 6px;font-size:11px;line-height:1.25;overflow-wrap:anywhere}
-#page-dsr #dsrSummary .sumitem b{font-size:13px}
-#page-dsr #dsrSummary input{width:100%!important;max-width:100%;min-height:28px;padding:3px 5px}
-#page-dsr .actions{flex:0 0 auto;margin-top:5px}
-@media(max-width:420px){#page-dsr{height:calc(100dvh - 108px)}#page-dsr #dsrSummary .sumitem{font-size:10px;padding:6px 4px}#page-dsr #dsrSummary .sumitem b{font-size:12px}}
-@media print{#page-dsr{height:auto;min-height:0;overflow:visible}#page-dsr>.section:nth-child(2){overflow:visible;display:block}#page-dsr .dsr-products-scroll{overflow:visible;max-height:none}#page-dsr #dsrSummary{position:static}}
-</style>
-<script>
-/* Focused DSR correction layer: original data model and all other pages stay untouched. */
-(function(){
- const oldRenderDsr=renderDsr;
- renderDsr=function(){
-   oldRenderDsr();
-   const wrap=document.querySelector('#dsrTable')?.closest('.tablewrap');
-   if(wrap)wrap.classList.add('dsr-products-scroll');
-   const summary=document.getElementById('dsrSummary');
-   if(!summary || !summary.querySelector('#prevDueInput'))return;
-   const aid=Number(document.getElementById('dsrSelect')?.value);
-   const account=db.accounts.find(a=>Number(a.id)===aid);
-   const saved=getRecord();
-   const input=summary.querySelector('#prevDueInput');
-   // Previous due follows the account's carried balance; Admin can adjust it.
-   const role=sessionStorage.getItem('shahin_auth_role')||'Admin';
-   if(!saved && account && input) input.value=Number(account.due)||0;
-   if(input && role!=='Admin'){input.readOnly=true;input.setAttribute('aria-readonly','true');input.style.pointerEvents='none';input.style.opacity='.85';}
-   if(input && role==='Admin'){input.readOnly=false;input.style.pointerEvents='auto';input.style.opacity='1';}
-   // Keep requested six financial figures visible in a compact fixed summary.
-   const items=[...summary.querySelectorAll('.sumitem')];
-   const labels=['মোট ড্যামেজ','সর্বমোট বিক্রি','নগদ জমা','আজকের বকেয়া','পূর্বের বকেয়া','সর্বমোট বকেয়া'];
-   const wanted=[items.find(x=>x.textContent.includes('মোট ড্যামেজ')),items.find(x=>x.textContent.includes('সর্বমোট বিক্রি')),items.find(x=>x.textContent.includes('নগদ জমা')),items.find(x=>x.textContent.includes('আজকের বকেয়া')),items.find(x=>x.textContent.includes('পূর্বের বকেয়া')),items.find(x=>x.textContent.includes('সর্বমোট বকেয়া'))];
-   wanted.forEach((el,i)=>{if(el){el.dataset.summaryOrder=String(i);el.style.gridColumn='auto';}});
-   if(items.length){items.forEach(el=>{if(el.textContent.includes('মোট দেওয়া'))el.style.display='none';});}
- };
-})();
-let shahinInstallPrompt=null;
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();shahinInstallPrompt=e;const b=document.getElementById('shahinInstallBtn');if(b)b.classList.remove('hidden');});
-window.addEventListener('appinstalled',()=>{shahinInstallPrompt=null;const b=document.getElementById('shahinInstallBtn');if(b)b.classList.add('hidden');if(typeof toast==='function')toast('SHAHIN APP ইনস্টল হয়েছে');});
-function installShahinApp(){if(shahinInstallPrompt){shahinInstallPrompt.prompt();shahinInstallPrompt.userChoice.then(()=>{shahinInstallPrompt=null;}).catch(()=>{shahinInstallPrompt=null;});return;}if(typeof toast==='function')toast('Chrome মেনুতে Install app না এলে সাইটটি HTTPS-এ প্রকাশ করে আবার খুলুন।');}
-if('serviceWorker' in navigator && location.protocol==='https:')window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(err=>console.warn('Service worker:',err)));
-</script>
-
-</body></html>
+</script></body></html>
