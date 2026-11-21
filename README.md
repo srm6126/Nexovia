@@ -1,16 +1,17 @@
-# SHAHIN APP — Static GitHub/Vercel build
+# SHAHIN APP — আপডেটেড মোবাইল ওয়েব অ্যাপ
 
-## Deploy
-1. Extract this ZIP.
-2. Upload `index.html` and this `README.md` to a new GitHub repository (root folder).
-3. In Vercel choose **Add New → Project**, import the repository, and deploy.
-4. Framework preset: **Other**. Build command: leave blank. Output directory: `.` (root).
+## ফাইল
+- `index.html` — অ্যাপের মূল কোড
+- `manifest.webmanifest` — Chrome/PWA ইনস্টল পরিচিতি
+- `sw.js` — Service Worker ও সীমিত অফলাইন ক্যাশ
 
-## Login
-Initial admin PIN: `612600` (change it in Settings after login).
+## প্রকাশ
+এই চারটি ফাইল একই GitHub repository-এর root-এ আপলোড করুন। HTTPS সমর্থিত static hosting (যেমন Cloudflare Pages বা Vercel) দিয়ে প্রকাশ করুন। PWA ইনস্টল সুবিধার জন্য HTTPS আবশ্যক। Chrome-এ সাইট খুলে মেনু থেকে **Install app / অ্যাপ ইনস্টল করুন** নির্বাচন করুন। ইনস্টল প্রম্পট Chrome-এর নিজস্ব যোগ্যতা ও ব্যবহার-সংকেতের ওপরও নির্ভর করে।
 
-## Important data/storage note
-This is a working mobile-first static prototype. It stores data in the browser's `localStorage` on the current device/browser. It does **not** yet synchronize multiple phones/users and is not a secure production authentication system. For cloud sync, role-based multi-device login, audit logs, and secure password management, connect a backend such as Supabase or Firebase and configure its project credentials. Do not use real sensitive business data until that backend/security layer is configured.
+## লগইন
+প্রাথমিক Admin PIN: `612600`। প্রথম লগইনের পর Settings থেকে পরিবর্তন করুন। নতুন অ্যাকাউন্ট তৈরির সময় আলাদা PIN দিন। একই PIN একাধিক অ্যাকাউন্টে ব্যবহার করবেন না।
 
-## Included
-Dashboard, DSR issue/return/damage/sales calculation, cash and due calculation, stock receipt and stock deduction/return, product management, DSR account management, company challan/payment ledger, expenses, due adjustment, reports with browser PDF/print, JSON backup/restore, app title/tagline and target settings.
+## গুরুত্বপূর্ণ সীমাবদ্ধতা ও নিরাপত্তা
+এটি এখনো একক ব্রাউজার `localStorage`-ভিত্তিক সংস্করণ। PIN ও role-ভিত্তিক দৃশ্যমানতা এই ক্লায়েন্ট কোডে বাস্তবায়িত; এটি সার্ভার-সুরক্ষিত authentication নয়। একাধিক ফোনে একই ডেটা সিঙ্ক, প্রকৃত অ্যাক্সেস কন্ট্রোল, নিরাপদ PIN সংরক্ষণ, অডিট লগ ও সার্ভার-সাইড ডিলিটের জন্য Supabase/Firebase-এর মতো backend যুক্ত করতে হবে। বাস্তব সংবেদনশীল ব্যবসায়িক তথ্য ব্যবহারের আগে backend/security যুক্ত করুন।
+
+ডেটা রিসেট বা অ্যাকাউন্ট ডিলিটের আগে Settings থেকে JSON ব্যাকআপ ডাউনলোড করুন।
