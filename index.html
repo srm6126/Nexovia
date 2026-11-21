@@ -55,7 +55,7 @@ const defaultProducts=[
 ];
 const seed=()=>({settings:{title:'SHAHIN APP',tag:'Smart Business Management',company:'আপনার ট্রেডিং কর্পোরেশন',pin:'612600',target:0},products:defaultProducts.map((p,i)=>({id:i+1,name:p[0],unit:p[1],buy:p[2],sell:p[3],stock:p[4],opening:p[4]})),accounts:[{id:1,role:'DSR',name:'জুনায়েদ',phone:'',pin:'1234',area:'ঢাকা উদ্যান',target:0,due:0,active:true}],dsr:[],newstock:[],challans:[],expenses:[],adjustments:[]});
 // Supabase PIN-only cloud connection
-const SUPABASE_URL='https://ulpgwwmijxjaxphwkhyn.supabase.co';
+const SUPABASE_URL='https://ulpgwwmixjxaxphwkhyn.supabase.co';
 const SUPABASE_ANON_KEY='sb_publishable_WrHdvuCxrx0nJnbG12KcNg_og4IkZwn';
 const cloud=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
 let db;try{db=JSON.parse(localStorage.getItem('shahin_app_data'))||seed()}catch(e){db=seed()}
