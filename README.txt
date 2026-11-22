@@ -1,9 +1,19 @@
-SHAHIN APP V3 update
+SHAHIN APP V4 update
 
-1. Backup current business data from Settings before deployment.
-2. Extract this ZIP and upload all included files to the ROOT of the existing Vercel project, replacing the previous app files.
-3. Do not run SQL again. Do not create a new Supabase project.
-4. Login as Admin and open Settings > Dealer / Manager / DSR permissions. Select page view and edit permissions separately, then save.
-5. Admin, Dealer and Manager retain the same dashboard and menu layout. Unauthorized actions show an Admin permission message. DSR remains limited to its DSR statement page.
-6. Reports support one-day, weekly, monthly and custom date ranges, plus product-based profit summary. Manual aggregate sales are excluded from gross-profit calculation because they have no product-level purchase costs.
-7. This update changes the browser-side UI permission layer. It does not replace secure Supabase database-side role policies/RLS; do not treat client-side restrictions as a security boundary for sensitive production data.
+1. Before replacing the live website, download a JSON backup from Admin > Settings.
+2. Extract this ZIP and upload ALL files to the ROOT of the existing Vercel project, replacing previous files.
+3. Keep the existing Supabase project and database. Do NOT run SQL again.
+4. After deployment, test Admin, Dealer, Manager and DSR accounts.
+
+V4 changes:
+- DSR selector, date, area and edit control use a compact single-row mobile toolbar.
+- DSR table columns are compacted to fit mobile width.
+- New-stock title/date are compact and product, quantity, purchase rate and total columns fit mobile width.
+- Admin can delete individual manual sales and manual damage entries in Settings after enabling Settings Edit.
+- Admin can delete individual new-stock, expense, challan and stock-adjustment entries after enabling the relevant page Edit. Reversible stock is adjusted on deletion.
+- Admin can delete a DSR daily record after enabling DSR Edit; stock and account due are recalculated. Newer DSR records must be deleted first to preserve due history.
+
+Important:
+- Every deletion asks for confirmation. If stock has already been consumed and cannot be safely reversed, deletion is blocked.
+- Product catalogue, product rates, accounts, and unrelated history are not cleared.
+- Existing Supabase security/RLS limitations are unchanged; client-side permissions are not server-side security.
