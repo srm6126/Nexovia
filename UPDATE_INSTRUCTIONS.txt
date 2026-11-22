@@ -1,12 +1,10 @@
-SHAHIN APP FINAL V5
+SHAHIN APP FINAL V6
 
-1. Replace the existing root index.html in the same Vercel/GitHub project with this index.html.
-2. Keep the existing manifest.webmanifest, sw.js, icon-192.png, icon-512.png and all other project files. Do not delete them.
-3. Deploy the project and reload the app. Existing Supabase cloud data is not intentionally reset by this update.
+এই প্যাকেজে index.html ফাইলটি V5-এর আগের ফিচার ও ডেটা-স্ট্রাকচার অক্ষত রেখে নিচের পরিবর্তনসহ আপডেট করা হয়েছে:
+1. কোম্পানি চালান রিপোর্টে নির্বাচিত সময়ের গ্রহণ/প্রদান এবং এ পর্যন্ত সর্বমোট গ্রহণ/প্রদান/নিট দেখাবে।
+2. DSR হিসাবের সারাংশ স্ক্রিনের নিচে নেভিগেশন বারের ওপরে স্থির থাকবে; হিসাবের ইনপুট বড় করা হয়েছে এবং টেবিল অনুভূমিকভাবে স্ক্রল করা যাবে।
+3. রিপোর্টের ধরন, সময়সীমা, শুরু/শেষ তারিখ এক লাইনে এবং রিপোর্ট/PDF/PNG/শেয়ার বাটন এক লাইনে ছোট করা হয়েছে।
+4. Settings > এডিট চালু করে রিপোর্ট প্রস্তুতকারীর স্বাক্ষরের PNG/JPG/WEBP ছবি (সর্বোচ্চ ৫০০ KB) আপলোড করলে রিপোর্টে সেটি দেখাবে।
+5. রিপোর্টে সময়কাল একবার এবং প্রস্তুতের সময় শুধু সময় হিসেবে দেখানো হবে।
 
-Changes:
-- DSR selection, date, area and edit control arranged on one compact row.
-- New stock title and date arranged on one row.
-- Added the dealer personal ledger page, with date, income/deposit, expense/payment, description, totals and delete action.
-- Ledger title defaults to “আবরার টালি খাতা” and can be renamed from Admin Settings.
-- Added the ledger shortcut at the bottom of the dashboard.
+ব্যবহার: আপনার বর্তমান ওয়েবসাইটের আগের index.html-এর ব্যাকআপ রেখে এই প্যাকেজের index.html দিয়ে প্রতিস্থাপন/ডিপ্লয় করুন। Supabase প্রজেক্টের ডেটা বা SQL পরিবর্তন করার প্রয়োজন নেই। প্রথমে Admin অ্যাকাউন্ট দিয়ে পরীক্ষা করুন।
