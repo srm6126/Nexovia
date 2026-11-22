@@ -1,0 +1,12 @@
+SHAHIN APP FINAL V5
+
+1. Replace the existing root index.html in the same Vercel/GitHub project with this index.html.
+2. Keep the existing manifest.webmanifest, sw.js, icon-192.png, icon-512.png and all other project files. Do not delete them.
+3. Deploy the project and reload the app. Existing Supabase cloud data is not intentionally reset by this update.
+
+Changes:
+- DSR selection, date, area and edit control arranged on one compact row.
+- New stock title and date arranged on one row.
+- Added the dealer personal ledger page, with date, income/deposit, expense/payment, description, totals and delete action.
+- Ledger title defaults to “আবরার টালি খাতা” and can be renamed from Admin Settings.
+- Added the ledger shortcut at the bottom of the dashboard.
