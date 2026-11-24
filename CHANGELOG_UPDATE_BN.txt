@@ -1,0 +1,8 @@
+আপডেট লগ — ২৪ নভেম্বর ২০২৬
+- আগের সোর্সে থাকা Scanner/Support পেজগুলো মূল অ্যাপের content area-তে আনা হয়েছে, যাতে login-এর পর page navigation দিয়ে খোলা যায়।
+- Dashboard quick action-এ Scanner ও AI Support দৃশ্যমান করা হয়েছে।
+- Admin/Dealer/Manager-এর জন্য floating Support shortcut যোগ হয়েছে।
+- Gemini-powered Vercel server functions /api/scan ও /api/support যোগ হয়েছে।
+- Gemini key শুধু Vercel environment variable থেকে ব্যবহৃত হবে।
+- Service worker cache version bump করা হয়েছে যাতে পুরোনো HTML cache আটকে না থাকে।
+- মূল Supabase database-এ কোনো migration চালানো হয়নি।

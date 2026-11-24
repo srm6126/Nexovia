@@ -1,26 +1,15 @@
-SHAHIN APP — ATC DISTRIBUTION MANAGEMENT SYSTEM
-আবরার ট্রেডিং কর্পোরেশন | SMART BUSINESS SOLUTION
-================================================
+SHAHIN APP — ATC UPDATE PACKAGE
+===============================
+এই প্যাকেজটি মূল SHAHIN APP সোর্সের উপর ভিত্তি করে তৈরি। পুরোনো app_state JSON data structure বজায় রেখে additive update করা হয়েছে।
 
-এটি V8-ভিত্তিক সমন্বিত সোর্স প্যাকেজ। মূল অ্যাপ: index.html।
+দৃশ্যমান আপডেট:
+- Dashboard quick actions-এ চালান স্ক্যানার ও AI সহায়তা যোগ।
+- Dealer/Manager/Admin dashboard-এ floating AI Support shortcut।
+- Scanner ও Support page অ্যাপের মূল content area-তে সরানো হয়েছে।
+- Scanner এখন Vercel /api/scan endpoint-এ authenticated image OCR request পাঠায়।
+- Smart Support এখন Vercel /api/support endpoint-এ authenticated AI request পাঠায়।
+- Gemini key server-side GEMINI_API_KEY থেকে পড়া হয়; browser-এ key রাখা হয় না।
+- আগের manual scanner row, user review এবং explicit stock confirmation রাখা হয়েছে।
 
-ফাইলসমূহ
---------
-- index.html: ওয়েব অ্যাপ সোর্স; boot error diagnostic ও ৩-বিভাগের স্টক মূল্যায়ন সংশোধন যুক্ত।
-- manifest.webmanifest, sw.js, icons/: Android PWA ইনস্টল ফাইল।
-- ATC_NON_DESTRUCTIVE_MIGRATION.sql: আগের additive migration; staging-এ schema যাচাই ছাড়া চালাবেন না।
-- ORIGINAL_PIN_CLOUD_SETUP_REFERENCE_ONLY.sql: আগের PIN/cloud SQL; production-এ অন্ধভাবে চালাবেন না।
-- DEPLOY_GUIDE_BN.txt: Vercel Preview নির্দেশিকা।
-- RELEASE_SCOPE_BN.txt: সম্পূর্ণ ফিচার তালিকা ও যাচাই-অবস্থা।
-- QA_CHECKLIST_BN.txt: পরীক্ষা তালিকা।
-- android-capacitor/: Native Android wrapper তৈরির starter configuration; APK নয়।
-
-নিরাপত্তা ও ডেটা
---------------
-কোনো লাইভ Vercel/Supabase পরিবর্তন করা হয়নি। কোনো service_role secret বা API key ZIP-এ নেই।
-পুরোনো ডেটা সংরক্ষণের জন্য বিদ্যমান database DROP/TRUNCATE করবেন না। আগে পূর্ণ backup এবং staging project ব্যবহার করুন।
-বর্তমান legacy PIN cloud save পুরো JSON state overwrite করে; role-scoped transactional security migration ছাড়া production-এ বহু-ব্যবহারকারীর হিসাবকে নিরাপদ বলা যাবে না।
-
-গুরুত্বপূর্ণ সীমাবদ্ধতা
---------------------
-এই ZIP-কে production-ready final release বলা হচ্ছে না। RELEASE_SCOPE_BN.txt-এ কোন অংশ সোর্সে আছে, কোনটি আংশিক, কোনটি বাস্তব backend/device test ছাড়া অসম্পূর্ণ—স্পষ্ট লেখা আছে।
+Deploy করার আগে DEPLOY_GUIDE_BN.txt পড়ুন।
+এই প্যাকেজ Production-certified নয়। STATUS_AND_TESTS_BN.txt এবং RELEASE_SCOPE_BN.txt-এ সীমাবদ্ধতা দেওয়া আছে।
