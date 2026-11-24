@@ -1,0 +1,178 @@
+function_name,function_code
+has_business_role,"CREATE OR REPLACE FUNCTION public.has_business_role(check_business_id uuid, allowed_roles text[])
+ RETURNS boolean
+ LANGUAGE sql
+ STABLE SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+  select exists (
+    select 1 from public.business_members bm
+    where bm.business_id = check_business_id
+    and bm.user_id = auth.uid()
+    and bm.role = any(allowed_roles)
+  );
+$function$
+"
+is_business_member,"CREATE OR REPLACE FUNCTION public.is_business_member(check_business_id uuid)
+ RETURNS boolean
+ LANGUAGE sql
+ STABLE SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+  select exists (
+    select 1 from public.business_members bm
+    where bm.business_id = check_business_id
+    and bm.user_id = auth.uid()
+  );
+$function$
+"
+pin_create_account,"CREATE OR REPLACE FUNCTION public.pin_create_account(p_token text, p_name text, p_role text, p_pin text)
+ RETURNS uuid
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public', 'extensions'
+AS $function$
+declare
+ a public.pin_accounts%rowtype;
+ new_id uuid;
+begin
+ select pa.* into a
+ from public.pin_sessions ps
+ join public.pin_accounts pa on pa.id=ps.account_id
+ where ps.token_hash=encode(digest(p_token,'sha256'),'hex')
+ and ps.expires_at>now()
+ and pa.active=true;
+
+ if a.id is null or a.role<>'Admin' then
+   raise exception 'শুধু Admin অ্যাকাউন্ট তৈরি করতে পারবেন';
+ end if;
+
+ if p_role not in ('Dealer','DSR','Manager') then
+   raise exception 'Invalid role';
+ end if;
+
+ if length(trim(p_name))<2 or p_pin !~ '^[0-9]{6,12}$' then
+   raise exception 'নাম ও ৬-১২ সংখ্যার PIN দিন';
+ end if;
+
+ if exists(
+   select 1 from public.pin_accounts
+   where business_id=a.business_id
+   and pin_hash=crypt(p_pin,pin_hash)
+ ) then
+   raise exception 'এই PIN আগে ব্যবহার করা হয়েছে';
+ end if;
+
+ insert into public.pin_accounts
+ (business_id,name,role,pin_hash)
+ values(a.business_id,trim(p_name),p_role,crypt(p_pin,gen_salt('bf')))
+ returning id into new_id;
+
+ return new_id;
+end $function$
+"
+pin_get_state,"CREATE OR REPLACE FUNCTION public.pin_get_state(p_token text)
+ RETURNS jsonb
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public', 'extensions'
+AS $function$
+declare
+ a public.pin_accounts%rowtype;
+ st jsonb;
+ upd timestamptz;
+begin
+ select pa.* into a
+ from public.pin_sessions ps
+ join public.pin_accounts pa on pa.id=ps.account_id
+ where ps.token_hash=encode(digest(p_token,'sha256'),'hex')
+ and ps.expires_at>now()
+ and pa.active=true;
+
+ if a.id is null then raise exception 'Session expired'; end if;
+
+ select data,updated_at into st,upd
+ from public.app_state where business_id=a.business_id;
+
+ return jsonb_build_object(
+   'data',coalesce(st,'{}'::jsonb),
+   'updated_at',upd
+ );
+end $function$
+"
+pin_login,"CREATE OR REPLACE FUNCTION public.pin_login(p_pin text)
+ RETURNS jsonb
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public', 'extensions'
+AS $function$
+declare
+ a public.pin_accounts%rowtype;
+ bid uuid;
+ tok text;
+ st jsonb;
+begin
+ if p_pin !~ '^[0-9]{6,12}$' then
+   raise exception 'Invalid PIN';
+ end if;
+
+ select id into bid from public.businesses
+ where name='SHAHIN APP'
+ order by created_at desc limit 1;
+
+ select * into a
+ from public.pin_accounts
+ where business_id=bid
+ and active=true
+ and pin_hash=crypt(p_pin,pin_hash)
+ limit 1;
+
+ if a.id is null then
+   raise exception 'PIN সঠিক নয়';
+ end if;
+
+ tok=replace(gen_random_uuid()::text||gen_random_uuid()::text,'-','');
+
+ insert into public.pin_sessions(token_hash,account_id,expires_at)
+ values(encode(digest(tok,'sha256'),'hex'),a.id,now()+interval '7 days');
+
+ select data into st from public.app_state where business_id=bid;
+
+ return jsonb_build_object(
+   'token',tok,
+   'business_id',bid,
+   'role',a.role,
+   'name',a.name,
+   'state',coalesce(st,'{}'::jsonb)
+ );
+end $function$
+"
+pin_save_state,"CREATE OR REPLACE FUNCTION public.pin_save_state(p_token text, p_data jsonb)
+ RETURNS boolean
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public', 'extensions'
+AS $function$
+declare a public.pin_accounts%rowtype;
+begin
+ select pa.* into a
+ from public.pin_sessions ps
+ join public.pin_accounts pa on pa.id=ps.account_id
+ where ps.token_hash=encode(digest(p_token,'sha256'),'hex')
+ and ps.expires_at>now()
+ and pa.active=true;
+
+ if a.id is null then raise exception 'Session expired'; end if;
+ if pg_column_size(p_data)>5000000 then
+   raise exception 'Data size limit exceeded';
+ end if;
+
+ insert into public.app_state
+ (business_id,data,updated_at,updated_by)
+ values(a.business_id,p_data,now(),null)
+ on conflict(business_id)
+ do update set data=excluded.data,updated_at=now(),updated_by=null;
+
+ return true;
+end $function$
+"

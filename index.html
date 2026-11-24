@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#0646b5"><link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/icons/icon-192.png"><title>SHAHIN APP | ATC Distribution Management</title>
+<style>
+:root{--blue:#0848b8;--blue2:#0878e8;--navy:#082f83;--green:#0caf50;--red:#d93649;--bg:#eef4fc;--ink:#14284a;--muted:#60728e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,"Noto Sans Bengali",Arial,sans-serif;color:var(--ink);font-size:14px}button,input,select{font:inherit}button{cursor:pointer;border:0}.hidden{display:none!important}
+.login{min-height:100dvh;display:grid;place-items:center;padding:20px;background:linear-gradient(145deg,#052b83,#087be9)}.loginbox{width:min(420px,100%);background:white;border-radius:22px;padding:28px 22px;box-shadow:0 18px 55px #001b5555;text-align:center}.brandmark{width:62px;height:62px;border-radius:18px;background:linear-gradient(135deg,var(--navy),var(--blue2));color:white;display:grid;place-items:center;font-size:28px;font-weight:900;margin:0 auto 12px}.login h1{margin:0;color:var(--navy);font-size:25px}.tag{color:#687b98;margin:4px 0 22px}.field{display:flex;flex-direction:column;gap:6px;margin:10px 0;text-align:left}.field label{font-weight:700;color:#243e68}.field input,.field select{width:100%;border:1px solid #cbd7e7;border-radius:11px;padding:12px;background:#fbfdff;min-height:43px;outline-color:#2685ef}.btn{padding:11px 15px;border-radius:11px;color:white;font-weight:800;background:linear-gradient(100deg,var(--blue),var(--blue2));box-shadow:0 3px 9px #0646b522}.btn.green{background:linear-gradient(100deg,#08a84a,#19c765)}.btn.red{background:var(--red)}.btn.gray{background:#64748b}.btn.small{padding:7px 10px;font-size:12px}.app{min-height:100dvh;padding-bottom:80px}.top{position:sticky;top:0;z-index:5;background:linear-gradient(100deg,#062d8d,#0879e9);color:white;padding:10px 14px;display:flex;align-items:center;gap:12px;box-shadow:0 3px 12px #082b7333}.hamb{background:transparent;color:white;font-size:26px;padding:0 5px}.topname{flex:1;min-width:0}.topname strong{font-size:20px;letter-spacing:.3px}.topname small{display:block;color:#dbeaff;font-size:11px}.targettop{text-align:right;font-weight:800;font-size:18px}.targettop small{display:block;font-size:10px;color:#ffeb79}.wrap{max-width:1000px;margin:auto;padding:12px}.hero{background:linear-gradient(110deg,#073995,#087fea);color:white;border-radius:16px;padding:14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:10px}.hero h2{margin:0;font-size:17px}.hero small{color:#dceaff}.hero .amount{font-size:20px;font-weight:900}.bigbuttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}.bigbuttons button{min-height:68px;font-size:17px;border-radius:14px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}.metric{background:white;border:1px solid #d7e2f1;border-radius:13px;padding:12px 8px;box-shadow:0 2px 8px #173b7010;min-width:0}.metric small{display:block;color:var(--muted);font-size:11px}.metric b{display:block;color:var(--navy);font-size:17px;margin-top:4px;overflow-wrap:anywhere}.section{background:white;border:1px solid #d9e3f0;border-radius:16px;padding:12px;margin:12px 0;box-shadow:0 3px 12px #153d7010}.sectionhead{background:linear-gradient(100deg,#073b9e,#087fe9);color:white;border-radius:11px;padding:11px 13px;font-weight:800;margin-bottom:12px}.quickgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.quick{background:white;border:1px solid #d6e1ef;border-radius:12px;padding:12px 4px;text-align:center;color:var(--navy);font-weight:800;box-shadow:0 2px 6px #143b7010}.quick span{display:block;font-size:22px;margin-bottom:4px}.targetbox{background:white;border:1px solid #d9e3f0;border-radius:15px;padding:13px;margin-top:12px}.progress{height:11px;background:#e5edf8;border-radius:20px;overflow:hidden;margin:9px 0}.progress i{display:block;height:100%;background:linear-gradient(90deg,#08a84a,#a5db27);width:0%}.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.tablewrap{overflow:auto;max-height:56dvh;border:1px solid #d7e1ed;border-radius:10px}table{border-collapse:collapse;width:100%;min-width:580px;background:white}th{position:sticky;top:0;background:#073c9e;color:white;padding:9px 7px;font-size:12px}td{border:1px solid #e1e7ef;padding:5px;text-align:center}td:first-child{text-align:left}td input{width:65px;max-width:100%;padding:7px 4px;text-align:center;border:1px solid #d2dceb;border-radius:7px;background:#f8fbff}td .wide{width:100%;text-align:left}.summary{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}.sumitem{display:flex;justify-content:space-between;gap:5px;background:#f0f5fc;border-radius:9px;padding:9px;font-weight:700}.sumitem b{color:#073b9e}.stickybottom{position:fixed;z-index:8;bottom:0;left:0;right:0;background:linear-gradient(100deg,#062d8d,#0878e8);display:grid;grid-template-columns:repeat(5,1fr);padding:6px 5px calc(6px + env(safe-area-inset-bottom));box-shadow:0 -3px 12px #0b347033}.navbtn{color:#eaf3ff;background:transparent;padding:5px 2px;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:2px}.navbtn span{font-size:20px}.navbtn.active{background:#ffffff25;border-radius:10px;color:white}.navbtn:nth-child(3){background:#ffffff20;border-radius:12px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.actions>*{flex:1}.listrow{display:flex;justify-content:space-between;align-items:center;padding:10px;border-bottom:1px solid #e6edf5;gap:8px}.muted{color:var(--muted)}.drawer{position:fixed;inset:0;background:#00163888;z-index:20}.drawerbox{width:min(300px,85vw);height:100%;background:white;padding:16px;overflow:auto}.drawerbox button{width:100%;margin:4px 0;text-align:left;background:#f0f5fc;color:#153c79;padding:12px;border-radius:9px;font-weight:700}.toast{position:fixed;z-index:30;bottom:90px;left:50%;transform:translateX(-50%);background:#17365e;color:white;padding:10px 16px;border-radius:10px;box-shadow:0 5px 20px #0003;max-width:90vw}.danger{color:var(--red)}.hiddenpage{display:none}.right{text-align:right}.center{text-align:center}
+@media(min-width:700px){.wrap{padding:20px}.quickgrid{grid-template-columns:repeat(4,1fr)}.tablewrap{max-height:65vh}.top{padding-left:max(18px,calc((100vw - 1000px)/2))}.cards{gap:12px}.metric{padding:15px}}
+@media(max-width:380px){.cards{gap:5px}.metric{padding:9px 5px}.metric b{font-size:14px}.quickgrid{grid-template-columns:repeat(4,1fr)}.quick{font-size:11px}.formgrid{gap:7px}}
+@media print{.top,.stickybottom,.no-print,.drawer{display:none!important}.app{padding:0}.wrap{max-width:none;padding:0}.section{box-shadow:none;break-inside:avoid}.tablewrap{max-height:none;overflow:visible}table{min-width:0;font-size:10px}td input{border:0;background:transparent}.printhead{display:block!important}}
+
+.page-editbar{display:flex;gap:8px;justify-content:flex-end;align-items:center;margin:0 0 10px;padding:0 0 8px;border-bottom:1px solid #dce6f4}
+.page-editbar .btn{min-width:112px}
+input:disabled,select:disabled,textarea:disabled{background:#eef2f7!important;color:#52627a!important;opacity:1!important;cursor:not-allowed;border-color:#d9e1ec!important}
+body.dsr-only-mode .top,body.dsr-only-mode #drawer{display:none!important} body.dsr-only-mode .stickybottom{display:flex!important}
+body.dsr-only-mode main.wrap{padding-top:16px;padding-bottom:16px;max-width:100%;min-height:100dvh}
+body.dsr-only-mode #page-dsr{display:block!important}
+body.dsr-only-mode #page-dsr .section{border-radius:0;box-shadow:none;margin:0 0 10px}
+body.dsr-only-mode #page-dsr .page-editbar{display:none!important}
+body.dsr-only-mode #page-dsr .dsr-self-title{display:block!important}
+.dsr-self-title{display:none;font-size:18px;font-weight:800;margin:4px 0 12px;color:#0a347e}
+
+#reportOutput .report-sheet{background:#fff;border:1px solid #d7e1ef;border-radius:14px;padding:14px;margin-top:12px;color:#152b4c}
+#reportOutput .report-title{text-align:center;border-bottom:2px solid #174c9c;padding-bottom:8px;margin-bottom:10px}
+#reportOutput .report-title h2{margin:0;color:#103b82;font-size:20px}
+#reportOutput .report-title p{margin:3px 0;color:#62738b}
+#reportOutput .report-table{width:100%;min-width:0;border-collapse:collapse;font-size:10px;table-layout:auto}
+#reportOutput .report-table th{position:static;padding:5px 3px;font-size:10px}
+#reportOutput .report-table td{padding:4px 3px;font-size:10px}
+#reportOutput .report-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin:9px 0}
+#reportOutput .report-summary div{background:#edf4ff;border-radius:7px;padding:6px;text-align:center;font-size:10px}
+#reportOutput .report-summary b{display:block;color:#073b9e;font-size:12px}
+@media print{
+ @page{size:A4 portrait;margin:7mm}
+ body{background:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ body *{visibility:hidden!important}
+ #page-reports,#page-reports *{visibility:visible!important}
+ #page-reports{display:block!important;position:absolute!important;left:0!important;top:0!important;width:100%!important}
+ #page-reports>.section:first-child>.sectionhead,#page-reports>.section:first-child>.formgrid,#page-reports>.section:first-child>button{display:none!important}
+ #reportOutput{display:block!important}
+ #reportOutput .report-sheet{border:0!important;border-radius:0!important;box-shadow:none!important;padding:0!important;margin:0!important;max-height:none!important;overflow:visible!important;break-inside:avoid!important;zoom:var(--report-zoom,1)}
+ #reportOutput .report-title h2{font-size:17px!important}
+ #reportOutput .report-table{font-size:8px!important}
+ #reportOutput .report-table th,#reportOutput .report-table td{font-size:8px!important;padding:2px!important}
+ #reportOutput .report-summary div{font-size:8px!important;padding:3px!important}
+ #reportOutput .report-summary b{font-size:9px!important}
+ #reportOutput tr{break-inside:avoid!important}
+}
+#dsrHistorySection{margin-top:12px}#dsrHistory .listrow{border:1px solid #dce6f4;border-radius:9px;padding:9px 10px}#page-reports .field select,#page-reports .field input{background:#fff!important}\n
+/* V4: compact mobile tables and headers */
+#page-dsr .dsr-toolbar{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,.9fr) auto;gap:6px;align-items:end}
+#page-dsr .dsr-toolbar .field{margin:0;min-width:0;gap:3px}
+#page-dsr .dsr-toolbar .field label{font-size:10px;white-space:nowrap}
+#page-dsr .dsr-toolbar input,#page-dsr .dsr-toolbar select{min-width:0;min-height:35px;height:35px;padding:5px 6px;font-size:11px;border-radius:8px}
+#page-dsr .dsr-area-line{height:35px;display:flex;align-items:center;padding:0 6px;background:#f4f7fc;border:1px solid #dbe5f2;border-radius:8px;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#page-dsr .page-editbar{margin:0;padding:0;border:0;justify-content:flex-end;align-self:end}
+#page-dsr .page-editbar .btn{min-width:0;white-space:nowrap;padding:8px 7px;font-size:10px}
+#dsrTable{width:100%;min-width:0;table-layout:fixed;font-size:10px}
+#dsrTable th{padding:6px 2px;font-size:9px;white-space:normal;line-height:1.15}
+#dsrTable td{padding:4px 2px;font-size:10px;overflow-wrap:anywhere}
+#dsrTable th:nth-child(1),#dsrTable td:nth-child(1){width:5%;text-align:center}
+#dsrTable th:nth-child(2),#dsrTable td:nth-child(2){width:24%;text-align:center}
+#dsrTable th:nth-child(3),#dsrTable td:nth-child(3),#dsrTable th:nth-child(4),#dsrTable td:nth-child(4),#dsrTable th:nth-child(5),#dsrTable td:nth-child(5),#dsrTable th:nth-child(6),#dsrTable td:nth-child(6){width:12%;}
+#dsrTable th:nth-child(7),#dsrTable td:nth-child(7){width:10%}
+#dsrTable th:nth-child(8),#dsrTable td:nth-child(8){width:13%}
+#dsrTable td input{width:100%;min-width:0;padding:5px 1px;font-size:10px;border-radius:6px}
+#page-newstock .newstock-toolbar{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;margin-bottom:9px}
+#page-newstock .newstock-toolbar .sectionhead{margin:0;padding:9px 10px;font-size:13px;line-height:1.25}
+#page-newstock .newstock-date{display:flex;align-items:center;gap:5px;margin:0;min-width:0}
+#page-newstock .newstock-date label{font-size:10px;white-space:nowrap}
+#page-newstock .newstock-date input{width:125px;min-width:0;min-height:35px;padding:5px 6px;font-size:11px;border-radius:8px}
+#newStockTable{width:100%;min-width:0;table-layout:fixed;font-size:10px}
+#newStockTable th{padding:7px 2px;font-size:10px;white-space:normal;line-height:1.15}
+#newStockTable td{padding:5px 2px;font-size:10px;overflow-wrap:anywhere}
+#newStockTable th:nth-child(1),#newStockTable td:nth-child(1){width:6%}
+#newStockTable th:nth-child(2),#newStockTable td:nth-child(2){width:32%;text-align:center}
+#newStockTable th:nth-child(3),#newStockTable td:nth-child(3){width:18%}
+#newStockTable th:nth-child(4),#newStockTable td:nth-child(4){width:21%}
+#newStockTable th:nth-child(5),#newStockTable td:nth-child(5){width:23%}
+#newStockTable td input{width:100%;min-width:0;padding:6px 1px;font-size:10px;border-radius:6px}
+.history-delete{flex:0 0 auto;padding:6px 8px!important;font-size:10px!important;box-shadow:none!important}
+.history-entry{display:flex;align-items:center;justify-content:space-between;gap:7px;border-bottom:1px solid #e6edf5;padding:8px 2px}
+.history-entry .history-info{min-width:0;flex:1}
+@media(max-width:390px){#page-dsr .dsr-toolbar{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,.85fr) auto;gap:4px}#page-dsr .page-editbar .btn{padding:7px 5px;font-size:9px}#page-newstock .newstock-toolbar{grid-template-columns:minmax(0,1fr) auto;gap:5px}#page-newstock .newstock-date{display:block}#page-newstock .newstock-date label{display:block}#page-newstock .newstock-date input{width:112px}}
+
+
+/* FINAL MOBILE LAYOUT FIX: force all requested controls onto single rows */
+#page-dsr .dsr-toolbar{display:grid!important;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,1fr) auto!important;align-items:center!important;gap:5px!important;width:100%!important}
+#page-dsr .dsr-toolbar>.field{display:flex!important;flex-direction:column!important;min-width:0!important;margin:0!important;gap:2px!important}
+#page-dsr .dsr-toolbar>.field label{display:block!important;font-size:9px!important;line-height:1.1!important;white-space:nowrap!important}
+#page-dsr .dsr-toolbar>.field select,#page-dsr .dsr-toolbar>.field input,#page-dsr .dsr-toolbar .dsr-area-line{width:100%!important;min-width:0!important;height:32px!important;min-height:32px!important;padding:3px 4px!important;font-size:10px!important;border-radius:7px!important}
+#page-dsr .dsr-toolbar .dsr-area-line{display:flex!important;align-items:center!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+#page-dsr .dsr-toolbar .page-editbar{display:flex!important;align-items:center!important;justify-content:center!important;margin:0!important;padding:0!important;border:0!important;min-width:0!important}
+#page-dsr .dsr-toolbar .page-editbar .btn{min-width:0!important;white-space:nowrap!important;padding:7px 5px!important;font-size:9px!important}
+#page-dsr>.section:first-of-type{padding:8px!important;margin-top:8px!important;margin-bottom:8px!important}
+#page-newstock .newstock-toolbar{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;gap:6px!important;width:100%!important;margin:0 0 7px!important}
+#page-newstock .newstock-toolbar .sectionhead{display:flex!important;align-items:center!important;min-width:0!important;white-space:nowrap!important;margin:0!important;padding:8px 8px!important;font-size:12px!important;line-height:1.2!important}
+#page-newstock .newstock-date{display:flex!important;flex-direction:row!important;align-items:center!important;gap:4px!important;margin:0!important;min-width:0!important}
+#page-newstock .newstock-date label{font-size:9px!important;white-space:nowrap!important}
+#page-newstock .newstock-date input{width:116px!important;min-width:0!important;height:32px!important;min-height:32px!important;padding:3px 4px!important;font-size:10px!important}
+#page-newstock>.section{padding:9px!important}
+#page-home .dealer-ledger-launch{margin-top:12px!important}
+#page-home .dealer-ledger-launch .quick{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:13px!important;font-size:14px}
+#page-home .dealer-ledger-launch .quick span{display:inline-block!important;margin:0!important}
+#page-ledger .ledger-total{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+#page-ledger .ledger-total .metric{padding:12px}
+@media(max-width:390px){
+ #page-dsr .dsr-toolbar{grid-template-columns:minmax(0,1.08fr) minmax(0,.95fr) minmax(0,.95fr) auto!important;gap:3px!important}
+ #page-dsr .dsr-toolbar>.field label{font-size:8px!important}
+ #page-dsr .dsr-toolbar>.field select,#page-dsr .dsr-toolbar>.field input,#page-dsr .dsr-toolbar .dsr-area-line{font-size:9px!important;padding:3px!important}
+ #page-dsr .dsr-toolbar .page-editbar .btn{font-size:8px!important;padding:6px 4px!important}
+ #page-newstock .newstock-date input{width:108px!important}
+}
+
+
+/* V6 compact report controls and fixed DSR calculation strip */
+#page-reports .report-controls{display:grid!important;grid-template-columns:1.25fr 1fr 1fr 1fr!important;gap:5px!important;margin:7px 0!important}
+#page-reports .report-controls .field{min-width:0;margin:0;gap:2px}
+#page-reports .report-controls label{font-size:9px;white-space:nowrap}
+#page-reports .report-controls select,#page-reports .report-controls input{height:34px;min-height:34px;padding:3px 4px;font-size:10px;min-width:0;border-radius:7px}
+#page-reports .report-actions{display:grid;grid-template-columns:1.25fr .8fr .8fr .8fr;gap:5px;margin:6px 0}
+#page-reports .report-actions .btn{min-width:0;padding:8px 3px;font-size:10px;white-space:nowrap}
+#page-dsr .dsr-toolbar{gap:3px!important}
+#page-dsr .dsr-toolbar .field{gap:1px!important}
+#page-dsr .dsr-toolbar>.field label{font-size:8px!important}
+#page-dsr .dsr-toolbar>.field select,#page-dsr .dsr-toolbar>.field input,#page-dsr .dsr-toolbar .dsr-area-line{height:30px!important;min-height:30px!important;font-size:9px!important;padding:2px 4px!important}
+#page-dsr .dsr-toolbar .page-editbar .btn{height:30px;padding:4px 5px!important;font-size:9px!important}
+#page-dsr .section:has(>.dsr-toolbar){padding:6px!important;margin:6px 0!important}
+#dsrTable{min-width:610px!important;table-layout:fixed!important}
+#dsrTable td input{min-width:54px!important;width:58px!important;height:38px!important;padding:5px 3px!important;font-size:13px!important}
+#dsrTable th{font-size:10px!important;padding:7px 3px!important}
+#dsrTable td{font-size:12px!important;padding:5px 3px!important}
+#dsrSummary{position:fixed!important;z-index:7!important;left:6px!important;right:6px!important;bottom:calc(68px + env(safe-area-inset-bottom))!important;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:3px!important;margin:0!important;padding:4px!important;background:#fff!important;border:1px solid #cbd9ec!important;border-radius:10px!important;box-shadow:0 -2px 12px #0b347033!important}
+#dsrSummary .sumitem{min-width:0;min-height:35px;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:1px!important;padding:3px 2px!important;font-size:8px!important;line-height:1.15!important;text-align:center!important;overflow:hidden}
+#dsrSummary .sumitem b{font-size:10px!important;white-space:nowrap}
+#dsrSummary .sumitem input{width:100%!important;max-width:70px!important;height:20px!important;min-height:20px!important;padding:1px 2px!important;font-size:9px!important;text-align:center!important}
+#page-dsr .dsr-identity{font-size:10px;font-weight:700;color:#23436f;padding:2px 5px 5px;text-align:left;line-height:1.2}
+#page-dsr .tablewrap{height:calc(100dvh - 285px)!important;max-height:calc(100dvh - 285px)!important;min-height:220px!important;margin-bottom:105px!important;overflow-x:auto!important;overflow-y:auto!important;overscroll-behavior:contain!important;touch-action:pan-x pan-y!important;-webkit-overflow-scrolling:touch!important;}
+#page-dsr .tablewrap::-webkit-scrollbar{height:6px;width:5px}
+#page-dsr #dsrTable{width:max-content!important;min-width:610px!important}
+#page-dsr #dsrHistorySection{margin-top:115px!important}
+#page-dsr{overflow-x:hidden!important}
+body{overflow-x:hidden!important}
+#page-dsr #dsrHistorySection{margin-top:115px!important}
+.signature-preview{min-height:45px;display:flex;align-items:center;justify-content:flex-start;padding:7px;border:1px dashed #b7c7dc;border-radius:8px;margin:6px 0}
+.signature-preview img{max-width:180px;max-height:65px;object-fit:contain}
+#reportOutput .report-signature{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-top:8px;font-size:8px}
+#reportOutput .report-signature .maker{display:flex;flex-direction:column;align-items:flex-start;gap:1px;min-width:90px}
+#reportOutput .report-signature .maker-label{display:block;white-space:nowrap;line-height:1.1;font-size:8px!important;font-weight:600}
+#reportOutput .report-signature img{max-width:54px;max-height:19px;object-fit:contain;object-position:left center;display:block}
+#reportOutput .report-signature .maker-fallback{font-size:14px!important;line-height:1.0}
+@media(max-width:390px){
+ #page-reports .report-controls{grid-template-columns:1.2fr .9fr .9fr .9fr!important;gap:3px!important}
+ #page-reports .report-controls label{font-size:8px}
+ #page-reports .report-controls select,#page-reports .report-controls input{font-size:9px;padding:2px}
+ #page-reports .report-actions{gap:3px}
+ #page-reports .report-actions .btn{font-size:9px;padding:7px 2px}
+ #dsrSummary{left:4px!important;right:4px!important;bottom:calc(65px + env(safe-area-inset-bottom))!important}
+ #dsrSummary .sumitem{font-size:7px!important;min-height:32px}
+ #dsrSummary .sumitem b{font-size:9px!important}
+}
+
+</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><style id="boot-diagnostic-style">#bootDiagnostic{display:none;position:fixed;z-index:999999;inset:12px;background:#fff;border:2px solid #b91c1c;border-radius:14px;padding:18px;color:#111;overflow:auto;font:15px/1.6 system-ui}#bootDiagnostic h2{color:#b91c1c;margin-top:0}</style><script>window.addEventListener('error',function(e){try{var n=document.getElementById('bootDiagnostic');if(!n){n=document.createElement('div');n.id='bootDiagnostic';n.innerHTML='<h2>অ্যাপ চালু হতে সমস্যা হচ্ছে</h2><p>নিচের ত্রুটির তথ্যটি কপি করে সাপোর্টে পাঠান।</p><pre id="bootDiagnosticText"></pre><p>ইন্টারনেট সংযোগ ও প্রয়োজনীয় লাইব্রেরি লোড হয়েছে কি না পরীক্ষা করুন।</p>';document.body.appendChild(n)}document.getElementById('bootDiagnosticText').textContent=(e.message||'JavaScript error')+' | '+(e.filename||'')+':'+(e.lineno||'');n.style.display='block'}catch(_){}});window.addEventListener('unhandledrejection',function(e){try{var n=document.getElementById('bootDiagnostic');if(!n){n=document.createElement('div');n.id='bootDiagnostic';n.innerHTML='<h2>অ্যাপ চালু হতে সমস্যা হচ্ছে</h2><pre id="bootDiagnosticText"></pre>';document.body.appendChild(n)}document.getElementById('bootDiagnosticText').textContent=String(e.reason&&e.reason.message||e.reason||'Unhandled promise rejection');n.style.display='block'}catch(_){}});</script></head>
+<body>
+<div id="login" class="login"><div class="loginbox"><div class="brandmark">S</div><h1>SHAHIN APP</h1><div class="tag">Smart Business Management · Cloud</div><div class="field"><label>আপনার PIN নম্বর</label><input id="loginPin" type="password" inputmode="numeric" autocomplete="one-time-code" maxlength="12" placeholder="PIN নম্বর লিখুন"></div><button class="btn" style="width:100%;margin-top:8px" onclick="login()">নিরাপদ লগইন</button><p class="muted" style="font-size:11px;margin-top:16px">Admin, Dealer, DSR ও Manager-এর নিজস্ব PIN ব্যবহার করুন</p></div></div>
+<div id="app" class="app hidden">
+<header class="top"><button class="hamb" onclick="toggleDrawer()">☰</button><div class="topname"><strong id="appTitle">SHAHIN APP</strong><small id="appTag">Smart Business Management</small></div><div class="targettop"><span id="topPercent" title="কোম্পানি থেকে এ মাসে যত টাকার মাল গ্রহণ হয়েছে">0%</span><small>মাসিক টার্গেট</small></div><button class="hamb" onclick="go('home')">⌂</button></header>
+<main class="wrap">
+<section id="page-home">
+<div class="hero"><div><h2>ড্যাশবোর্ড</h2><small id="todayLabel"></small></div><div class="amount" id="monthSalesHero">৳ ০</div></div>
+<div class="bigbuttons"><button class="btn" onclick="go('dsr')">🧾 DSR সেল</button><button class="btn green" onclick="go('newstock')">📦 আজকের নতুন মাল</button></div>
+<div class="cards">
+<div class="metric"><small>এই মাসের সর্বমোট সেল</small><b id="mSales">৳ ০</b></div><div class="metric"><small>সর্বমোট নগদ জমা</small><b id="mCash">৳ ০</b></div><div class="metric"><small>সর্বমোট বকেয়া</small><b id="mDue">৳ ০</b></div>
+<div class="metric"><small>পূর্বের স্টক মূল্য</small><b id="oldStock">৳ ০</b></div><div class="metric"><small>নতুন স্টক মূল্য</small><b id="newStockValue">৳ ০</b></div><div class="metric"><small>সর্বমোট স্টক মূল্য</small><b id="stockValue">৳ ০</b></div>
+</div>
+<div class="section"><div class="sectionhead">⚡ দ্রুত কাজ</div><div class="quickgrid">
+<button class="quick" onclick="go('dsr')"><span>🧾</span>DSR</button><button class="quick" onclick="go('stock')"><span>📦</span>স্টক</button><button class="quick" onclick="go('products')"><span>🛍️</span>পণ্য</button><button class="quick" onclick="go('expenses')"><span>💸</span>খরচ</button><button class="quick" onclick="go('accounts')"><span>👥</span>একাউন্ট</button><button class="quick" onclick="go('dues')"><span>📒</span>বকেয়া</button><button class="quick" onclick="go('settings')"><span>⚙️</span>সেটিং</button><button class="quick" onclick="go('reports')"><span>📊</span>অন্যান্য</button>
+</div></div>
+<div class="targetbox"><b>এই মাসের টার্গেট অর্জন</b><div class="progress"><i id="progressBar"></i></div><div class="row2"><div>টার্গেট: <b id="targetTotal">৳ ০</b></div><div class="right">অর্জন: <b id="targetAchieved">৳ ০</b></div><div>বাকি: <b id="targetRemaining">৳ ০</b></div><div class="right">অর্জন: <b id="targetPercent">০%</b></div></div></div>
+<div class="section"><div class="sectionhead">রিপোর্টিং সারাংশ</div><div class="summary"><div class="sumitem">মোট ড্যামেজ <b id="damageTotal">৳ ০</b></div><div class="sumitem">মোট খরচ <b id="expenseTotal">৳ ০</b></div></div></div>
+<div class="section dealer-ledger-launch"><button class="quick" onclick="go('ledger')"><span>📒</span><b id="ledgerLaunchTitle">আবরার টালি খাতা</b></button></div>
+</section>
+<section id="page-dsr" class="hiddenpage"><div class="dsr-self-title">আমার হিসাব বিবরণী</div>
+<div class="section"><div class="dsr-toolbar"><div class="field"><label>DSR নির্বাচন</label><select id="dsrSelect" data-view-control="1" onchange="renderDsr()"></select></div><div class="field"><label>তারিখ</label><input id="dsrDate" data-view-control="1" type="date" onchange="renderDsr()"></div><div class="field"><label>এলাকা</label><div class="dsr-area-line" id="dsrArea">—</div></div><div class="page-editbar no-print" data-editbar="dsr"><button type="button" class="btn gray small" onclick="startPageEdit('dsr')">✎ এডিট</button><button type="button" class="btn green small hidden" data-savebar="dsr" onclick="savePageEdit('dsr')">💾 সেভ</button></div></div></div>
+<div class="section"><div id="dsrIdentity" class="dsr-identity" aria-live="polite"></div><div class="tablewrap" style="max-height:52dvh"><table id="dsrTable"><thead><tr><th>#</th><th>পণ্যের নাম</th><th>দেওয়া</th><th>ফেরত</th><th>ড্যামেজ</th><th>বিক্রি</th><th>রেট (৳)</th><th>মোট টাকা</th></tr></thead><tbody></tbody></table></div>
+<div class="summary" id="dsrSummary"></div><div class="section" id="dsrHistorySection"><div class="sectionhead">📅 আগের দিনের DSR হিসাব</div><div id="dsrHistory"></div></div><div class="actions no-print"><button class="btn" onclick="saveDsr()">💾 সেভ করুন</button><button class="btn gray" onclick="printPage()">🖨️ প্রিন্ট</button></div></div>
+</section>
+<section id="page-newstock" class="hiddenpage"><div class="section"><div class="newstock-toolbar"><div class="sectionhead">আজকের নতুন মাল গ্রহণ</div><div class="field newstock-date"><label>তারিখ</label><input id="stockDate" type="date"></div></div><div class="page-editbar no-print" data-editbar="newstock"><button type="button" class="btn gray small" onclick="startPageEdit('newstock')">✎ এডিট করুন</button><button type="button" class="btn green small hidden" data-savebar="newstock" onclick="savePageEdit('newstock')">💾 সেভ করুন</button></div><div class="tablewrap"><table id="newStockTable"><thead><tr><th>#</th><th>পণ্যের নাম</th><th>পরিমাণ</th><th>ক্রয় মূল্য</th><th>মোট</th></tr></thead><tbody></tbody></table></div><div class="sumitem">মোট নতুন স্টক মূল্য <b id="newStockSum">৳ ০</b></div><button class="btn green no-print" style="width:100%;margin-top:10px" onclick="saveNewStock()">+ স্টকে যোগ করুন</button><div class="sectionhead" style="margin-top:12px">📅 আগের মাল গ্রহণের হিসাব</div><div id="newStockHistory"></div></div></section>
+<section id="page-ledger" class="hiddenpage"><div class="page-editbar no-print" data-editbar="ledger"><button type="button" class="btn gray small" onclick="startPageEdit('ledger')">✎ এডিট করুন</button><button type="button" class="btn green small hidden" data-savebar="ledger" onclick="savePageEdit('ledger')">💾 সেভ করুন</button></div><div class="section"><div class="sectionhead" id="ledgerPageTitle">আবরার টালি খাতা</div><p class="muted">ডিলারের ব্যক্তিগত ভিতরের ও বাইরের আয়-ব্যয়ের হিসাব এখানে লিখে রাখুন।</p><div class="formgrid"><div class="field"><label>তারিখ</label><input id="ledgerDate" type="date"></div><div class="field"><label>হিসাবের ধরন</label><select id="ledgerType"><option value="in">জমা / আয়</option><option value="out">খরচ / প্রদান</option></select></div><div class="field" style="grid-column:1/-1"><label>বিবরণ</label><input id="ledgerNote" placeholder="যেমন: ব্যক্তিগত জমা / বাইরের খরচ"></div><div class="field"><label>টাকার পরিমাণ (৳)</label><input id="ledgerAmount" type="number" min="0" step="0.01"></div></div><button class="btn green" style="width:100%" onclick="saveDealerLedger()">হিসাব সেভ করুন</button><div class="ledger-total"><div class="metric"><small>মোট জমা / আয়</small><b id="ledgerInTotal">৳ ০</b></div><div class="metric"><small>মোট খরচ / প্রদান</small><b id="ledgerOutTotal">৳ ০</b></div><div class="metric" style="grid-column:1/-1"><small>বর্তমান নিট হিসাব</small><b id="ledgerNetTotal">৳ ০</b></div></div><div class="sectionhead" style="margin-top:14px">খাতার হিসাবের তালিকা</div><div id="ledgerRows"></div></div></section>
+<section id="page-stock" class="hiddenpage"><div class="section"><div class="sectionhead">📦 স্টক ম্যানেজমেন্ট</div><div class="cards"><div class="metric"><small>মোট পণ্য</small><b id="stockCount">০</b></div><div class="metric"><small>স্টক পরিমাণ</small><b id="stockQty">০</b></div><div class="metric"><small>স্টক মূল্য</small><b id="stockTotal">৳ ০</b></div></div><div class="tablewrap"><table><thead><tr><th>পণ্য</th><th>পরিমাণ</th><th>একক</th><th>ক্রয় মূল্য</th><th>মূল্য</th></tr></thead><tbody id="stockRows"></tbody></table></div></div></section>
+<section id="page-products" class="hiddenpage"><div class="page-editbar no-print" data-editbar="products">
+<button type="button" class="btn gray small" onclick="startPageEdit('products')">✎ এডিট করুন</button>
+<button type="button" class="btn green small hidden" data-savebar="products" onclick="savePageEdit('products')">💾 সেভ করুন</button></div><div class="section"><div class="sectionhead">🛍️ পণ্য তালিকা</div><div class="formgrid"><div class="field"><label>পণ্যের নাম</label><input id="pName" placeholder="নতুন পণ্যের নাম"></div><div class="field"><label>একক</label><select id="pUnit"><option>পিস</option><option>লিটার</option><option>মিলি</option><option>কেজি</option><option>গ্রাম</option><option>পাতা</option><option>কার্টন</option></select></div><div class="field"><label>ক্রয় মূল্য</label><input id="pBuy" type="number" min="0"></div><div class="field"><label>বিক্রয় মূল্য</label><input id="pSell" type="number" min="0"></div></div><button class="btn green" onclick="addProduct()">+ পণ্য যোগ করুন</button><div class="tablewrap" style="margin-top:12px"><table><thead><tr><th>পণ্যের নাম</th><th>একক</th><th>ক্রয়</th><th>বিক্রয়</th><th>স্টক</th><th>অ্যাকশন</th></tr></thead><tbody id="productRows"></tbody></table></div></div></section>
+<section id="page-challan" class="hiddenpage"><div class="page-editbar no-print" data-editbar="challan">
+<button type="button" class="btn gray small" onclick="startPageEdit('challan')">✎ এডিট করুন</button>
+<button type="button" class="btn green small hidden" data-savebar="challan" onclick="savePageEdit('challan')">💾 সেভ করুন</button></div><div class="section"><div class="sectionhead">কোম্পানির চালান ও পেমেন্ট</div><div class="formgrid"><div class="field"><label>তারিখ</label><input id="chDate" type="date"></div><div class="field"><label>চালান নম্বর</label><input id="chNo" placeholder="চালান নম্বর"></div><div class="field"><label>কোম্পানি থেকে মাল গ্রহণ (৳)</label><input id="chReceived" type="number" value="0"></div><div class="field"><label>কোম্পানিকে টাকা প্রদান (৳)</label><input id="chPaid" type="number" value="0"></div></div><div class="sumitem">নিট হিসাব (গ্রহণ − প্রদান) <b id="chNet">৳ ০</b></div><div class="field"><label>বিবরণ</label><input id="chNote" placeholder="ঐচ্ছিক"></div><button class="btn green" onclick="saveChallan()">চালান সেভ করুন</button></div><div class="section"><div class="sectionhead">এই মাসের কোম্পানি হিস্টরি</div><div class="summary" id="chSummary"></div><div id="challanRows"></div></div></section>
+<section id="page-expenses" class="hiddenpage"><div class="page-editbar no-print" data-editbar="expenses">
+<button type="button" class="btn gray small" onclick="startPageEdit('expenses')">✎ এডিট করুন</button>
+<button type="button" class="btn green small hidden" data-savebar="expenses" onclick="savePageEdit('expenses')">💾 সেভ করুন</button></div><div class="section"><div class="sectionhead">খরচ এন্ট্রি</div><div class="formgrid"><div class="field"><label>তারিখ</label><input id="exDate" type="date"></div><div class="field"><label>খরচের খাত</label><input id="exName" placeholder="যেমন: যাতায়াত"></div><div class="field"><label>টাকা</label><input id="exAmount" type="number"></div></div><button class="btn green" onclick="saveExpense()">খরচ সেভ করুন</button><div id="expenseRows"></div></div></section>
+<section id="page-accounts" class="hiddenpage"><div class="page-editbar no-print" data-editbar="accounts">
+<button type="button" class="btn gray small" onclick="startPageEdit('accounts')">✎ এডিট করুন</button>
+<button type="button" class="btn green small hidden" data-savebar="accounts" onclick="savePageEdit('accounts')">💾 সেভ করুন</button></div><div class="section"><div class="sectionhead">একাউন্ট তৈরি ও ব্যবস্থাপনা</div><div class="formgrid"><div class="field"><label>একাউন্টের ধরন</label><select id="aRole"><option>DSR</option><option>Dealer</option><option>Manager</option></select></div><div class="field"><label>নাম</label><input id="aName"></div><div class="field"><label>মোবাইল</label><input id="aPhone" inputmode="tel"></div><div class="field"><label>লগইন PIN</label><input id="aPin" inputmode="numeric"></div><div class="field"><label>এলাকা</label><input id="aArea"></div><div class="field"><label>মাসিক টার্গেট (৳)</label><input id="aTarget" type="number" value="0"></div></div><button class="btn green" onclick="addAccount()">একাউন্ট তৈরি করুন</button><div id="accountRows"></div></div></section>
+<section id="page-dues" class="hiddenpage"><div class="page-editbar no-print" data-editbar="dues">
+<button type="button" class="btn gray small" onclick="startPageEdit('dues')">✎ এডিট করুন</button>
+<button type="button" class="btn green small hidden" data-savebar="dues" onclick="savePageEdit('dues')">💾 সেভ করুন</button></div><div class="section"><div class="sectionhead">বকেয়া ও ব্যালেন্স সমন্বয়</div><div class="field"><label>DSR / একাউন্ট</label><select id="dueAccount"></select></div><div class="row2"><div class="field"><label>সমন্বয়ের পরিমাণ (৳)</label><input id="dueAmount" type="number"></div><div class="field"><label>ধরন</label><select id="dueType"><option value="plus">বকেয়া যোগ (+)</option><option value="minus">বকেয়া কম (−)</option></select></div></div><div class="field"><label>কারণ</label><input id="dueNote"></div><button class="btn green" onclick="adjustDue()">সমন্বয় সেভ করুন</button><div id="dueRows"></div></div></section>
+<section id="page-reports" class="hiddenpage"><div class="section"><div class="sectionhead">রিপোর্ট ও স্টেটমেন্ট</div><div class="formgrid report-controls"><div class="field"><label>রিপোর্টের ধরন</label><select id="reportType" data-view-control="1" onchange="makeReport()"><option value="all">সার্বিক হিসাব</option><option value="dsr">DSR স্টেটমেন্ট</option><option value="stock">স্টক রিপোর্ট</option><option value="company">কোম্পানি চালান</option><option value="expense">খরচ রিপোর্ট</option><option value="damage">ড্যামেজ রিপোর্ট</option><option value="manualSales">ম্যানুয়াল বিক্রির রিপোর্ট</option><option value="profit">দৈনিক / মোট লাভের রিপোর্ট</option></select></div><div class="field"><label>সময় সীমা</label><select id="reportPeriod" data-view-control="1" onchange="setReportPeriod(this.value)"><option value="day">একদিন</option><option value="week">এই সপ্তাহ</option><option value="month">এই মাস</option><option value="custom">নিজে তারিখ দিন</option></select></div><div class="field"><label>শুরু</label><input id="reportStart" data-view-control="1" type="date" onchange="makeReport()"></div><div class="field"><label>শেষ</label><input id="reportEnd" data-view-control="1" type="date" onchange="makeReport()"></div></div><div class="report-actions"><button class="btn" onclick="makeReport()">রিপোর্ট দেখুন</button><button class="btn green" onclick="printReportPDF()">PDF</button><button class="btn gray" onclick="exportReportPNG()">PNG</button><button class="btn" onclick="shareReport()">শেয়ার</button></div><div id="reportOutput"></div></div></section>
+<section id="page-settings" class="hiddenpage"><div class="page-editbar no-print" data-editbar="settings">
+<button type="button" class="btn gray small" onclick="startPageEdit('settings')">✎ এডিট করুন</button>
+<button type="button" class="btn green small hidden" data-savebar="settings" onclick="savePageEdit('settings')">💾 সেভ করুন</button></div><div class="section"><div class="sectionhead">⚙️ অ্যাপ সেটিংস</div><div class="formgrid"><div class="field"><label>অ্যাপের নাম</label><input id="sTitle"></div><div class="field"><label>স্লোগান</label><input id="sTag"></div><div class="field"><label>প্রতিষ্ঠানের নাম (রিপোর্টে)</label><input id="sCompany"></div><div class="field"><label>ড্যাশবোর্ডের ব্যক্তিগত খাতার নাম</label><input id="sLedgerTitle" placeholder="আবরার টালি খাতা"></div><div class="field"><label>মাসিক মোট টার্গেট (৳)</label><input id="sTarget" type="number"></div><div class="field"><label>নিষ্ক্রিয় থাকলে স্বয়ংক্রিয় লগআউট (মিনিট)</label><input id="sIdleTimeout" type="number" min="1" max="1440" step="1" value="30"><small class="muted">ডিফল্ট ৩০ মিনিট। অ্যাপের বাইরে/অন্য অ্যাপে থাকলেও সময় গণনা হবে।</small></div><div class="field"><label>নতুন অ্যাডমিন PIN</label><input id="sPin" type="password" placeholder="পরিবর্তন করতে চাইলে লিখুন"></div></div><button class="btn green" onclick="saveSettings()">সেটিংস সেভ করুন</button></div><div class="section"><div class="sectionhead">✍️ রিপোর্ট প্রস্তুতকারীর স্বাক্ষর</div><p class="muted">এখানে স্বাক্ষরের ছবি আপলোড করলে সব রিপোর্টে প্রস্তুতকারীর স্বাক্ষর হিসেবে দেখা যাবে। PNG/JPG ছবি, সর্বোচ্চ ৫০০ KB।</p><div class="field"><label>স্বাক্ষরের ছবি নির্বাচন</label><input id="reportSignatureFile" type="file" accept="image/png,image/jpeg,image/webp" onchange="uploadReportSignature(event)"></div><div id="reportSignaturePreview" class="signature-preview"></div><button class="btn red small" type="button" onclick="removeReportSignature()">স্বাক্ষর সরান</button></div><div class="section" id="rolePermissionSection"><div class="sectionhead">🔐 ডিলার / ম্যানেজার / DSR অনুমতি</div><p class="muted">প্রতিটি পেজ দেখা এবং কাজ করার অনুমতি আলাদাভাবে নির্বাচন করুন। অনুমতি না থাকলেও ড্যাশবোর্ডের বাটন দেখা যাবে; চাপলে Admin অনুমতি বার্তা দেখাবে।</p><div id="rolePermissionEditor"></div><button class="btn green" type="button" onclick="saveRolePermissions()">অনুমতি সেভ করুন</button></div><div class="section"><div class="sectionhead">📲 অ্যাপ ইনস্টল</div><p class="muted">SHAHIN APP ফোনে ইনস্টল করে অ্যাপের মতো ব্যবহার করুন।</p><button class="btn" id="installAppBtn" type="button" onclick="installApp()">অ্যাপ ইনস্টল করুন</button><p id="installHelp" class="muted" style="margin-top:8px">Chrome-এ ইনস্টল অপশন প্রস্তুত হলে এখানে দেখাবে।</p></div><div class="section"><div class="sectionhead">ডেটা ব্যাকআপ</div><p class="muted">তথ্য Supabase কেন্দ্রীয় ডেটাবেসে সংরক্ষিত হয়। নিরাপত্তার জন্য নিয়মিত JSON ব্যাকআপ ডাউনলোড করুন।</p><div class="actions"><button class="btn" onclick="exportData()">ব্যাকআপ ডাউনলোড</button><label class="btn gray center">ব্যাকআপ ইমপোর্ট<input type="file" accept="application/json" onchange="importData(event)" hidden></label></div><button class="btn red no-print" style="margin-top:12px;width:100%" onclick="resetData()">সব লেনদেনের হিসাব ক্লিয়ার</button></div>
+<div class="section"><div class="sectionhead">🎯 DSR টার্গেট ও অ্যাকাউন্ট নিয়ন্ত্রণ</div><p class="muted">প্রতিটি DSR-এর মাসিক টার্গেট বদলান এবং প্রয়োজন হলে অ্যাকাউন্ট সাময়িক বন্ধ/চালু করুন।</p><div id="dsrAdminRows"></div><p class="muted">বর্তমান পণ্যের তালিকা ও রেট পরিবর্তন করা হয়নি; নতুন পণ্য যোগ করতে পণ্য পেজ ব্যবহার করুন।</p></div>
+<div class="section"><div class="sectionhead">🧾 আগের দিনের মোট বিক্রি যোগ (শুধু টাকার অঙ্ক)</div><p class="muted">শুধু তারিখ ও মোট বিক্রির টাকা লিখুন; পণ্যভিত্তিক সংখ্যা লাগবে না।</p><div class="formgrid"><div class="field"><label>তারিখ</label><input id="manualSalesDate" type="date"></div><div class="field"><label>সর্বমোট বিক্রি (৳)</label><input id="manualSalesAmount" type="number" min="0" step="0.01"></div></div><button class="btn green" onclick="saveManualSales()">আগের দিনের বিক্রি যোগ করুন</button><div id="manualSalesHistory"></div></div>
+<div class="section"><div class="sectionhead">🧯 আগের তারিখের ড্যামেজ যোগ</div><div class="formgrid"><div class="field"><label>তারিখ</label><input id="manualDamageDate" type="date"></div><div class="field"><label>ড্যামেজ পরিমাণ</label><input id="manualDamageQty" type="number" min="0" step="0.01"></div><div class="field"><label>ড্যামেজের মোট টাকা (৳)</label><input id="manualDamageAmount" type="number" min="0" step="0.01"></div><div class="field"><label>কারণ / বিবরণ</label><input id="manualDamageNote"></div></div><button class="btn green" onclick="saveManualDamage()">ড্যামেজ সেভ করুন</button><div id="manualDamageHistory"></div></div>
+<div class="section"><div class="sectionhead">🗓️ আগের তারিখের হিসাব যোগ</div><p class="muted">আগের দিনের বিক্রি যোগ করতে DSR সেল পেজে গিয়ে তারিখ পরিবর্তন করে হিসাব লিখে সেভ করুন। এখানে আগের তারিখের স্টক হাতে সমন্বয় করতে পারবেন।</p><div class="formgrid"><div class="field"><label>তারিখ</label><input id="manualStockDate" type="date"></div><div class="field"><label>পণ্য</label><select id="manualStockProduct"></select></div><div class="field"><label>পরিমাণ</label><input id="manualStockQty" type="number" min="0" step="any"></div><div class="field"><label>স্টক পরিবর্তন</label><select id="manualStockMode"><option value="add">স্টক যোগ (+)</option><option value="subtract">স্টক কম (−)</option><option value="set">বর্তমান স্টক নির্ধারণ (=)</option></select></div><div class="field" style="grid-column:1/-1"><label>বিবরণ</label><input id="manualStockNote" placeholder="যেমন: ১ তারিখের শুরুর স্টক"></div></div><button class="btn green" onclick="saveManualStock()">আগের তারিখের স্টক সেভ</button><div id="manualStockHistory"></div></div>
+<div class="section"><div class="sectionhead">🧹 নির্দিষ্ট হিসাব মুছুন</div><p class="muted">শুধু টিক দেওয়া হিসাব মুছবে। পণ্যের তালিকা, পণ্যের রেট, বর্তমান স্টক এবং অ্যাকাউন্ট মুছবে না।</p><div class="formgrid"><label><input type="checkbox" id="clearDsr"> DSR দৈনিক হিসাব</label><label><input type="checkbox" id="clearNewstock"> নতুন মাল গ্রহণের হিসাব</label><label><input type="checkbox" id="clearExpenses"> খরচের হিসাব</label><label><input type="checkbox" id="clearChallans"> কোম্পানি চালান হিসাব</label><label><input type="checkbox" id="clearAdjustments"> বকেয়া সমন্বয়ের হিসাব</label><label><input type="checkbox" id="clearManualSales"> ম্যানুয়াল বিক্রির হিসাব</label><label><input type="checkbox" id="clearManualDamages"> ম্যানুয়াল ড্যামেজের হিসাব</label><label><input type="checkbox" id="clearManualSales"> ম্যানুয়াল বিক্রির হিসাব</label><label><input type="checkbox" id="clearManualDamages"> ম্যানুয়াল ড্যামেজের হিসাব</label></div><button class="btn red" style="width:100%;margin-top:10px" onclick="clearSelectedHistory()">নির্বাচিত হিসাব ক্লিয়ার করুন</button></div></section>
+</main>
+<nav class="stickybottom no-print"><button class="navbtn active" data-page="home" onclick="go('home')"><span>⌂</span>হোম</button><button class="navbtn" data-page="challan" onclick="go('challan')"><span>▤</span>চালান</button><button class="navbtn" data-page="dsr" onclick="go('dsr')"><span>▦</span>সেলস স্টেটমেন্ট</button><button class="navbtn" data-page="settings" onclick="go('settings')"><span>⚙</span>সেটিং</button><button class="navbtn" onclick="logout()"><span>⇥</span>লগআউট</button></nav>
+</div>
+
+<section id="page-scanner" class="hiddenpage">
+ <div class="section">
+  <div class="sectionhead">📷 AI স্ক্যানার — চালান / পণ্য শনাক্তকরণ</div>
+  <p class="muted">চালান বা পণ্যের ছবি তুলুন। AI প্রস্তাব দেবে; যাচাই ও নিশ্চিত না করা পর্যন্ত কোনো স্টক যোগ হবে না।</p>
+  <div class="field"><label>ছবি নির্বাচন / ক্যামেরা</label><input id="scanImage" type="file" accept="image/*" capture="environment"></div>
+  <img id="scanPreview" class="hidden" style="width:100%;max-height:260px;object-fit:contain;border-radius:12px;background:#eef3fa">
+  <div class="actions"><button class="btn" onclick="runAIScan()">ডিভাইসে OCR চেষ্টা করুন</button><button class="btn gray" onclick="addManualScanRow()">ম্যানুয়ালি পণ্য যোগ</button><button class="btn gray" onclick="clearScan()">মুছুন</button></div>
+  <p id="scanStatus" class="muted"></p>
+  <div id="scanReview"></div>
+  <button id="confirmScanBtn" class="btn green hidden" onclick="confirmScanStock()">যাচাই করা পণ্য কেন্দ্রীয় স্টকে যোগ করুন</button>
+ </div>
+ <div class="section">
+  <div class="sectionhead">প্যাকেজিং / একক রূপান্তর</div>
+  <p class="muted">প্রতিটি পণ্যের জন্য Admin নির্ধারণ করবেন—১ কার্টন/ক্রেট/পাতায় কতটি মূল একক। পুরোনো লেনদেনের রূপান্তর পরিবর্তন হবে না।</p>
+  <div id="packagingRows"></div>
+ </div>
+ <div class="section">
+  <div class="sectionhead">স্টক বরাদ্দ</div>
+  <div class="formgrid">
+   <div class="field"><label>DSR নির্বাচন</label><select id="allocDsr"></select></div>
+   <div class="field"><label>পণ্য</label><select id="allocProduct"></select></div>
+   <div class="field"><label>পরিমাণ (মূল একক)</label><input id="allocQty" type="number" min="1"></div>
+  </div>
+  <button class="btn" onclick="allocateCentralStock()">কেন্দ্রীয় স্টক থেকে DSR-কে বরাদ্দ</button>
+  <div id="allocationHistory"></div>
+ </div>
+</section>
+<section id="page-support" class="hiddenpage">
+ <div class="section">
+  <div class="sectionhead">🤖 ATC স্মার্ট সহায়তা</div>
+  <p id="supportGreeting">আসসালামু আলাইকুম! আবরার ট্রেডিং কর্পোরেশনে আপনাকে স্বাগতম। অ্যাপের কাজ, হিসাব বা সমস্যার বিষয়ে লিখুন।</p>
+  <div class="field"><label>আপনার প্রশ্ন / সমস্যার বিবরণ</label><textarea id="supportQuestion" rows="4" style="width:100%;border:1px solid #cbd7e7;border-radius:10px;padding:10px"></textarea><div class="actions"><button class="btn" type="button" onclick="startSupportVoice()">🎙️ কথা বলে প্রশ্ন করুন</button><button class="btn gray" type="button" onclick="stopSupportVoice()">শোনা বন্ধ</button></div><small id="supportVoiceStatus" class="muted">বাংলা ভয়েস সুবিধা ব্রাউজার সমর্থন করলে কাজ করবে।</small></div>
+  <div class="field"><label>স্ক্রিনশট (ঐচ্ছিক)</label><input id="supportImage" type="file" accept="image/*"></div>
+  <button class="btn" onclick="askATCSupport()">প্রশ্নের উত্তর / সহায়তা নিন</button>
+  <div id="supportAnswer" class="section" style="white-space:pre-wrap"></div>
+ </div>
+ <div class="section">
+  <div class="sectionhead">সমস্যা / সহায়তা টিকিট</div>
+  <div id="supportTickets"></div>
+ </div>
+ <div class="section">
+  <div class="sectionhead">Admin-এর জন্য নিরাপদ আপডেট নীতি</div>
+  <p class="muted">AI সমস্যা বিশ্লেষণ ও পরিবর্তনের প্রস্তাব দিতে পারে। লাইভ কোড বা হিসাব নিজে থেকে বদলাবে না। পরীক্ষা, Admin অনুমোদন, ব্যাকআপ ও আগের সংস্করণে ফেরার ব্যবস্থা বাধ্যতামূলক।</p>
+ </div>
+</section>
+<div id="drawer" class="drawer hidden" onclick="if(event.target===this)toggleDrawer()"><div class="drawerbox"><h3>SHAHIN APP</h3><div id="drawerLinks"></div><button onclick="logout()">লগআউট</button></div></div><div id="toast" class="toast hidden"></div>
+<script>
+const $=id=>document.getElementById(id), today=()=>new Date().toISOString().slice(0,10), money=n=>'৳ '+(Number(n)||0).toLocaleString('en-IN',{maximumFractionDigits:2}), bn=n=>(Number(n)||0).toLocaleString('bn-BD',{maximumFractionDigits:2});
+const defaultProducts=[
+['ফুল ক্রিম 1L','লিটার',70,94,100],['টোন হাফ 500ml','মিলি',32,43,150],['টক দই','কেজি',70,100,50],['কফি মিক্স','মিলি',68,90,80],['বাটার 100g','গ্রাম',95,130,60],['UHT 200ml','মিলি',18,26,200],['UHT 500ml','মিলি',38,55,120],['চকলেট মিল্ক','মিলি',20,28,100],['আম ম্যাংগো','মিলি',20,28,100],['লাবান 200ml','মিলি',16,24,80],['লাবান 500ml','মিলি',30,50,100],['সাদা দুধ 1L','লিটার',35,85,70],['সাদা দুধ 500ml','মিলি',23,45,100],['ঘি 200g','গ্রাম',150,210,40],['মাখন 100g','গ্রাম',90,130,50],['দই (মিষ্টি)','কেজি',60,80,60],['দই (টক)','কেজি',50,80,50],['কফি লাবান','মিলি',28,42,70],['ম্যাঙ্গো মিল্ক','মিলি',20,28,80],['স্ট্রবেরি মিল্ক','মিলি',20,28,60]
+];
+const seed=()=>({settings:{title:'SHAHIN APP',tag:'Smart Business Management',company:'আপনার ট্রেডিং কর্পোরেশন',pin:'612600',target:0,idleTimeoutMinutes:30,ledgerTitle:'আবরার টালি খাতা'},products:defaultProducts.map((p,i)=>({id:i+1,name:p[0],unit:p[1],buy:p[2],sell:p[3],stock:p[4],opening:p[4]})),accounts:[{id:1,role:'DSR',name:'জুনায়েদ',phone:'',pin:'1234',area:'ঢাকা উদ্যান',target:0,due:0,active:true}],dsr:[],newstock:[],challans:[],expenses:[],adjustments:[],stockAdjustments:[]});
+// Supabase PIN-only cloud connection
+const SUPABASE_URL='https://ulpgwwmixjxaxphwkhyn.supabase.co';
+const SUPABASE_ANON_KEY='sb_publishable_WrHdvuCxrx0nJnbG12KcNg_og4IkZwn';
+const cloud=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+let db;try{db=JSON.parse(localStorage.getItem('shahin_app_data'))||seed()}catch(e){db=seed()}
+
+// ATC upgrade data: additive only; existing records and product master are preserved.
+db.companyStock ||= {};
+db.dsrVehicleStock ||= {};
+db.packaging ||= {};
+db.companyReceipts ||= [];
+db.stockAllocations ||= [];
+db.supportTickets ||= [];
+db.aiAudit ||= [];
+db.products.forEach(p=>{
+ if(!db.packaging[p.id]) db.packaging[p.id]={baseUnit:p.unit||'পিস',carton:0,crate:0,leaf:0,aliases:[],barcode:''};
+ if(db.companyStock[p.id]===undefined) db.companyStock[p.id]=0;
+});
+
+let currentPage='home', cloudBusinessId=null, cloudUser=null, cloudRole=null, cloudChannel=null, cloudSaving=false, pinSessionToken=sessionStorage.getItem('shahin_pin_session')||null, cloudPoll=null;
+let navStack=['home'], idleTimer=null, installPromptEvent=null, idleHandlersReady=false;
+function persist(){localStorage.setItem('shahin_app_data',JSON.stringify(db));if(pinSessionToken)saveCloudState();}
+let saveTimer=null;
+async function saveCloudState(){clearTimeout(saveTimer);saveTimer=setTimeout(async()=>{try{cloudSaving=true;const {data,error}=await cloud.rpc('pin_save_state',{p_token:pinSessionToken,p_data:db});if(error)throw error;if(data!==true)throw new Error('সেশন শেষ হয়েছে, আবার লগইন করুন');}catch(e){console.error(e);toast('ক্লাউডে সেভ হয়নি: '+(e.message||'সংযোগ পরীক্ষা করুন'));}finally{cloudSaving=false}},500)}
+function toast(s){$('toast').textContent=s;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),3500)}
+async function login(){const pin=$('loginPin').value.trim();if(!/^\d{6,12}$/.test(pin))return toast('৬ থেকে ১২ সংখ্যার PIN লিখুন');try{const {data,error}=await cloud.rpc('pin_login',{p_pin:pin});if(error)throw error;if(!data||!data.token)throw new Error('PIN সঠিক নয় অথবা অ্যাকাউন্ট নিষ্ক্রিয়');pinSessionToken=data.token;sessionStorage.setItem('shahin_pin_session',pinSessionToken);cloudBusinessId=data.business_id;cloudRole=data.role;cloudUser={name:data.name};sessionStorage.setItem('shahin_role',cloudRole||'');sessionStorage.setItem('shahin_name',data.name||'');sessionStorage.setItem('shahin_business_id',cloudBusinessId||'');localStorage.setItem('shahin_last_activity',String(Date.now()));const stateResult=await cloud.rpc('pin_get_state',{p_token:pinSessionToken});if(stateResult.error)throw stateResult.error;const cloudState=stateResult.data?.data;if(cloudState&&Object.keys(cloudState).length){db=cloudState;localStorage.setItem('shahin_app_data',JSON.stringify(db));}else if(cloudRole==='Admin'){db=seed();localStorage.setItem('shahin_app_data',JSON.stringify(db));await saveCloudStateNow();}else{throw new Error('প্রথমে Admin অ্যাকাউন্ট দিয়ে অ্যাপ সেটআপ সম্পন্ন করুন');}$('login').classList.add('hidden');$('app').classList.remove('hidden');init();startRealtime();$('loginPin').value='';navStack=[roleLanding()];showPage(roleLanding());history.pushState({shahinApp:true,page:roleLanding()},'',location.pathname+location.search+'#'+roleLanding());startIdleMonitor();toast('লগইন সফল · '+cloudRole);}catch(e){console.error(e);toast(e.message==='Failed to fetch'?'Supabase সার্ভারে সংযোগ হচ্ছে না। ইন্টারনেট ও Project URL পরীক্ষা করুন।':(e.message||'লগইন ব্যর্থ'));}}
+async function saveCloudStateNow(){const {data,error}=await cloud.rpc('pin_save_state',{p_token:pinSessionToken,p_data:db});if(error)throw error;if(data!==true)throw new Error('ক্লাউড সেভ ব্যর্থ');}
+async function logout(){if(cloudPoll)clearInterval(cloudPoll);if(idleTimer)clearInterval(idleTimer);cloudPoll=null;idleTimer=null;pinSessionToken=null;sessionStorage.removeItem('shahin_pin_session');sessionStorage.removeItem('shahin_role');sessionStorage.removeItem('shahin_name');sessionStorage.removeItem('shahin_business_id');localStorage.removeItem('shahin_last_activity');cloudUser=null;cloudBusinessId=null;cloudRole=null;navStack=['home'];$('app').classList.add('hidden');$('login').classList.remove('hidden');$('loginPin').value='';toast('নিরাপত্তার জন্য লগআউট করা হয়েছে');}
+function startRealtime(){if(cloudPoll)clearInterval(cloudPoll);cloudPoll=setInterval(async()=>{if(!pinSessionToken||cloudSaving)return;try{const {data,error}=await cloud.rpc('pin_get_state',{p_token:pinSessionToken});if(error)throw error;if(data&&data.updated_at&&data.data){if(window.__lastCloudUpdate!==data.updated_at){window.__lastCloudUpdate=data.updated_at;db=data.data;localStorage.setItem('shahin_app_data',JSON.stringify(db));init();}}}catch(e){console.error('Cloud refresh',e)}},5000);}
+const allPages=[['home','হোম'],['ledger','আবরার টালি খাতা'],['dsr','DSR সেল'],['newstock','আজকের নতুন মাল'],['stock','স্টক'],['products','পণ্য'],['expenses','খরচ'],['accounts','একাউন্ট'],['dues','বকেয়া'],['challan','চালান'],['reports','রিপোর্ট'],['settings','সেটিং'],['scanner','AI স্ক্যানার'],['support','AI সহায়তা']];
+let pages=allPages.slice();
+const pageEditState={};
+const defaultRolePermissions={
+ Dealer:{pages:['home','ledger','dsr','newstock','stock','expenses','challan','reports'],edit:['ledger','dsr','newstock','expenses','challan']},
+ Manager:{pages:['home','dsr','newstock','stock','expenses','challan','reports'],edit:['dsr','newstock','expenses','challan']},
+ DSR:{pages:['dsr'],edit:[]}
+};
+function rolePermission(role){db.settings=db.settings||{};db.settings.rolePermissions=db.settings.rolePermissions||{};return db.settings.rolePermissions[role]||defaultRolePermissions[role]||{pages:[],edit:[]};}
+function allowedPage(p){if(cloudRole==='Admin')return true;if(cloudRole==='DSR')return p==='dsr';return rolePermission(cloudRole).pages.includes(p);}
+function canEditPage(p){if(cloudRole==='Admin')return true;if(cloudRole==='DSR')return false;return rolePermission(cloudRole).pages.includes(p)&&rolePermission(cloudRole).edit.includes(p);}
+function roleLanding(){return cloudRole==='DSR'?'dsr':'home'}
+function applyRoleAccess(){
+ pages=allPages.slice();
+ document.querySelectorAll('.stickybottom [data-page]').forEach(b=>{b.style.display=cloudRole==='DSR'?(b.dataset.page==='dsr'?'':'none'):'';});
+ document.body.classList.toggle('dsr-only-mode',cloudRole==='DSR');
+ const ham=document.querySelector('.top .hamb');if(ham)ham.style.display=cloudRole==='DSR'?'none':'';
+ // Admin, Dealer and Manager retain the identical dashboard/menu layout.
+ document.querySelectorAll('.quickgrid button').forEach(b=>{b.style.display=cloudRole==='DSR'?'none':'';});const ledgerLaunch=document.querySelector('.dealer-ledger-launch');if(ledgerLaunch)ledgerLaunch.style.display=(cloudRole==='Admin'||cloudRole==='Dealer')?'':'none';
+ renderDrawer();
+}
+function applyPageLock(p){
+ const sec=$('page-'+p);if(!sec)return;
+ const editing=!!pageEditState[p]&&canEditPage(p);
+ sec.querySelectorAll('input,select,textarea').forEach(el=>{el.disabled=el.hasAttribute('data-view-control')?false:!editing;});
+ sec.querySelectorAll('button[onclick]').forEach(b=>{
+  const oc=b.getAttribute('onclick')||'';
+  if(/saveDsr|saveNewStock|addProduct|saveChallan|saveExpense|addAccount|adjustDue|saveSettings|saveManualStock|saveManualSales|saveManualDamage|clearSelectedHistory|setDsrTarget|toggleAccountActive|saveRolePermissions|saveDealerLedger/.test(oc))b.disabled=!editing;
+  if(/editProduct|deleteProduct|editAccount|removeAccount|deleteSettingsHistory|deleteDsrRecord/.test(oc))b.disabled=!editing;
+ });
+ const bar=sec.querySelector('[data-editbar]');
+ if(bar){const edit=bar.querySelector('button[onclick^="startPageEdit"]'),save=bar.querySelector('[data-savebar]');if(edit)edit.classList.toggle('hidden',editing||!canEditPage(p));if(save)save.classList.toggle('hidden',!editing);}
+}
+function applyAllPageLocks(){allPages.forEach(([p])=>applyPageLock(p));}
+function startPageEdit(p){if(!canEditPage(p))return toast('এই পেজ এডিট করার অনুমতি নেই');pageEditState[p]=true;applyPageLock(p);toast('এডিট চালু হয়েছে · কাজ শেষে সেভ করুন');}
+async function savePageEdit(p){
+ if(!pageEditState[p]||!canEditPage(p))return toast('আগে এডিট চালু করুন');
+ const actions={dsr:saveDsr,newstock:saveNewStock,products:addProduct,challan:saveChallan,expenses:saveExpense,accounts:addAccount,dues:adjustDue,settings:saveSettings,ledger:saveDealerLedger};
+ const fn=actions[p];if(!fn)return;
+ const result=await fn();if(result===true){pageEditState[p]=false;applyPageLock(p);}
+}
+
+function init(){ db.dealerLedger=Array.isArray(db.dealerLedger)?db.dealerLedger:[];db.settings.rolePermissions=db.settings.rolePermissions||{};if(db.settings.rolePermissions.Dealer){db.settings.rolePermissions.Dealer.pages=db.settings.rolePermissions.Dealer.pages||[];db.settings.rolePermissions.Dealer.edit=db.settings.rolePermissions.Dealer.edit||[];if(!db.settings.rolePermissions.Dealer.pages.includes('ledger'))db.settings.rolePermissions.Dealer.pages.push('ledger');if(!db.settings.rolePermissions.Dealer.edit.includes('ledger'))db.settings.rolePermissions.Dealer.edit.push('ledger');}db.settings.ledgerTitle=db.settings.ledgerTitle||'আবরার টালি খাতা';$('sLedgerTitle').value=db.settings.ledgerTitle;$('ledgerDate').value=today();$('appTitle').textContent=db.settings.title;$('appTag').textContent=db.settings.tag;$('todayLabel').textContent=new Date().toLocaleDateString('bn-BD',{dateStyle:'full'});$('dsrDate').value=today();$('stockDate').value=today();$('chDate').value=today();$('exDate').value=today();$('reportStart').value=today();$('reportEnd').value=today();$('reportPeriod').value='day';$('sTitle').value=db.settings.title;$('sTag').value=db.settings.tag;$('sCompany').value=db.settings.company;$('sTarget').value=db.settings.target;renderSignaturePreview();$('sIdleTimeout').value=Number(db.settings.idleTimeoutMinutes)||30;$('manualStockDate').value=today();$('manualSalesDate').value=today();$('manualDamageDate').value=today();fillSelects();renderDsrAdmin();fillManualStockProducts();renderManualStockHistory();renderManualSalesHistory();renderManualDamageHistory();renderRolePermissionEditor();renderHome();renderLedger();renderDsr();renderNewStock();renderStock();renderProducts();renderAccounts();renderChallans();renderExpenses();renderDues();applyRoleAccess();applyAllPageLocks();renderDrawer();}
+function showPage(p){if(!allowedPage(p))p=roleLanding();currentPage=p;allPages.forEach(([id])=>{const el=$('page-'+id);if(el)el.classList.toggle('hiddenpage',id!==p)});document.querySelectorAll('.navbtn[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===p));$('drawer').classList.add('hidden');if(p==='home')renderHome();if(p==='ledger')renderLedger();if(p==='dsr')renderDsr();if(p==='newstock')renderNewStock();if(p==='stock')renderStock();if(p==='products')renderProducts();if(p==='accounts')renderAccounts();if(p==='challan')renderChallans();if(p==='expenses')renderExpenses();if(p==='dues')renderDues();applyPageLock(p);}
+function go(p,addHistory=true){if(!allowedPage(p)){if(p==='settings'&&['Dealer','Manager'].includes(cloudRole))return toast('এই সেটিংস পরিবর্তনের জন্য Admin-এর অনুমতি প্রয়োজন');return toast('এই পেজ দেখার অনুমতি নেই');}if(p!==currentPage){navStack.push(p);if(addHistory&&pinSessionToken)history.pushState({shahinApp:true,page:p},'',location.pathname+location.search+'#'+p);}showPage(p);}
+function toggleDrawer(){$('drawer').classList.toggle('hidden')}
+function renderDrawer(){$('drawerLinks').innerHTML=allPages.filter(([p])=>p!=='home').map(([p,n])=>`<button onclick="go('${p}')">${n}</button>`).join('')}
+function fillSelects(){let opts=db.accounts.filter(a=>a.active&&a.role==='DSR').map(a=>`<option value="${a.id}">${esc(a.name)}</option>`).join('');$('dsrSelect').innerHTML=opts;$('dueAccount').innerHTML=db.accounts.map(a=>`<option value="${a.id}">${esc(a.name)} (${a.role})</option>`).join('')}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function monthRecords(){let m=today().slice(0,7);return db.dsr.filter(x=>x.date.startsWith(m))}
+function monthManualSales(){let m=today().slice(0,7);return (db.manualSales||[]).filter(x=>x.date&&x.date.startsWith(m))}
+function formatBnDate(date){if(!date)return 'সকল তারিখ';return new Date(date+'T00:00:00').toLocaleDateString('bn-BD',{year:'numeric',month:'long',day:'numeric'});}
+function renderHome(){let rec=monthRecords(),sales=rec.reduce((s,r)=>s+r.total,0)+monthManualSales().reduce((s,r)=>s+(Number(r.amount)||0),0),cash=rec.reduce((s,r)=>s+r.cash,0),due=rec.reduce((s,r)=>s+r.todayDue,0)+db.accounts.reduce((s,a)=>s+(a.due||0),0),stock=db.products.reduce((s,p)=>s+((Number(p.stock)||0)+(Number(db.companyStock?.[p.id])||0)+(Object.values(db.dsrVehicleStock||{}).reduce((v,b)=>v+(Number(b?.[p.id])||0),0)))*(Number(p.buy)||0),0),newv=db.newstock.filter(x=>x.date.startsWith(today().slice(0,7))).reduce((s,x)=>s+x.total,0),damage=rec.reduce((s,r)=>s+r.damageValue,0),ex=db.expenses.filter(x=>x.date.startsWith(today().slice(0,7))).reduce((s,x)=>s+x.amount,0),target=Number(db.settings.target)||db.accounts.reduce((s,a)=>s+(a.target||0),0),received=db.challans.filter(x=>x.date.startsWith(today().slice(0,7))).reduce((s,x)=>s+(Number(x.received)||0),0),receivedForPercent=received||db.newstock.filter(x=>x.date.startsWith(today().slice(0,7))).reduce((s,x)=>s+(Number(x.total)||0),0),pct=target?Math.min(100,receivedForPercent/target*100):0;
+$('mSales').textContent=money(sales);$('monthSalesHero').textContent=money(sales);$('mCash').textContent=money(cash);$('mDue').textContent=money(due);$('oldStock').textContent=money(db.products.reduce((s,p)=>s+(p.opening||0)*p.buy,0));$('newStockValue').textContent=money(newv);$('stockValue').textContent=money(stock);const stockLabel=document.querySelector('#stockValue')?.previousElementSibling;if(stockLabel)stockLabel.textContent='সর্বমোট স্টক মূল্য (৩ বিভাগ)';$('stockCount').textContent=bn(db.products.length);$('damageTotal').textContent=money(damage);$('expenseTotal').textContent=money(ex);$('targetTotal').textContent=money(target);$('targetAchieved').textContent=money(sales);$('targetRemaining').textContent=money(Math.max(0,target-sales));$('targetPercent').textContent=(target?Math.min(100,sales/target*100):0).toFixed(1)+'%';$('topPercent').textContent=pct.toFixed(1)+'%';$('progressBar').style.width=(target?Math.min(100,sales/target*100):0)+'%'}
+function getRecord(){let aid=Number($('dsrSelect').value),date=$('dsrDate').value;return db.dsr.find(x=>x.accountId===aid&&x.date===date)}
+function renderDsr(){if(cloudRole==='DSR'){const own=db.accounts.find(x=>x.role==='DSR'&&(x.cloudUserId===sessionStorage.getItem('shahin_cloud_account')||x.name===cloudUser?.name));$('dsrSelect').value=own?String(own.id):'';$('dsrSelect').closest('.field').style.display='none';const sb=document.querySelector('#page-dsr button[onclick="saveDsr()"]');if(sb)sb.style.display='none';}else{$('dsrSelect').closest('.field').style.display='';const sb=document.querySelector('#page-dsr button[onclick="saveDsr()"]');if(sb)sb.style.display='';}if(!$('dsrSelect').value){$('dsrTable').querySelector('tbody').innerHTML='';$('dsrSummary').innerHTML='';return}let aid=Number($('dsrSelect').value),a=db.accounts.find(x=>x.id===aid),date=$('dsrDate').value||today(),r=getRecord()||{rows:[],cash:0,previousDue:0};$('dsrArea').textContent='📍 এলাকা: '+(a?.area||'—');$('dsrIdentity').textContent='DSR: '+(a?.name||'নাম পাওয়া যায়নি');$('dsrTable').querySelector('tbody').innerHTML=db.products.map((p,i)=>{let x=r.rows.find(z=>z.productId===p.id)||{};let issue=x.issue||0,ret=x.ret||0,damage=x.damage||0,sold=Math.max(0,issue-ret-damage);return `<tr><td>${i+1}</td><td>${esc(p.name)}</td><td>${cloudRole==='DSR'?bn(issue):`<input type="number" min="0" value="${issue}" data-id="${p.id}" data-k="issue" oninput="calcDsr()">`}</td><td>${cloudRole==='DSR'?bn(ret):`<input type="number" min="0" value="${ret}" data-id="${p.id}" data-k="ret" oninput="calcDsr()">`}</td><td>${cloudRole==='DSR'?bn(damage):`<input type="number" min="0" value="${damage}" data-id="${p.id}" data-k="damage" oninput="calcDsr()">`}</td><td id="sold-${p.id}">${sold}</td><td>${p.sell}</td><td id="total-${p.id}">${money(sold*p.sell)}</td></tr>`}).join('');$('dsrSummary').innerHTML=`<div class="sumitem">সর্বমোট বিক্রি <b id="sumIssue">০</b></div><div class="sumitem">ড্যামেজের টাকা <b id="sumDamage">৳ ০</b></div><div class="sumitem">ড্যামেজ বাদে বিক্রি <b id="sumTotal">৳ ০</b></div><div class="sumitem">নগদ জমা ${cloudRole==='DSR'?`<b>${money(r.cash||0)}</b>`:`<input id="cashInput" type="number" value="${r.cash||0}" oninput="calcDsr()" style="width:85px">`}</div><div class="sumitem">বকেয়া <b id="todayDue">৳ ০</b></div><div class="sumitem">পূর্বের বকেয়া ${cloudRole==='DSR'?`<b>${money(r.previousDue||a?.due||0)}</b>`:`<input id="prevDueInput" type="number" value="${r.previousDue||a?.due||0}" oninput="calcDsr()" style="width:85px">`}</div><div class="sumitem" style="grid-column:1/-1">সর্বমোট বকেয়া <b id="grandDue">৳ ০</b></div>`;calcDsr();renderDsrHistory();applyPageLock('dsr')}
+function recordDamageValue(rec){return (rec?.rows||[]).reduce((sum,row)=>{const p=db.products.find(z=>z.id===row.productId);return sum+(Number(row.damage)||0)*(Number(p?.sell)||0)},0)}
+function readDsr(){let rows=db.products.map(p=>{let get=k=>Number(document.querySelector(`[data-id="${p.id}"][data-k="${k}"]`)?.value)||0;let issue=get('issue'),ret=get('ret'),damage=get('damage');return {productId:p.id,issue,ret,damage,sold:Math.max(0,issue-ret-damage),total:Math.max(0,issue-ret-damage)*p.sell}});let total=rows.reduce((s,x)=>s+x.total,0),damageValue=rows.reduce((s,x)=>s+x.damage*(db.products.find(p=>p.id===x.productId)?.sell||0),0),cash=Number($('cashInput')?.value)||0,previousDue=Number($('prevDueInput')?.value)||0,issueTotal=rows.reduce((s,x)=>s+x.issue,0),damageQty=rows.reduce((s,x)=>s+x.damage,0);return {rows,total,cash,previousDue,todayDue:Math.max(0,total-cash),grandDue:previousDue+Math.max(0,total-cash),damageValue,issueTotal,damageQty}}
+function calcDsr(){
+ if(cloudRole==='DSR'){
+  const r=getRecord()||{rows:[],total:0,cash:0,previousDue:0,todayDue:0,grandDue:0,damageValue:0};
+  (r.rows||[]).forEach(x=>{$('sold-'+x.productId).textContent=bn(x.sold||0);$('total-'+x.productId).textContent=money(x.total||0)});
+  const damageMoney=recordDamageValue(r);$('sumIssue').textContent=money((r.total||0)+damageMoney);
+  $('sumDamage').textContent=money(damageMoney);
+  $('sumTotal').textContent=money(r.total||0);$('todayDue').textContent=money(r.todayDue||0);$('grandDue').textContent=money(r.grandDue||0);return;
+ }
+ if(!$('cashInput'))return;
+ let x=readDsr();x.rows.forEach(r=>{$('sold-'+r.productId).textContent=bn(r.sold);$('total-'+r.productId).textContent=money(r.total)});$('sumIssue').textContent=money(x.total+x.damageValue);$('sumDamage').textContent=money(x.damageValue);$('sumTotal').textContent=money(x.total);$('todayDue').textContent=money(x.todayDue);$('grandDue').textContent=money(x.grandDue)
+}
+function saveDsr(){if(!canEditPage('dsr')||!pageEditState.dsr)return toast('আগে এডিট চালু করুন');let aid=Number($('dsrSelect').value),date=$('dsrDate').value;if(!aid||!date)return toast('DSR ও তারিখ নির্বাচন করুন');let x=readDsr(),old=getRecord();/* DSR ledger is separate from general stock. Historical general-stock values are preserved; new DSR saves do not mutate general stock. */let a=db.accounts.find(a=>a.id===aid);if(old&&a)a.due=Math.max(0,(a.due||0)-old.todayDue);if(a)a.due=x.grandDue;let obj={id:old?.id||Date.now(),accountId:aid,date,savedAt:new Date().toISOString(),...x};if(old)Object.assign(old,obj);else db.dsr.push(obj);persist();renderHome();toast('DSR হিসাব সেভ হয়েছে');return true}
+function renderNewStock(){ $('newStockTable').querySelector('tbody').innerHTML=db.products.map((p,i)=>`<tr><td>${i+1}</td><td>${esc(p.name)}</td><td><input type="number" min="0" value="0" data-new="${p.id}" oninput="calcNewStock()"></td><td>${p.buy}</td><td id="newtot-${p.id}">৳ ০</td></tr>`).join('');calcNewStock();renderNewStockHistory();applyPageLock('newstock')}
+function renderNewStockHistory(){const el=$('newStockHistory');if(!el)return;const rows=(db.newstock||[]).map((x,i)=>({x,i})).slice().reverse();el.innerHTML=rows.map(({x,i})=>`<div class="history-entry"><div class="history-info"><b>${formatBnDate(x.date)}</b><small class="muted" style="display:block">${(x.rows||[]).length}টি পণ্য · ${money(x.total)}</small></div>${cloudRole==='Admin'?`<button class="btn red small history-delete" onclick="deleteSettingsHistory('newstock',${i})">ডিলিট</button>`:''}</div>`).join('')||'<p class="muted">এখনো মাল গ্রহণের হিসাব নেই</p>'}
+function calcNewStock(){let t=0;db.products.forEach(p=>{let q=Number(document.querySelector(`[data-new="${p.id}"]`)?.value)||0;t+=q*p.buy;if($('newtot-'+p.id))$('newtot-'+p.id).textContent=money(q*p.buy)});$('newStockSum').textContent=money(t)}
+function saveNewStock(){if(!canEditPage('newstock')||!pageEditState.newstock)return toast('আগে এডিট চালু করুন');let rows=db.products.map(p=>({productId:p.id,qty:Number(document.querySelector(`[data-new="${p.id}"]`)?.value)||0})).filter(x=>x.qty);if(!rows.length)return toast('পরিমাণ লিখুন');let total=0;rows.forEach(x=>{let p=db.products.find(p=>p.id===x.productId);db.companyStock[p.id]=(Number(db.companyStock[p.id])||0)+x.qty;total+=x.qty*p.buy});const receiptDate=$('stockDate').value||today();db.newstock.push({id:Date.now(),date:receiptDate,rows,total});db.companyReceipts.push({id:Date.now()+1,date:receiptDate,source:'ম্যানুয়াল কোম্পানি গ্রহণ',rows:rows.map(x=>({productId:x.productId,qty:x.qty,baseQty:x.qty,conversionSnapshot:1})),total});persist();renderHome();renderStock();renderNewStock();toast('নতুন মাল স্টকে যোগ হয়েছে');return true}
+function renderStock(){$('stockRows').innerHTML=db.products.map(p=>`<tr><td>${esc(p.name)}</td><td>${bn(p.stock)}</td><td>${p.unit}</td><td>${money(p.buy)}</td><td>${money(p.stock*p.buy)}</td></tr>`).join('');$('stockQty').textContent=bn(db.products.reduce((s,p)=>s+p.stock,0));$('stockTotal').textContent=money(db.products.reduce((s,p)=>s+p.stock*p.buy,0))}
+function renderProducts(){$('productRows').innerHTML=db.products.map(p=>`<tr><td>${esc(p.name)}</td><td>${p.unit}</td><td>${p.buy}</td><td>${p.sell}</td><td>${bn(p.stock)}</td><td><button class="btn small" onclick="editProduct(${p.id})">এডিট</button> <button class="btn red small" onclick="deleteProduct(${p.id})">×</button></td></tr>`).join('')}
+function addProduct(){if(!canEditPage('products')||!pageEditState.products)return toast('আগে এডিট চালু করুন');let name=$('pName').value.trim();if(!name)return toast('পণ্যের নাম লিখুন');db.products.push({id:Date.now(),name,unit:$('pUnit').value,buy:Number($('pBuy').value)||0,sell:Number($('pSell').value)||0,stock:0,opening:0});persist();$('pName').value='';$('pBuy').value='';$('pSell').value='';renderProducts();renderStock();renderDsr();toast('পণ্য যোগ হয়েছে');return true}
+function editProduct(id){if(!canEditPage('products')||!pageEditState.products)return toast('আগে এডিট চালু করুন');let p=db.products.find(x=>x.id===id);let n=prompt('পণ্যের নাম',p.name);if(n===null)return;let b=prompt('ক্রয় মূল্য',p.buy);let s=prompt('বিক্রয় মূল্য',p.sell);p.name=n.trim()||p.name;p.buy=Number(b)||0;p.sell=Number(s)||0;persist();renderProducts();renderStock();renderDsr()}
+function deleteProduct(id){if(!canEditPage('products')||!pageEditState.products)return toast('আগে এডিট চালু করুন');if(!confirm('পণ্যটি মুছে ফেলবেন?'))return;db.products=db.products.filter(p=>p.id!==id);persist();renderProducts();renderStock();renderDsr()}
+$('chReceived').addEventListener('input',calcChallan);$('chPaid').addEventListener('input',calcChallan);function calcChallan(){let n=(Number($('chReceived').value)||0)-(Number($('chPaid').value)||0);$('chNet').textContent=money(n)+(n>=0?' (কোম্পানি পাওনা)':' (অতিরিক্ত প্রদান)')}
+function saveChallan(){if(!canEditPage('challan')||!pageEditState.challan)return toast('আগে এডিট চালু করুন');let rec=Number($('chReceived').value)||0,paid=Number($('chPaid').value)||0;if(!rec&&!paid)return toast('গ্রহণ বা প্রদানের টাকা লিখুন');db.challans.push({date:$('chDate').value||today(),no:$('chNo').value,received:rec,paid,note:$('chNote').value});persist();renderChallans();toast('চালান সেভ হয়েছে');return true}
+function renderChallans(){let a=db.challans.filter(x=>x.date.startsWith(today().slice(0,7))),r=a.reduce((s,x)=>s+x.received,0),p=a.reduce((s,x)=>s+x.paid,0);$('chSummary').innerHTML=`<div class="sumitem">মোট মাল গ্রহণ <b>${money(r)}</b></div><div class="sumitem">মোট প্রদান <b>${money(p)}</b></div><div class="sumitem" style="grid-column:1/-1">নিট পাওনা / দেনা <b>${money(r-p)}</b></div>`;$('challanRows').innerHTML=db.challans.map((x,i)=>({x,i})).reverse().map(({x,i})=>`<div class="history-entry"><div class="history-info"><b>${esc(x.date)} · ${esc(x.no||'চালান')}</b><small class="muted" style="display:block">${esc(x.note||'')}</small><small>গ্রহণ ${money(x.received)} | প্রদান ${money(x.paid)}</small></div><div><b>${money(x.received-x.paid)}</b>${cloudRole==='Admin'?`<button class="btn red small history-delete" onclick="deleteSettingsHistory('challans',${i})">ডিলিট</button>`:''}</div></div>`).join('')}
+function renderLedger(){if(!$('ledgerRows'))return;const rows=(db.dealerLedger||[]).map((x,i)=>({x,i})).reverse();let inc=0,out=0;for(const {x} of rows){if(x.type==='in')inc+=Number(x.amount)||0;else out+=Number(x.amount)||0;}$('ledgerPageTitle').textContent=db.settings.ledgerTitle||'আবরার টালি খাতা';$('ledgerLaunchTitle').textContent=db.settings.ledgerTitle||'আবরার টালি খাতা';$('ledgerInTotal').textContent=money(inc);$('ledgerOutTotal').textContent=money(out);$('ledgerNetTotal').textContent=money(inc-out);$('ledgerRows').innerHTML=rows.map(({x,i})=>`<div class="history-entry"><div class="history-info"><b>${formatBnDate(x.date)}</b><small class="muted" style="display:block">${esc(x.note||'—')} · ${x.type==='in'?'জমা / আয়':'খরচ / প্রদান'}</small></div><b>${x.type==='in'?'+':'−'} ${money(x.amount)}</b>${cloudRole==='Admin'||cloudRole==='Dealer'?`<button class="btn red small history-delete" onclick="deleteDealerLedger(${i})">ডিলিট</button>`:''}</div>`).join('')||'<p class="muted">এখনো কোনো হিসাব যোগ করা হয়নি</p>';}
+function saveDealerLedger(){if(!canEditPage('ledger'))return toast('এই খাতায় হিসাব লেখার অনুমতি নেই');const amount=Number($('ledgerAmount').value)||0,note=$('ledgerNote').value.trim();if(amount<=0||!note)return toast('বিবরণ ও টাকার পরিমাণ লিখুন');db.dealerLedger=db.dealerLedger||[];db.dealerLedger.push({date:$('ledgerDate').value||today(),type:$('ledgerType').value,note,amount,createdAt:new Date().toISOString()});persist();$('ledgerNote').value='';$('ledgerAmount').value='';renderLedger();toast('খাতার হিসাব সেভ হয়েছে');return true;}
+function deleteDealerLedger(i){if(cloudRole!=='Admin'&&cloudRole!=='Dealer')return toast('Admin অনুমতি প্রয়োজন');if(!confirm('এই খাতার হিসাবটি মুছে ফেলবেন?'))return;db.dealerLedger.splice(i,1);persist();renderLedger();toast('হিসাব মুছে ফেলা হয়েছে');}
+function saveExpense(){if(!canEditPage('expenses')||!pageEditState.expenses)return toast('আগে এডিট চালু করুন');let amount=Number($('exAmount').value)||0;if(!amount||!$('exName').value.trim())return toast('খাত ও টাকা লিখুন');db.expenses.push({date:$('exDate').value||today(),name:$('exName').value,amount});persist();renderExpenses();renderHome();toast('খরচ সেভ হয়েছে');return true}
+function renderExpenses(){$('expenseRows').innerHTML=db.expenses.map((x,i)=>({x,i})).reverse().map(({x,i})=>`<div class="history-entry"><div class="history-info">${esc(x.date)} · ${esc(x.name)}<b>${money(x.amount)}</b></div>${cloudRole==='Admin'?`<button class="btn red small history-delete" onclick="deleteSettingsHistory('expenses',${i})">ডিলিট</button>`:''}</div>`).join('')}
+async function addAccount(){if(!canEditPage('accounts')||!pageEditState.accounts)return toast('আগে এডিট চালু করুন');let name=$('aName').value.trim(),role=$('aRole').value,pin=$('aPin').value.trim();if(!name)return toast('নাম লিখুন');if(!/^\d{6,12}$/.test(pin))return toast('অ্যাকাউন্টের জন্য ৬ থেকে ১২ সংখ্যার PIN দিন');try{const {data,error}=await cloud.rpc('pin_create_account',{p_token:pinSessionToken,p_name:name,p_role:role,p_pin:pin});if(error)throw error;db.accounts.push({id:Date.now(),cloudUserId:data,role,name,phone:$('aPhone').value,pin:'',area:$('aArea').value,target:Number($('aTarget').value)||0,due:0,active:true});persist();fillSelects();renderAccounts();renderDsrAdmin();renderHome();$('aName').value='';$('aPin').value='';toast('ক্লাউড লগইন অ্যাকাউন্ট তৈরি হয়েছে');return true}catch(e){console.error(e);toast('অ্যাকাউন্ট তৈরি হয়নি: '+(e.message||''))}}
+function renderAccounts(){$('accountRows').innerHTML=db.accounts.map(a=>`<div class="listrow"><div><b>${esc(a.name)}</b><small class="muted" style="display:block">${a.role} · ${esc(a.phone)} · ${esc(a.area)}</small><small>টার্গেট ${money(a.target)} | বকেয়া ${money(a.due)} · ${a.active===false?'বন্ধ':'সক্রিয়'}</small></div><div><button class="btn small" onclick="editAccount(${a.id})">✎</button> <button class="btn gray small" onclick="toggleAccountActive(${a.id})">${a.active===false?'চালু':'ব্যান'}</button></div></div>`).join('');renderDsrAdmin()}
+function editAccount(id){if(!canEditPage('accounts')||!pageEditState.accounts)return toast('আগে এডিট চালু করুন');let a=db.accounts.find(x=>x.id===id);let name=prompt('নাম',a.name);if(name===null)return;a.name=name;a.phone=prompt('মোবাইল',a.phone)||a.phone;a.area=prompt('এলাকা',a.area)||a.area;a.pin=prompt('নতুন PIN (না বদলালে আগেরটি লিখুন)',a.pin)||a.pin;a.target=Number(prompt('মাসিক টার্গেট',a.target))||0;persist();fillSelects();renderAccounts()}
+function removeAccount(id){if(!canEditPage('accounts')||!pageEditState.accounts)return toast('আগে এডিট চালু করুন');if(!confirm('একাউন্টটি নিষ্ক্রিয়/মুছে ফেলবেন?'))return;let a=db.accounts.find(x=>x.id===id);a.active=false;persist();fillSelects();renderAccounts()}
+function adjustDue(){if(!canEditPage('dues')||!pageEditState.dues)return toast('আগে এডিট চালু করুন');let id=Number($('dueAccount').value),amount=Number($('dueAmount').value)||0;if(!amount)return toast('টাকার পরিমাণ লিখুন');let a=db.accounts.find(x=>x.id===id);a.due=Math.max(0,(a.due||0)+( $('dueType').value==='plus'?amount:-amount));db.adjustments.push({date:today(),name:a.name,amount,type:$('dueType').value,note:$('dueNote').value});persist();renderDues();renderAccounts();renderHome();toast('বকেয়া সমন্বয় হয়েছে');return true}
+function renderDues(){$('dueRows').innerHTML=db.accounts.map(a=>`<div class="listrow"><span>${esc(a.name)}</span><b>${money(a.due)}</b></div>`).join('')}
+function renderDsrAdmin(){const box=$('dsrAdminRows');if(!box)return;box.innerHTML=db.accounts.filter(a=>a.role==='DSR').map(a=>`<div class="listrow"><div><b>${esc(a.name)}</b><small class="muted" style="display:block">${a.active===false?'অ্যাকাউন্ট বন্ধ':'অ্যাকাউন্ট চালু'} · মাসিক টার্গেট ${money(a.target||0)}</small></div><div class="actions" style="margin:0;flex:0 0 auto"><button class="btn small" onclick="setDsrTarget(${a.id})">টার্গেট</button><button class="btn gray small" onclick="toggleAccountActive(${a.id})">${a.active===false?'আনব্যান':'ব্যান'}</button></div></div>`).join('')||'<p class="muted">কোনো DSR অ্যাকাউন্ট নেই</p>'}
+function setDsrTarget(id){if(!canEditPage('settings')||!pageEditState.settings)return toast('সেটিংস এডিট চালু করুন');const a=db.accounts.find(x=>x.id===id);if(!a)return;const v=prompt(a.name+' — মাসিক টার্গেট (টাকা)',a.target||0);if(v===null)return;const n=Number(v);if(!Number.isFinite(n)||n<0)return toast('সঠিক টার্গেট লিখুন');a.target=n;persist();renderDsrAdmin();renderAccounts();renderHome();toast('DSR টার্গেট আপডেট হয়েছে')}
+async function toggleAccountActive(id){if(!canEditPage('accounts')&&!canEditPage('settings'))return toast('অনুমতি নেই');if(!pageEditState.accounts&&!pageEditState.settings)return toast('আগে একাউন্ট বা সেটিংস এডিট চালু করুন');const a=db.accounts.find(x=>x.id===id);if(!a)return;const next=a.active===false;try{if(a.cloudUserId){const {error}=await cloud.rpc('pin_set_account_active',{p_token:pinSessionToken,p_account_id:a.cloudUserId,p_active:next});if(error)throw error;}a.active=next;persist();fillSelects();renderAccounts();renderDsrAdmin();toast(a.active?'অ্যাকাউন্ট চালু হয়েছে':'অ্যাকাউন্ট ব্যান হয়েছে')}catch(e){console.error(e);toast('অ্যাকাউন্টের লগইন বন্ধ/চালু হয়নি: '+(e.message||'SQL আপডেট প্রয়োজন'))}}
+function fillManualStockProducts(){const el=$('manualStockProduct');if(el)el.innerHTML=db.products.map(p=>`<option value="${p.id}">${esc(p.name)}</option>`).join('')}
+function renderManualStockHistory(){const el=$('manualStockHistory');if(!el)return;const rows=(db.stockAdjustments||[]).map((x,i)=>({x,i})).slice(-12).reverse();el.innerHTML=rows.map(({x,i})=>`<div class="history-entry"><div class="history-info"><b>${esc(x.date)}</b><small class="muted" style="display:block">${esc(x.productName||'পণ্য')} · ${esc(x.note||'স্টক সমন্বয়')} · ${x.mode==='subtract'?'−':x.mode==='set'?'=':'+'}${bn(x.qty)}</small></div><button class="btn red small history-delete" onclick="deleteSettingsHistory('stockAdjustments',${i})">ডিলিট</button></div>`).join('')||'<p class="muted">কোনো স্টক সমন্বয় নেই</p>'}
+function saveManualStock(){if(!canEditPage('settings')||!pageEditState.settings)return toast('সেটিংস এডিট চালু করুন');const id=Number($('manualStockProduct').value),p=db.products.find(x=>x.id===id),qty=Number($('manualStockQty').value),mode=$('manualStockMode').value;if(!p||!Number.isFinite(qty)||qty<0)return toast('পণ্য ও সঠিক পরিমাণ দিন');if(mode==='subtract'&&qty>Number(p.stock||0))return toast('বর্তমান স্টকের চেয়ে বেশি কমানো যাবে না');const beforeStock=Number(p.stock)||0;if(mode==='add')p.stock=beforeStock+qty;else if(mode==='subtract')p.stock=beforeStock-qty;else p.stock=qty;db.stockAdjustments=db.stockAdjustments||[];db.stockAdjustments.push({id:Date.now(),date:$('manualStockDate').value||today(),productId:id,productName:p.name,qty,mode,note:$('manualStockNote').value,beforeStock,afterStock:p.stock});persist();$('manualStockQty').value='';$('manualStockNote').value='';renderStock();renderHome();renderManualStockHistory();toast('আগের তারিখের স্টক সমন্বয় সেভ হয়েছে')}
+function deleteSettingsHistory(type,index){if(cloudRole!=='Admin')return toast('শুধু Admin হিসাব ডিলিট করতে পারবেন');const editPage=type==='manualSales'||type==='manualDamages'||type==='stockAdjustments'?'settings':type==='newstock'?'newstock':type==='expenses'?'expenses':type==='challans'?'challan':'settings';if(!pageEditState[editPage])return toast('আগে এই পেজের এডিট চালু করুন');const arr=db[type];if(!Array.isArray(arr)||!arr[index])return toast('হিসাবটি পাওয়া যায়নি');const item=arr[index];const label=type==='manualSales'?'ম্যানুয়াল বিক্রি':type==='manualDamages'?'ম্যানুয়াল ড্যামেজ':type==='stockAdjustments'?'স্টক সমন্বয়':type==='newstock'?'নতুন মাল গ্রহণ':type==='expenses'?'খরচ':'কোম্পানি চালান';if(!confirm(`${formatBnDate(item.date)} তারিখের ${label} (${type==='manualSales'||type==='expenses'?money(item.amount):type==='manualDamages'?money(item.amount):'এই এন্ট্রি'}) ডিলিট করবেন?`))return;if(type==='newstock'){for(const row of (item.rows||[])){const p=db.products.find(z=>z.id===row.productId);if(p&&(Number(p.stock)||0)<(Number(row.qty)||0))return toast('এই মাল থেকে কিছু স্টক ইতিমধ্যে বিক্রি/ব্যবহার হয়েছে; ডিলিটের আগে স্টক সমন্বয় করুন');}for(const row of (item.rows||[])){const p=db.products.find(z=>z.id===row.productId);if(p)p.stock=(Number(p.stock)||0)-(Number(row.qty)||0);}}else if(type==='stockAdjustments'){const p=db.products.find(z=>z.id===item.productId);if(p){const q=Number(item.qty)||0;if(item.mode==='add'){if((Number(p.stock)||0)<q)return toast('এই যোগ করা স্টক থেকে কিছু বিক্রি/ব্যবহার হয়েছে; নিরাপদে ডিলিট করা যাচ্ছে না');p.stock=(Number(p.stock)||0)-q;}else if(item.mode==='subtract'){p.stock=(Number(p.stock)||0)+q;}else if(item.mode==='set'){if(!Number.isFinite(Number(item.beforeStock))||Number(p.stock)!==Number(item.afterStock))return toast('এই স্টক নির্ধারণের পর আরও পরিবর্তন হয়েছে; নিরাপদে ডিলিট করা যাচ্ছে না');p.stock=Number(item.beforeStock);} }}arr.splice(index,1);persist();renderManualSalesHistory();renderManualDamageHistory();renderManualStockHistory();renderNewStockHistory();renderExpenses();renderChallans();renderHome();renderStock();toast('নির্বাচিত হিসাব ডিলিট হয়েছে');}
+function deleteDsrRecord(index){if(cloudRole!=='Admin'||!pageEditState.dsr)return toast('Admin হিসেবে DSR পেজের এডিট চালু করুন');const rec=db.dsr[index];if(!rec)return toast('DSR হিসাবটি পাওয়া যায়নি');if(db.dsr.some(x=>x.accountId===rec.accountId&&String(x.date)>String(rec.date)))return toast('নিরাপদ হিসাবের জন্য আগে পরের তারিখের DSR হিসাব ডিলিট করুন');const account=db.accounts.find(a=>a.id===rec.accountId);if(!confirm(`${formatBnDate(rec.date)} তারিখের ${account?.name||'DSR'} হিসাব ডিলিট করবেন? স্টক ও বকেয়া পুনরায় সমন্বয় হবে।`))return;/* DSR records are a separate ledger. Deleting a DSR statement must never mutate General Stock; stock movements require their own audited adjustment. */db.dsr.splice(index,1);if(account){const remaining=db.dsr.filter(x=>x.accountId===account.id).sort((a,b)=>String(b.date).localeCompare(String(a.date)));account.due=remaining.length?Number(remaining[0].grandDue)||0:0;}persist();renderDsr();renderHome();renderStock();renderAccounts();toast('DSR হিসাব ডিলিট ও স্টক/বকেয়া সমন্বয় হয়েছে');}
+function clearSelectedHistory(){if(!canEditPage('settings')||!pageEditState.settings)return toast('সেটিংস এডিট চালু করুন');const keys=[['clearDsr','dsr','DSR হিসাব'],['clearNewstock','newstock','নতুন মাল হিসাব'],['clearExpenses','expenses','খরচ'],['clearChallans','challans','চালান'],['clearAdjustments','adjustments','বকেয়া সমন্বয়'],['clearManualSales','manualSales','ম্যানুয়াল বিক্রি'],['clearManualDamages','manualDamages','ম্যানুয়াল ড্যামেজ']];const selected=keys.filter(([id])=>$(id).checked);if(!selected.length)return toast('যে হিসাব মুছবেন সেটি টিক দিন');if(!confirm('শুধু নির্বাচিত হিসাব মুছে যাবে। পণ্য, রেট, স্টক ও অ্যাকাউন্ট অক্ষত থাকবে। নিশ্চিত?'))return;selected.forEach(([id,key])=>{db[key]=[];$(id).checked=false});persist();init();toast('নির্বাচিত হিসাব ক্লিয়ার হয়েছে; পণ্যের তালিকা ও রেট অক্ষত আছে')}
+
+function saveManualSales(){if(!canEditPage('settings')||!pageEditState.settings)return toast('আগে Settings এডিট চালু করুন');const date=$('manualSalesDate').value||today(),amount=Number($('manualSalesAmount').value);if(!amount||amount<0)return toast('সঠিক বিক্রির টাকা লিখুন');db.manualSales=db.manualSales||[];db.manualSales.push({id:Date.now(),date,amount});persist();$('manualSalesAmount').value='';renderManualSalesHistory();renderHome();toast('আগের দিনের মোট বিক্রি যোগ হয়েছে');return true}
+function renderManualSalesHistory(){const el=$('manualSalesHistory');if(!el)return;const rows=(db.manualSales||[]).map((x,i)=>({x,i})).sort((a,b)=>String(b.x.date||'').localeCompare(String(a.x.date||'')));el.innerHTML=rows.map(({x,i})=>`<div class="history-entry"><div class="history-info"><b>${formatBnDate(x.date)}</b><small class="muted" style="display:block">ম্যানুয়াল বিক্রি · ${money(x.amount)}</small></div><button class="btn red small history-delete" onclick="deleteSettingsHistory('manualSales',${i})">ডিলিট</button></div>`).join('')||'<p class="muted">এখনো কোনো ম্যানুয়াল বিক্রি যোগ হয়নি</p>'}
+function saveManualDamage(){if(!canEditPage('settings')||!pageEditState.settings)return toast('আগে Settings এডিট চালু করুন');const date=$('manualDamageDate').value||today(),qty=Number($('manualDamageQty').value)||0,amount=Number($('manualDamageAmount').value)||0;if(!qty&&!amount)return toast('ড্যামেজের পরিমাণ অথবা টাকা লিখুন');db.manualDamages=db.manualDamages||[];db.manualDamages.push({id:Date.now(),date,qty,amount,note:$('manualDamageNote').value.trim()});persist();$('manualDamageQty').value='';$('manualDamageAmount').value='';$('manualDamageNote').value='';renderManualDamageHistory();renderHome();toast('ড্যামেজের হিসাব সেভ হয়েছে');return true}
+function renderManualDamageHistory(){const el=$('manualDamageHistory');if(!el)return;const rows=(db.manualDamages||[]).map((x,i)=>({x,i})).sort((a,b)=>String(b.x.date||'').localeCompare(String(a.x.date||'')));el.innerHTML=rows.map(({x,i})=>`<div class="history-entry"><div class="history-info"><b>${formatBnDate(x.date)}</b><small class="muted" style="display:block">${esc(x.note||'ড্যামেজ')} · ${bn(x.qty)} · ${money(x.amount)}</small></div><button class="btn red small history-delete" onclick="deleteSettingsHistory('manualDamages',${i})">ডিলিট</button></div>`).join('')||'<p class="muted">এখনো কোনো ম্যানুয়াল ড্যামেজ যোগ হয়নি</p>'}
+function renderDsrHistory(){const el=$('dsrHistory');if(!el)return;const aid=Number($('dsrSelect').value),recs=(db.dsr||[]).map((r,i)=>({r,i})).filter(x=>x.r.accountId===aid).sort((a,b)=>b.r.date.localeCompare(a.r.date));el.innerHTML=recs.map(({r,i})=>`<div class="history-entry"><button type="button" class="listrow" style="flex:1;text-align:left;background:#f3f7ff;color:inherit;margin:4px 0" onclick="selectDsrHistoryDate('${r.date}')"><span><b>${formatBnDate(r.date)}</b><small class="muted" style="display:block">দেওয়া ${bn(r.issueTotal||0)} · বিক্রি ${money(r.total||0)} · নগদ ${money(r.cash||0)}</small></span><b>${money(r.grandDue||0)}</b></button>${cloudRole==='Admin'?`<button class="btn red small history-delete" onclick="deleteDsrRecord(${i})">ডিলিট</button>`:''}</div>`).join('')||'<p class="muted">এই DSR-এর আগের কোনো সেভ করা হিসাব পাওয়া যায়নি</p>'}
+function selectDsrHistoryDate(date){$('dsrDate').value=date;renderDsr()}
+
+function saveManualSales(){if(!canEditPage('settings')||!pageEditState.settings)return toast('আগে Settings এডিট চালু করুন');const date=$('manualSalesDate').value||today(),amount=Number($('manualSalesAmount').value);if(!amount||amount<0)return toast('সঠিক বিক্রির টাকা লিখুন');db.manualSales=db.manualSales||[];db.manualSales.push({id:Date.now(),date,amount});persist();$('manualSalesAmount').value='';renderManualSalesHistory();renderHome();toast('আগের দিনের মোট বিক্রি যোগ হয়েছে');return true}
+function renderManualSalesHistory(){const el=$('manualSalesHistory');if(!el)return;const rows=(db.manualSales||[]).map((x,i)=>({x,i})).sort((a,b)=>String(b.x.date||'').localeCompare(String(a.x.date||'')));el.innerHTML=rows.map(({x,i})=>`<div class="history-entry"><div class="history-info"><b>${formatBnDate(x.date)}</b><small class="muted" style="display:block">ম্যানুয়াল বিক্রি · ${money(x.amount)}</small></div><button class="btn red small history-delete" onclick="deleteSettingsHistory('manualSales',${i})">ডিলিট</button></div>`).join('')||'<p class="muted">এখনো কোনো ম্যানুয়াল বিক্রি যোগ হয়নি</p>'}
+function saveManualDamage(){if(!canEditPage('settings')||!pageEditState.settings)return toast('আগে Settings এডিট চালু করুন');const date=$('manualDamageDate').value||today(),qty=Number($('manualDamageQty').value)||0,amount=Number($('manualDamageAmount').value)||0;if(!qty&&!amount)return toast('ড্যামেজের পরিমাণ অথবা টাকা লিখুন');db.manualDamages=db.manualDamages||[];db.manualDamages.push({id:Date.now(),date,qty,amount,note:$('manualDamageNote').value.trim()});persist();$('manualDamageQty').value='';$('manualDamageAmount').value='';$('manualDamageNote').value='';renderManualDamageHistory();renderHome();toast('ড্যামেজের হিসাব সেভ হয়েছে');return true}
+function renderManualDamageHistory(){const el=$('manualDamageHistory');if(!el)return;const rows=(db.manualDamages||[]).map((x,i)=>({x,i})).sort((a,b)=>String(b.x.date||'').localeCompare(String(a.x.date||'')));el.innerHTML=rows.map(({x,i})=>`<div class="history-entry"><div class="history-info"><b>${formatBnDate(x.date)}</b><small class="muted" style="display:block">${esc(x.note||'ড্যামেজ')} · ${bn(x.qty)} · ${money(x.amount)}</small></div><button class="btn red small history-delete" onclick="deleteSettingsHistory('manualDamages',${i})">ডিলিট</button></div>`).join('')||'<p class="muted">এখনো কোনো ম্যানুয়াল ড্যামেজ যোগ হয়নি</p>'}
+function renderDsrHistory(){const el=$('dsrHistory');if(!el)return;const aid=Number($('dsrSelect').value),recs=(db.dsr||[]).map((r,i)=>({r,i})).filter(x=>x.r.accountId===aid).sort((a,b)=>b.r.date.localeCompare(a.r.date));el.innerHTML=recs.map(({r,i})=>`<div class="history-entry"><button type="button" class="listrow" style="flex:1;text-align:left;background:#f3f7ff;color:inherit;margin:4px 0" onclick="selectDsrHistoryDate('${r.date}')"><span><b>${formatBnDate(r.date)}</b><small class="muted" style="display:block">দেওয়া ${bn(r.issueTotal||0)} · বিক্রি ${money(r.total||0)} · নগদ ${money(r.cash||0)}</small></span><b>${money(r.grandDue||0)}</b></button>${cloudRole==='Admin'?`<button class="btn red small history-delete" onclick="deleteDsrRecord(${i})">ডিলিট</button>`:''}</div>`).join('')||'<p class="muted">এই DSR-এর আগের কোনো সেভ করা হিসাব পাওয়া যায়নি</p>'}
+function selectDsrHistoryDate(date){$('dsrDate').value=date;renderDsr()}
+function renderSignaturePreview(){const box=$('reportSignaturePreview');if(!box)return;const src=db.settings.signatureImage||'';box.innerHTML=src?`<img src="${src}" alt="প্রস্তুতকারীর স্বাক্ষর">`:'<span class="muted">এখনো কোনো স্বাক্ষর আপলোড করা হয়নি</span>'}
+function uploadReportSignature(e){if(cloudRole!=='Admin'||!canEditPage('settings')||!pageEditState.settings){e.target.value='';return toast('সেটিংস এডিট চালু করে তারপর স্বাক্ষর আপলোড করুন')}const f=e.target.files?.[0];if(!f)return;if(!/^image\/(png|jpeg|webp)$/.test(f.type))return toast('শুধু PNG, JPG অথবা WEBP ছবি দিন');if(f.size>500*1024)return toast('ছবির সাইজ ৫০০ KB-এর মধ্যে রাখুন');const r=new FileReader();r.onload=()=>{db.settings.signatureImage=String(r.result);persist();renderSignaturePreview();toast('স্বাক্ষর আপলোড ও সেভ হয়েছে')};r.onerror=()=>toast('ছবি পড়া যায়নি');r.readAsDataURL(f)}
+function removeReportSignature(){if(cloudRole!=='Admin'||!canEditPage('settings')||!pageEditState.settings)return toast('সেটিংস এডিট চালু করুন');if(!confirm('রিপোর্টের স্বাক্ষর সরাবেন?'))return;delete db.settings.signatureImage;persist();renderSignaturePreview();toast('স্বাক্ষর সরানো হয়েছে')}
+function saveSettings(){if(cloudRole!=='Admin'||!canEditPage('settings')||!pageEditState.settings)return toast('আগে এডিট চালু করুন');db.settings.title=$('sTitle').value.trim()||'SHAHIN APP';db.settings.tag=$('sTag').value;db.settings.company=$('sCompany').value;db.settings.ledgerTitle=$('sLedgerTitle').value.trim()||'আবরার টালি খাতা';db.settings.target=Number($('sTarget').value)||0;db.settings.idleTimeoutMinutes=Math.min(1440,Math.max(1,Number($('sIdleTimeout').value)||30));$('sIdleTimeout').value=db.settings.idleTimeoutMinutes;if($('sPin').value.trim())db.settings.pin=$('sPin').value.trim();persist();$('appTitle').textContent=db.settings.title;$('appTag').textContent=db.settings.tag;$('ledgerPageTitle').textContent=db.settings.ledgerTitle;$('ledgerLaunchTitle').textContent=db.settings.ledgerTitle;renderHome();renderLedger();toast('সেটিংস সেভ হয়েছে');return true}
+
+const permissionPages=[['home','হোম ড্যাশবোর্ড'],['dsr','DSR সেল / স্টেটমেন্ট'],['newstock','কোম্পানি থেকে নতুন মাল গ্রহণ'],['stock','স্টক'],['products','পণ্য তালিকা'],['expenses','খরচ'],['accounts','একাউন্ট'],['dues','বকেয়া'],['challan','চালান'],['reports','রিপোর্ট'],['settings','সেটিং'],['scanner','AI স্ক্যানার'],['support','AI সহায়তা']];
+function renderRolePermissionEditor(){
+ const box=$('rolePermissionEditor');if(!box)return;
+ if(cloudRole!=='Admin'){box.innerHTML='<p class="muted">এই অনুমতি শুধু Admin পরিবর্তন করতে পারবেন।</p>';return;}
+ box.innerHTML=['Dealer','Manager','DSR'].map(role=>{
+  const perm=rolePermission(role);
+  return `<div class="section" style="background:#f7faff"><h3>${role==='Dealer'?'ডিলার':role==='Manager'?'ম্যানেজার':'DSR'} অনুমতি</h3>${permissionPages.map(([key,label])=>{
+   const view=perm.pages.includes(key),edit=perm.edit.includes(key);
+   return `<div class="listrow" style="align-items:center"><span>${label}</span><span style="display:flex;gap:12px;flex-wrap:wrap"><label><input type="checkbox" data-perm-role="${role}" data-perm-page="${key}" data-perm-kind="view" ${view?'checked':''}> দেখবে</label><label><input type="checkbox" data-perm-role="${role}" data-perm-page="${key}" data-perm-kind="edit" ${edit?'checked':''} ${view?'':'disabled'}> কাজ/এডিট</label></span></div>`;
+  }).join('')}</div>`;
+ }).join('');
+ box.querySelectorAll('[data-perm-kind="view"]').forEach(ch=>ch.addEventListener('change',()=>{
+  const role=ch.dataset.permRole,page=ch.dataset.permPage,edit=box.querySelector(`[data-perm-role="${role}"][data-perm-page="${page}"][data-perm-kind="edit"]`);
+  if(edit){edit.disabled=!ch.checked;if(!ch.checked)edit.checked=false;}
+ }));
+}
+function saveRolePermissions(){
+ if(cloudRole!=='Admin'||!pageEditState.settings)return toast('আগে Settings এডিট চালু করুন');
+ db.settings=db.settings||{};db.settings.rolePermissions={};
+ ['Dealer','Manager','DSR'].forEach(role=>{
+  const pages=[],edit=[];
+  $('rolePermissionEditor').querySelectorAll(`[data-perm-role="${role}"][data-perm-kind="view"]:checked`).forEach(x=>pages.push(x.dataset.permPage));
+  $('rolePermissionEditor').querySelectorAll(`[data-perm-role="${role}"][data-perm-kind="edit"]:checked`).forEach(x=>{if(pages.includes(x.dataset.permPage))edit.push(x.dataset.permPage)});
+  db.settings.rolePermissions[role]={pages,edit};
+ });
+ persist();applyRoleAccess();toast('ডিলার, ম্যানেজার ও DSR অনুমতি সেভ হয়েছে');
+}
+function setReportPeriod(period){
+ const now=new Date(),start=new Date(now),end=new Date(now);
+ if(period==='week'){const day=(now.getDay()+6)%7;start.setDate(now.getDate()-day);}
+ if(period==='month')start.setDate(1);
+ const localISO=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;$('reportStart').value=localISO(start);$('reportEnd').value=localISO(end);
+ makeReport();
+}
+function reportRange(){
+ const a=$('reportStart')?.value||today(),b=$('reportEnd')?.value||a;
+ return a<=b?{start:a,end:b}:{start:b,end:a};
+}
+function inReportRange(date,range){return !!date&&date>=range.start&&date<=range.end;}
+
+function makeReport(){
+ const t=$('reportType').value,range=reportRange();let title='',rows=[],summary=[],headers=[];
+ const dateLabel=range.start===range.end?formatBnDate(range.start):(formatBnDate(range.start)+' থেকে '+formatBnDate(range.end));
+ const recs=(db.dsr||[]).filter(x=>inReportRange(x.date,range)),exps=(db.expenses||[]).filter(x=>inReportRange(x.date,range)),ms=(db.manualSales||[]).filter(x=>inReportRange(x.date,range)),md=(db.manualDamages||[]).filter(x=>inReportRange(x.date,range));
+ const table=(heads,data)=>`<div class="tablewrap" style="max-height:none;overflow:visible"><table class="report-table"><thead><tr>${heads.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${data.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+ if(t==='dsr'){
+  title='DSR বিস্তারিত সেলস স্টেটমেন্ট';recs.slice().sort((a,b)=>a.date.localeCompare(b.date)).forEach(rec=>{const acc=db.accounts.find(a=>a.id===rec.accountId);rows.push([`<strong>${esc(acc?.name||'DSR')} · ${formatBnDate(rec.date)} · ${esc(rec.savedAt?new Date(rec.savedAt).toLocaleTimeString('bn-BD'):'সময় সংরক্ষিত নেই')}</strong>`,'','','','','','']);(rec.rows||[]).filter(x=>x.issue||x.ret||x.damage||x.sold).forEach(x=>{const p=db.products.find(z=>z.id===x.productId),sold=x.sold??Math.max(0,(x.issue||0)-(x.ret||0)-(x.damage||0)),amount=x.total??sold*(p?.sell||0);rows.push([esc(p?.name||'পণ্য'),bn(x.issue),bn(x.ret),bn(x.damage),bn(sold),money(p?.sell||0),money(amount)]);});const damageMoney=recordDamageValue(rec),grossSales=(Number(rec.total)||0)+damageMoney;summary.push(`<div>${esc(acc?.name||'DSR')} · সর্বমোট বিক্রি<b>${money(grossSales)}</b></div><div>ড্যামেজ মূল্য<b>${money(damageMoney)}</b></div><div>ড্যামেজ বাদে বিক্রি<b>${money(rec.total)}</b></div><div>নগদ জমা<b>${money(rec.cash)}</b></div><div>বকেয়া<b>${money(rec.todayDue)}</b></div><div>পূর্বের বকেয়া<b>${money(rec.previousDue||0)}</b></div><div>সর্বমোট বকেয়া<b>${money(rec.grandDue)}</b></div>`);});
+  headers=['পণ্য','দেওয়া','ফেরত','ড্যামেজ','বিক্রি','রেট','মোট টাকা'];summary.unshift(`<div>সর্বমোট বিক্রি<b>${money(recs.reduce((s,x)=>s+(Number(x.total)||0)+recordDamageValue(x),0))}</b></div><div>ড্যামেজ মূল্য<b>${money(recs.reduce((s,x)=>s+recordDamageValue(x),0))}</b></div><div>ড্যামেজ বাদে বিক্রি<b>${money(recs.reduce((s,x)=>s+(x.total||0),0))}</b></div><div>নগদ জমা<b>${money(recs.reduce((s,x)=>s+(x.cash||0),0))}</b></div>`);
+ }else if(t==='stock'){
+  title='বর্তমান স্টক রিপোর্ট';headers=['পণ্য','স্টক','একক','ক্রয় মূল্য','মোট মূল্য'];rows=db.products.map(p=>[esc(p.name),bn(p.stock),esc(p.unit),money(p.buy),money((p.stock||0)*(p.buy||0))]);summary=[`<div>মোট পণ্য<b>${bn(db.products.length)}</b></div>`,`<div>মোট স্টক পরিমাণ<b>${bn(db.products.reduce((s,p)=>s+(p.stock||0),0))}</b></div>`,`<div>স্টক মূল্য<b>${money(db.products.reduce((s,p)=>s+(p.stock||0)*(p.buy||0),0))}</b></div>`];
+ }else if(t==='company'){
+  title='কোম্পানি চালান রিপোর্ট';headers=['তারিখ','চালান','গ্রহণ','প্রদান','নিট'];const allCs=(db.challans||[]).filter(x=>x.date&&x.date<=range.end),cs=allCs.filter(x=>inReportRange(x.date,range));rows=cs.map(x=>[formatBnDate(x.date),esc(x.no||'—'),money(x.received),money(x.paid),money((Number(x.received)||0)-(Number(x.paid)||0))]);const periodReceived=cs.reduce((s,x)=>s+(Number(x.received)||0),0),periodPaid=cs.reduce((s,x)=>s+(Number(x.paid)||0),0),grandReceived=allCs.reduce((s,x)=>s+(Number(x.received)||0),0),grandPaid=allCs.reduce((s,x)=>s+(Number(x.paid)||0),0);summary=[`<div>নির্বাচিত সময়ে গ্রহণ<b>${money(periodReceived)}</b></div>`,`<div>নির্বাচিত সময়ে প্রদান<b>${money(periodPaid)}</b></div>`,`<div>এ পর্যন্ত সর্বমোট গ্রহণ<b>${money(grandReceived)}</b></div>`,`<div>এ পর্যন্ত সর্বমোট প্রদান<b>${money(grandPaid)}</b></div>`,`<div>এ পর্যন্ত নিট<b>${money(grandReceived-grandPaid)}</b></div>`];
+ }else if(t==='expense'){
+  title='খরচ রিপোর্ট';headers=['তারিখ','খরচের খাত','টাকা'];rows=exps.map(x=>[formatBnDate(x.date),esc(x.name),money(x.amount)]);summary=[`<div>মোট খরচ<b>${money(exps.reduce((s,x)=>s+(x.amount||0),0))}</b></div>`];
+ }else if(t==='damage'){
+  title='ড্যামেজ রিপোর্ট';headers=['তারিখ','ধরন / DSR','পণ্য / বিবরণ','পরিমাণ','টাকার মূল্য'];let dsrDamageQty=0,dsrDamageValue=0;recs.forEach(rec=>{const a=db.accounts.find(a=>a.id===rec.accountId);(rec.rows||[]).filter(x=>Number(x.damage)>0).forEach(x=>{const p=db.products.find(z=>z.id===x.productId),qty=Number(x.damage)||0,value=qty*(Number(p?.sell)||0);dsrDamageQty+=qty;dsrDamageValue+=value;rows.push([formatBnDate(rec.date),esc(a?.name||'DSR'),esc(p?.name||'পণ্য'),bn(qty),money(value)]);});});md.forEach(x=>rows.push([formatBnDate(x.date),'ম্যানুয়াল',esc(x.note||'ড্যামেজ'),bn(x.qty),money(x.amount)]));summary=[`<div>ম্যানুয়াল ড্যামেজ পরিমাণ<b>${bn(md.reduce((s,x)=>s+(Number(x.qty)||0),0))}</b></div>`,`<div>ম্যানুয়াল ড্যামেজ মূল্য<b>${money(md.reduce((s,x)=>s+(Number(x.amount)||0),0))}</b></div>`,`<div>DSR ড্যামেজ পরিমাণ<b>${bn(dsrDamageQty)}</b></div>`,`<div>DSR ড্যামেজ মূল্য<b>${money(dsrDamageValue)}</b></div>`];
+ }else if(t==='profit'){
+  title='দৈনিক / মোট লাভের রিপোর্ট';headers=['তারিখ','DSR','পণ্য','বিক্রির পরিমাণ','বিক্রয় মূল্য','ক্রয় মূল্য','মোট লাভ'];
+  recs.slice().sort((a,b)=>a.date.localeCompare(b.date)).forEach(rec=>{
+   const acc=db.accounts.find(a=>a.id===rec.accountId);
+   (rec.rows||[]).forEach(x=>{
+    const p=db.products.find(z=>z.id===x.productId),sold=Number(x.sold??Math.max(0,(x.issue||0)-(x.ret||0)-(x.damage||0)))||0;
+    if(sold>0&&p)rows.push([formatBnDate(rec.date),esc(acc?.name||'DSR'),esc(p.name),bn(sold),money(p.sell),money(p.buy),money(sold*((Number(p.sell)||0)-(Number(p.buy)||0)))]);
+   });
+  });
+  const gross=recs.reduce((s,rec)=>s+(rec.rows||[]).reduce((v,x)=>{const p=db.products.find(z=>z.id===x.productId),sold=Number(x.sold??Math.max(0,(x.issue||0)-(x.ret||0)-(x.damage||0)))||0;return v+(p?sold*((Number(p.sell)||0)-(Number(p.buy)||0)):0)},0),0);
+  const totalExpense=exps.reduce((s,x)=>s+(Number(x.amount)||0),0);
+  summary=[`<div>পণ্যভিত্তিক মোট লাভ<b>${money(gross)}</b></div>`,`<div>এই সময়ের খরচ<b>${money(totalExpense)}</b></div>`,`<div>খরচ বাদে আনুমানিক লাভ<b>${money(gross-totalExpense)}</b></div>`,`<div>নোট<b>ম্যানুয়াল মোট বিক্রিতে পণ্যভিত্তিক ক্রয়মূল্য নেই, তাই এই লাভে অন্তর্ভুক্ত নয়</b></div>`];
+ }else if(t==='manualSales'){
+  title='ম্যানুয়াল বিক্রির রিপোর্ট';headers=['তারিখ','বিবরণ','মোট বিক্রি'];rows=ms.map(x=>[formatBnDate(x.date),'আগের দিনের মোট বিক্রি',money(x.amount)]);summary=[`<div>সর্বমোট ম্যানুয়াল বিক্রি<b>${money(ms.reduce((s,x)=>s+(Number(x.amount)||0),0))}</b></div>`];
+ }else{
+  title='সার্বিক হিসাব';const dsrSales=recs.reduce((s,x)=>s+(x.total||0),0),manSales=ms.reduce((s,x)=>s+(Number(x.amount)||0),0),cash=recs.reduce((s,x)=>s+(x.cash||0),0),due=recs.reduce((s,x)=>s+(x.todayDue||0),0),expense=exps.reduce((s,x)=>s+(x.amount||0),0),damage=recs.reduce((s,x)=>s+(x.damageValue||0),0)+md.reduce((s,x)=>s+(Number(x.amount)||0),0),received=(db.challans||[]).filter(x=>inReportRange(x.date,range)).reduce((s,x)=>s+(x.received||0),0);
+  summary=[`<div>DSR বিক্রি<b>${money(dsrSales)}</b></div>`,`<div>ম্যানুয়াল বিক্রি<b>${money(manSales)}</b></div>`,`<div>মোট বিক্রি<b>${money(dsrSales+manSales)}</b></div>`,`<div>নগদ জমা<b>${money(cash)}</b></div>`,`<div>বকেয়া<b>${money(due)}</b></div>`,`<div>কোম্পানি থেকে মাল গ্রহণ<b>${money(received)}</b></div>`,`<div>ড্যামেজ মূল্য<b>${money(damage)}</b></div>`,`<div>মোট খরচ<b>${money(expense)}</b></div>`,`<div>বর্তমান স্টক মূল্য<b>${money(db.products.reduce((s,p)=>s+(p.stock||0)*(p.buy||0),0))}</b></div>`];
+ }
+ const tableHtml=headers.length?table(headers,rows):'<p>এই রিপোর্টে কোনো তথ্য নেই।</p>';
+ const makerMark=db.settings.signatureImage?`<img src="${db.settings.signatureImage}" alt="প্রস্তুতকারীর স্বাক্ষর">`:`<b class="maker-fallback" style="font-family:cursive,serif;font-style:italic;font-weight:500;color:#123f91;letter-spacing:-2px">𝒮</b>`;
+ const signature=`<div class="report-signature"><span class="maker"><span class="maker-label">প্রস্তুতকারীর স্বাক্ষর:</span>${makerMark}</span><span>যাচাইকারীর স্বাক্ষর: __________________</span></div>`;
+ const generatedTime=new Date().toLocaleTimeString('bn-BD',{hour:'numeric',minute:'2-digit',hour12:true});
+ $('reportOutput').innerHTML=`<div class="report-sheet" id="reportSheet"><div class="report-title"><h2>${esc(db.settings.company||'আবরার ট্রেডিং কর্পোরেশন')}</h2><p>${esc(db.settings.title||'SHAHIN APP')} · হিসাব বিবরণী</p><h3>${title}</h3><p>সময়কাল: ${dateLabel}</p><p>প্রস্তুতের সময়: ${generatedTime}</p></div>${summary.length?`<div class="report-summary">${summary.join('')}</div>`:''}${tableHtml}${signature}</div>`;
+}
+
+function printReportPDF(){if(!$('reportSheet'))makeReport();const el=$('reportSheet');if(el){const printableHeight=Math.max(700,Math.min(1100,window.innerHeight*1.35));const scale=Math.min(1,printableHeight/Math.max(printableHeight,el.scrollHeight));document.body.style.setProperty('--report-zoom',String(scale));}document.body.classList.add('report-print');window.print()}
+window.addEventListener('afterprint',()=>{document.body.classList.remove('report-print');document.body.style.removeProperty('--report-zoom')});
+async function exportReportPNG(){if(!$('reportSheet'))makeReport();const el=$('reportSheet');if(!el)return toast('আগে রিপোর্ট দেখুন');if(!window.html2canvas)return toast('PNG তৈরির লাইব্রেরি লোড হয়নি; ইন্টারনেট চালু করে আবার চেষ্টা করুন');try{const canvas=await html2canvas(el,{scale:2,backgroundColor:'#ffffff',useCORS:true,windowWidth:el.scrollWidth});const a=document.createElement('a');a.download='SHAHIN-Report-'+reportRange().start+'-'+reportRange().end+'.png';a.href=canvas.toDataURL('image/png');a.click();}catch(e){console.error(e);toast('PNG তৈরি হয়নি: '+e.message)}}
+async function shareReport(){if(!$('reportSheet'))makeReport();if(!navigator.share)return exportReportPNG();try{const canvas=await html2canvas($('reportSheet'),{scale:2,backgroundColor:'#ffffff',useCORS:true});const blob=await new Promise(r=>canvas.toBlob(r,'image/png'));const file=new File([blob],'SHAHIN-Report-'+reportRange().start+'-'+reportRange().end+'.png',{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[file]}))await navigator.share({title:'SHAHIN APP রিপোর্ট',text:'হিসাব বিবরণী',files:[file]});else await navigator.share({title:'SHAHIN APP রিপোর্ট',text:'রিপোর্টটি PNG হিসেবে ডাউনলোড করে শেয়ার করুন'});}catch(e){if(e.name!=='AbortError')toast('শেয়ার করা যায়নি; PNG বাটন ব্যবহার করুন')}}
+function printPage(){window.print()}
+function exportData(){let blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='shahin-app-backup-'+today()+'.json';a.click();URL.revokeObjectURL(a.href)}
+function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!d.products||!d.settings)throw 0;db=d;persist();init();toast('ব্যাকআপ ইমপোর্ট হয়েছে')}catch(_){toast('ভুল ব্যাকআপ ফাইল')}};r.readAsText(f)}
+function resetData(){if(!canEditPage('settings')||!pageEditState.settings)return toast('সেটিংস এডিট চালু করুন');if(!confirm('সব দৈনিক হিসাব, নতুন মাল, খরচ, চালান ও সমন্বয় মুছবে। পণ্যের তালিকা, রেট, বর্তমান স্টক, অ্যাকাউন্ট ও সেটিংস থাকবে। নিশ্চিত?'))return;db.dsr=[];db.newstock=[];db.expenses=[];db.challans=[];db.adjustments=[];db.manualSales=[];db.manualDamages=[];db.stockAdjustments=db.stockAdjustments||[];persist();init();toast('লেনদেনের হিসাব ক্লিয়ার হয়েছে; পণ্য ও রেট অক্ষত আছে')}
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&!$('login').classList.contains('hidden'))login()});
+
+// Idle timeout: default 30 minutes; configurable from Settings.
+function idleLimitMs(){return Math.max(1,Math.min(1440,Number(db?.settings?.idleTimeoutMinutes)||30))*60000;}
+function markActivity(){if(pinSessionToken)localStorage.setItem('shahin_last_activity',String(Date.now()));}
+function checkIdleTimeout(){if(!pinSessionToken)return;const last=Number(localStorage.getItem('shahin_last_activity'))||Date.now();if(Date.now()-last>=idleLimitMs())logout();}
+function startIdleMonitor(){
+ if(idleTimer)clearInterval(idleTimer);
+ if(!idleHandlersReady){
+  ['pointerdown','touchstart','keydown','click','input','scroll'].forEach(ev=>document.addEventListener(ev,markActivity,{passive:true}));
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkIdleTimeout();});
+  idleHandlersReady=true;
+ }
+ if(!localStorage.getItem('shahin_last_activity'))markActivity();
+ idleTimer=setInterval(checkIdleTimeout,15000);
+}
+async function restoreSession(){
+ if(!pinSessionToken)return;
+ const last=Number(localStorage.getItem('shahin_last_activity'))||0;
+ if(last&&Date.now()-last>=idleLimitMs()){await logout();return;}
+ try{
+  const {data,error}=await cloud.rpc('pin_get_state',{p_token:pinSessionToken});
+  if(error||!data)throw error||new Error('সেশন পাওয়া যায়নি');
+  if(data.data&&Object.keys(data.data).length){db=data.data;localStorage.setItem('shahin_app_data',JSON.stringify(db));}
+  cloudRole=sessionStorage.getItem('shahin_role')||'';
+  cloudUser={name:sessionStorage.getItem('shahin_name')||''};
+  cloudBusinessId=sessionStorage.getItem('shahin_business_id')||null;
+  if(!localStorage.getItem('shahin_last_activity'))markActivity();
+  $('login').classList.add('hidden');$('app').classList.remove('hidden');
+  navStack=[roleLanding()];history.pushState({shahinApp:true,page:roleLanding()},'',location.pathname+location.search+'#'+roleLanding());
+  init();showPage(roleLanding());startRealtime();startIdleMonitor();
+ }catch(e){console.warn('Session restore:',e);await logout();}
+}
+// PWA installation support (Chrome/Android).
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPromptEvent=e;const b=$('installAppBtn');if(b)b.disabled=false;const h=$('installHelp');if(h)h.textContent='ইনস্টল করার জন্য প্রস্তুত। বোতামে চাপ দিন অথবা Chrome মেনু থেকে Install app নির্বাচন করুন।';});
+window.addEventListener('appinstalled',()=>{installPromptEvent=null;const h=$('installHelp');if(h)h.textContent='SHAHIN APP ইনস্টল হয়েছে।';toast('SHAHIN APP ইনস্টল হয়েছে');});
+async function installApp(){
+ if(installPromptEvent){installPromptEvent.prompt();try{await installPromptEvent.userChoice;}catch(e){}installPromptEvent=null;return;}
+ if(window.matchMedia('(display-mode: standalone)').matches){toast('অ্যাপটি ইতিমধ্যে ইনস্টল করা আছে');return;}
+ toast('Chrome মেনু (⋮) খুলে Install app / অ্যাপ ইনস্টল নির্বাচন করুন। প্রথমবার লোডের পর কিছুক্ষণ অপেক্ষা করুন।');
+}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(e=>console.warn('Service worker:',e)));}
+// Keep touch scrolling inside the DSR product list and lock each gesture to one axis.
+(function lockDsrTableScroll(){
+ const area=document.querySelector('#page-dsr .tablewrap');if(!area)return;
+ let startX=0,startY=0,axis=null;
+ area.addEventListener('touchstart',e=>{const t=e.touches&&e.touches[0];if(!t)return;startX=t.clientX;startY=t.clientY;axis=null;},{passive:true});
+ area.addEventListener('touchmove',e=>{const t=e.touches&&e.touches[0];if(!t)return;const dx=t.clientX-startX,dy=t.clientY-startY;if(!axis&&Math.max(Math.abs(dx),Math.abs(dy))>7)axis=Math.abs(dx)>Math.abs(dy)?'x':'y';if(axis==='x'&&Math.abs(dy)>Math.abs(dx))e.preventDefault();if(axis==='y'&&Math.abs(dx)>Math.abs(dy))e.preventDefault();},{passive:false});
+ area.addEventListener('touchend',()=>{axis=null;},{passive:true});
+})();
+
+window.addEventListener('popstate',()=>{
+ if($('app').classList.contains('hidden'))return;
+ if(!$('drawer').classList.contains('hidden')){$('drawer').classList.add('hidden');return;}
+ if(navStack.length>1){navStack.pop();showPage(navStack[navStack.length-1]);}
+ else{history.pushState({shahinApp:true,page:'home'},'',location.pathname+location.search+'#app');showPage('home');}
+});
+
+restoreSession();
+
+// ---------- ATC upgrade: scanner, packaging, stock buckets and support ----------
+let pendingScanRows=[];
+function adminOnly(){return cloudRole==='Admin'}
+function renderUpgradePages(){
+ const dsrSel=$('allocDsr'), prodSel=$('allocProduct');
+ if(dsrSel) dsrSel.innerHTML=(db.accounts||[]).filter(a=>a.role==='DSR'&&a.active!==false).map(a=>`<option value="${a.id}">${esc(a.name)}</option>`).join('');
+ if(prodSel) prodSel.innerHTML=(db.products||[]).map(p=>`<option value="${p.id}">${esc(p.name)}</option>`).join('');
+ const pr=$('packagingRows');
+ if(pr) pr.innerHTML=(db.products||[]).map(p=>{let c=db.packaging[p.id]||{};return `<div class="listrow" style="display:block"><b>${esc(p.name)}</b><div class="formgrid"><label class="field">মূল একক<input id="pk-unit-${p.id}" value="${esc(c.baseUnit||p.unit||'পিস')}" ${adminOnly()?'':'disabled'}></label><label class="field">১ কার্টনে<input id="pk-carton-${p.id}" type="number" min="0" value="${Number(c.carton)||0}" ${adminOnly()?'':'disabled'}></label><label class="field">১ ক্রেটে<input id="pk-crate-${p.id}" type="number" min="0" value="${Number(c.crate)||0}" ${adminOnly()?'':'disabled'}></label><label class="field">১ পাতায়<input id="pk-leaf-${p.id}" type="number" min="0" value="${Number(c.leaf)||0}" ${adminOnly()?'':'disabled'}></label></div><button class="btn small" onclick="savePackaging(${p.id})" ${adminOnly()?'':'disabled'}>রূপান্তর সংরক্ষণ</button></div>`}).join('');
+ const hist=$('allocationHistory');
+ if(hist) hist.innerHTML=(db.stockAllocations||[]).slice().reverse().slice(0,20).map(a=>{let p=db.products.find(x=>x.id==a.productId),d=db.accounts.find(x=>x.id==a.dsrId);return `<div class="listrow"><span>${esc(d?.name||'DSR')} · ${esc(p?.name||'পণ্য')} · ${a.qty} ${esc(a.unit||'')}</span><small>${esc(a.date)}</small></div>`}).join('')||'<p class="muted">এখনো বরাদ্দ নেই</p>';
+ const tickets=$('supportTickets');
+ if(tickets) tickets.innerHTML=(db.supportTickets||[]).slice().reverse().map(t=>`<div class="listrow" style="display:block"><b>${esc(t.by||'ব্যবহারকারী')} · ${esc(t.status||'খোলা')}</b><div>${esc(t.question||'')}</div><small>${esc(t.date||'')}</small>${t.localAnswer?`<p><b>স্মার্ট সহায়তা:</b> ${esc(t.localAnswer)}</p>`:''}${t.reply?`<p><b>Admin উত্তর:</b> ${esc(t.reply)}</p>`:''}${adminOnly()?`<div class="field"><label>Admin-এর উত্তর</label><textarea id="ticket-reply-${t.id}" rows="2">${esc(t.reply||'')}</textarea><button class="btn small" onclick="saveSupportReply(${t.id})">উত্তর সংরক্ষণ</button><button class="btn gray small" onclick="setSupportStatus(${t.id},'চলমান')">চলমান</button><button class="btn green small" onclick="setSupportStatus(${t.id},'সমাধান হয়েছে')">সমাধান হয়েছে</button></div>`:''}</div>`).join('')||'<p class="muted">কোনো টিকিট নেই</p>';
+}
+function savePackaging(id){
+ if(!adminOnly())return toast('শুধু Admin প্যাকেজিং পরিবর্তন করতে পারবেন');
+ const vals={baseUnit:$('pk-unit-'+id).value.trim()||'পিস',carton:Number($('pk-carton-'+id).value)||0,crate:Number($('pk-crate-'+id).value)||0,leaf:Number($('pk-leaf-'+id).value)||0,aliases:db.packaging[id]?.aliases||[],barcode:db.packaging[id]?.barcode||''};
+ if([vals.carton,vals.crate,vals.leaf].some(x=>x<0))return toast('রূপান্তরের সংখ্যা সঠিক দিন');
+ db.packaging[id]=vals;persist();toast('প্যাকেজিং সেটিং সংরক্ষিত');
+}
+function clearScan(){pendingScanRows=[];$('scanImage').value='';$('scanPreview').classList.add('hidden');$('scanReview').innerHTML='';$('confirmScanBtn').classList.add('hidden');$('scanStatus').textContent='';}
+$('scanImage')?.addEventListener('change',e=>{const f=e.target.files?.[0];if(!f)return;const u=URL.createObjectURL(f);$('scanPreview').src=u;$('scanPreview').classList.remove('hidden');});
+function renderScanReview(){
+ $('scanReview').innerHTML=pendingScanRows.map((x,i)=>`<div class="listrow" style="display:block"><b>${esc(x.name||'পণ্য নির্বাচন করুন')}</b><div class="formgrid"><label class="field">পণ্য<select id="scan-p-${i}">${db.products.map(p=>`<option value="${p.id}" ${p.id===x.productId?'selected':''}>${esc(p.name)}</option>`).join('')}</select></label><label class="field">পরিমাণ<input id="scan-q-${i}" type="number" min="0" value="${x.qty||0}"></label></div><small>${esc(x.note||'ম্যানুয়াল যাচাই আবশ্যক')}</small></div>`).join('');
+ $('confirmScanBtn').classList.toggle('hidden',!pendingScanRows.length);
+}
+function addManualScanRow(){pendingScanRows.push({name:'ম্যানুয়াল পণ্য',productId:db.products[0]?.id||0,qty:1,packType:'base',note:'ম্যানুয়ালি যোগ করা — নিশ্চিত করার আগে যাচাই করুন'});renderScanReview();}
+async function runAIScan(){
+ const f=$('scanImage').files?.[0];if(!f)return toast('আগে ছবি তুলুন বা নির্বাচন করুন');
+ $('scanStatus').textContent='ডিভাইসে OCR সুবিধা থাকলে লেখা পড়ার চেষ্টা হচ্ছে…';$('scanReview').innerHTML='';$('confirmScanBtn').classList.add('hidden');
+ try{
+  if(!('TextDetector'in window)||!('createImageBitmap'in window))throw new Error('এই ব্রাউজারে বিল্ট-ইন OCR নেই');
+  const bitmap=await createImageBitmap(f),detector=new TextDetector(),items=await detector.detect(bitmap);bitmap.close?.();
+  const text=items.map(x=>x.rawValue||'').join(' '),found=[];
+  for(const p of db.products){if(text.toLowerCase().includes(String(p.name).toLowerCase())){const m=text.match(new RegExp(String.raw`(?:${p.name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}\\D{0,12})(\\d+(?:[.,]\\d+)?)`,'i'));found.push({name:p.name,productId:p.id,qty:m?Number(m[1].replace(',','.')):0,packType:'base',note:'ডিভাইস OCR থেকে নাম শনাক্ত; পরিমাণ হাতে যাচাই করুন'});}}
+  pendingScanRows=found;
+  if(!pendingScanRows.length){$('scanStatus').textContent='OCR লেখা পড়েছে, কিন্তু পণ্যের নাম/পরিমাণ নিশ্চিতভাবে মেলেনি। নিচে ম্যানুয়ালি পণ্য যোগ করুন।';addManualScanRow();return;}
+  renderScanReview();$('scanStatus').textContent='ডিভাইসের OCR থেকে সম্ভাব্য পণ্য পাওয়া গেছে। পরিমাণ যাচাই করে তারপর নিশ্চিত করুন।';
+ }catch(e){pendingScanRows=[];$('scanStatus').textContent='API ছাড়া স্বয়ংক্রিয় OCR এই ব্রাউজারে সমর্থিত নয়। ম্যানুয়ালি পণ্য যোগ করে যাচাই করতে পারবেন।';addManualScanRow();}
+}
+
+function confirmScanStock(){
+ if(!pendingScanRows.length)return;
+ if(!confirm('যাচাই করা পরিমাণ কেন্দ্রীয় কোম্পানি স্টকে যোগ করবেন?'))return;
+ const rows=[];
+ pendingScanRows.forEach((x,i)=>{const pid=Number($('scan-p-'+i).value),p=db.products.find(z=>z.id===pid),qty=Number($('scan-q-'+i).value)||0;if(!p||qty<=0)return;const pack=db.packaging[pid]||{},mult=x.packType==='carton'?Number(pack.carton)||1:x.packType==='crate'?Number(pack.crate)||1:x.packType==='leaf'?Number(pack.leaf)||1:1;const baseQty=qty*mult;db.companyStock[pid]=(Number(db.companyStock[pid])||0)+baseQty;rows.push({productId:pid,qty,baseQty,packType:x.packType||'base',conversionSnapshot:mult,unit:pack.baseUnit||p.unit,confidence:x.confidence||null});});
+ if(!rows.length)return toast('সঠিক পণ্য ও পরিমাণ দিন');
+ db.companyReceipts.push({id:Date.now(),date:today(),source:'AI স্ক্যান — Admin যাচাইকৃত',rows,createdBy:cloudUser?.name||cloudRole||'user'});
+ db.aiAudit.push({date:new Date().toISOString(),action:'scan_confirmed',rows});
+ persist();renderUpgradePages();clearScan();toast('যাচাইকৃত পণ্য কেন্দ্রীয় স্টকে যোগ হয়েছে');
+}
+function allocateCentralStock(){
+ if(!adminOnly())return toast('শুধু Admin স্টক বরাদ্দ করতে পারবেন');
+ const did=Number($('allocDsr').value),pid=Number($('allocProduct').value),qty=Number($('allocQty').value)||0;
+ if(!did||!pid||qty<=0)return toast('DSR, পণ্য ও পরিমাণ দিন');
+ if((Number(db.companyStock[pid])||0)<qty)return toast('কেন্দ্রীয় স্টকে পর্যাপ্ত পণ্য নেই');
+ const p=db.products.find(x=>x.id===pid),a=db.accounts.find(x=>x.id===did);
+ db.companyStock[pid]-=qty;db.dsrVehicleStock[did]||={};db.dsrVehicleStock[did][pid]=(Number(db.dsrVehicleStock[did][pid])||0)+qty;
+ db.stockAllocations.push({id:Date.now(),date:today(),dsrId:did,productId:pid,qty,unit:db.packaging[pid]?.baseUnit||p?.unit||'',conversionSnapshot:1,createdBy:cloudUser?.name||'Admin'});
+ persist();renderUpgradePages();toast('DSR-কে স্টক বরাদ্দ হয়েছে');
+}
+// API-free Bangla support: local knowledge + app data. Not a general-purpose LLM.
+let supportRecognition=null;
+function startSupportVoice(){
+ const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!SR){$('supportVoiceStatus').textContent='এই ব্রাউজারে বাংলা ভয়েস ইনপুট নেই। লিখে প্রশ্ন করুন।';return;}
+ try{supportRecognition=new SR();supportRecognition.lang='bn-BD';supportRecognition.interimResults=true;supportRecognition.continuous=false;
+ supportRecognition.onstart=()=>$('supportVoiceStatus').textContent='শুনছি… এখন বাংলায় প্রশ্ন বলুন।';
+ supportRecognition.onresult=e=>{let t='';for(let i=e.resultIndex;i<e.results.length;i++)t+=e.results[i][0].transcript;$('supportQuestion').value=t;};
+ supportRecognition.onerror=()=>$('supportVoiceStatus').textContent='কথা বোঝা যায়নি। আবার চেষ্টা করুন অথবা লিখুন।';
+ supportRecognition.onend=()=>$('supportVoiceStatus').textContent='কথা নেওয়া শেষ। প্রয়োজনে লেখা ঠিক করে সহায়তা নিন।';supportRecognition.start();
+ }catch(e){$('supportVoiceStatus').textContent='ভয়েস ইনপুট চালু করা যায়নি। লিখে প্রশ্ন করুন।';}
+}
+function stopSupportVoice(){try{supportRecognition?.stop()}catch(e){} }
+function speakSupportAnswer(text){if(!('speechSynthesis'in window))return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='bn-BD';u.rate=.95;speechSynthesis.speak(u)}catch(e){}}
+function localSupportAnswer(q){
+ const x=q.toLowerCase();const role=cloudRole||'ব্যবহারকারী';
+ if(/বকেয়া|বকেয়া|due|পাওনা/.test(x)){
+  if(role==='DSR'){const own=db.accounts.find(a=>a.role==='DSR'&&(a.cloudUserId===sessionStorage.getItem('shahin_cloud_account')||a.name===cloudUser?.name));const rs=(db.dsr||[]).filter(r=>!own||r.accountId===own.id);const last=rs.sort((a,b)=>(b.date||'').localeCompare(a.date||''))[0];return last?`সর্বশেষ সংরক্ষিত DSR হিসাবের তারিখ ${last.date}। আজকের বকেয়া ${money(last.todayDue||0)} এবং সর্বমোট বকেয়া ${money(last.grandDue||0)}।`:'আপনার জন্য এখনো কোনো DSR বকেয়ার রেকর্ড পাওয়া যায়নি।';}
+  const total=(db.accounts||[]).reduce((a,b)=>a+(Number(b.due)||0),0);return `অ্যাকাউন্ট তালিকায় সংরক্ষিত মোট বকেয়া ${money(total)}। নির্দিষ্ট Dealer বা DSR-এর হিসাব দেখতে সংশ্লিষ্ট অ্যাকাউন্ট নির্বাচন করুন।`;
+ }
+ if(/ড্যামেজ|damage/.test(x)){const ds=(db.dsr||[]).reduce((a,r)=>a+(Number(r.damageValue)||0),0),md=(db.manualDamages||[]).reduce((a,r)=>a+(Number(r.amount)||0),0);return `সংরক্ষিত DSR ড্যামেজ মূল্য ${money(ds)} এবং ম্যানুয়াল ড্যামেজ মূল্য ${money(md)}। বিস্তারিত দেখতে ড্যামেজ রিপোর্ট খুলুন।`;}
+ if(/স্টক|মাল কত|মজুত/.test(x)){const c=Object.values(db.companyStock||{}).reduce((a,b)=>a+(Number(b)||0),0),g=(db.products||[]).reduce((a,p)=>a+(Number(p.stock)||0),0),v=Object.values(db.dsrVehicleStock||{}).reduce((a,o)=>a+Object.values(o||{}).reduce((n,z)=>n+(Number(z)||0),0),0);return `বর্তমান সংরক্ষিত পরিমাণ অনুযায়ী কেন্দ্রীয় স্টক ${bn(c)}, General Stock ${bn(g)}, DSR গাড়ির স্টক ${bn(v)} (পণ্যের এককভেদে পরিমাণ যোগ করা হয়েছে)। পণ্যভিত্তিক সঠিক হিসাব দেখতে স্টক পেজ খুলুন।`;}
+ if(/রিপোর্ট|statement|স্টেটমেন্ট/.test(x))return 'রিপোর্ট পেজে গিয়ে রিপোর্টের ধরন এবং একদিন, এই সপ্তাহ, এই মাস অথবা নিজের তারিখ নির্বাচন করে “রিপোর্ট দেখুন” চাপুন। PDF, PNG ও শেয়ারের অপশনও আছে।';
+ if(/মাল গ্রহণ|চালান|challan/.test(x))return '“আজকের নতুন মাল গ্রহণ” পেজে তারিখ, পণ্য ও পরিমাণ দিন। সংরক্ষণের আগে মোট মূল্য যাচাই করুন। এই আপগ্রেডে কেন্দ্রীয় স্টক Ledger-এর পূর্ণ Cloud সংযোগ এখনো যাচাই করা হয়নি।';
+ if(/লগইন|পিন|password|login/.test(x))return 'আপনার অনুমোদিত ভূমিকার PIN ব্যবহার করুন। PIN ভুলে গেলে Admin-এর সঙ্গে যোগাযোগ করুন। নিরাপত্তার জন্য PIN কাউকে পাঠাবেন না।';
+ if(/কীভাবে|কিভাবে|সাহায্য|সমস্যা|help/.test(x))return 'আপনার প্রশ্নটি অ্যাপের কোন অংশ নিয়ে—DSR, স্টক, ড্যামেজ, চালান, বকেয়া, রিপোর্ট নাকি লগইন? নির্দিষ্ট পেজের নাম লিখলে এই সহায়তা থেকে নির্দেশনা দিতে পারব। জটিল সমস্যা Admin টিকিটে পাঠানো হবে।';
+ return 'আপনার প্রশ্নটি বুঝতে পারিনি। DSR, স্টক, ড্যামেজ, চালান, বকেয়া, রিপোর্ট বা লগইন সম্পর্কে একটু নির্দিষ্ট করে লিখুন। প্রয়োজন হলে Admin-এর কাছে টিকিট হিসেবে পাঠানো হবে।';
+}
+async function askATCSupport(){
+ const q=$('supportQuestion').value.trim();if(!q)return toast('প্রশ্ন বা সমস্যাটি লিখুন বা বলে দিন');
+ const answer=localSupportAnswer(q);
+ const ticket={id:Date.now(),date:today(),by:cloudUser?.name||cloudRole||'ব্যবহারকারী',role:cloudRole||'unknown',question:q,status:'উত্তর দেওয়া হয়েছে',reply:'',localAnswer:answer};
+ db.supportTickets.push(ticket);persist();renderUpgradePages();$('supportAnswer').textContent=answer+'\n\nএটি অ্যাপের স্থানীয় নিয়মভিত্তিক সহায়তা; সাধারণ AI-এর মতো সব প্রশ্নের উত্তর দিতে পারে না।';speakSupportAnswer(answer);
+}
+function saveSupportReply(id){if(!adminOnly())return toast('শুধু Admin উত্তর দিতে পারবেন');const t=db.supportTickets.find(x=>x.id===id);if(!t)return;const v=$('ticket-reply-'+id).value.trim();if(!v)return toast('উত্তর লিখুন');t.reply=v;t.status='Admin উত্তর দিয়েছেন';t.repliedAt=new Date().toISOString();persist();renderUpgradePages();toast('Admin উত্তর সংরক্ষিত হয়েছে');}
+function setSupportStatus(id,status){if(!adminOnly())return toast('শুধু Admin পরিবর্তন করতে পারবেন');const t=db.supportTickets.find(x=>x.id===id);if(!t)return;t.status=status;persist();renderUpgradePages();}
+
+const _oldInit=init;
+init=function(){_oldInit();try{renderUpgradePages()}catch(e){console.warn('ATC upgrade UI',e)}};
+
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(e=>console.warn('SW registration failed',e)));}
+</script></body></html>

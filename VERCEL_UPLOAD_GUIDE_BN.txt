@@ -1,0 +1,19 @@
+VERCEL-এ PREVIEW WEBSITE তৈরি — মোবাইল/কম্পিউটার
+================================================
+
+এই ZIP extract করলে SHAHIN_APP_ATC_A_TO_Z নামে একটি ফোল্ডার পাবেন।
+Vercel-এ নতুন Project তৈরি করে এই ফোল্ডারটিকে Project Root হিসেবে দিন।
+
+Framework Preset: Other
+Build Command: ফাঁকা রাখুন (অথবা Override করে ফাঁকা)
+Output Directory: .
+Install Command: ফাঁকা রাখুন
+
+তারপর Deploy চাপুন। index.html root-এ আছে, তাই এটি static website হিসেবে serve হবে।
+
+গুরুত্বপূর্ণ সতর্কতা:
+- প্রথমে Preview deployment-এ পরীক্ষা করুন; Production domain/পুরোনো live site replace করবেন না।
+- এই প্যাকেজের UI ও বিদ্যমান PIN/Supabase integration আছে, কিন্তু বর্তমান Supabase-এর whole-state save function concurrency-safe নয় এবং role-scoped write protection export-এ দেখা যায়নি।
+- তাই Preview-তে UI পরীক্ষা করা যাবে; নিরাপদ বহু-ব্যবহারকারীর live ব্যবসায়িক হিসাব হিসেবে ব্যবহার করার আগে backend security migration ও acceptance test আবশ্যক।
+- কোনো Supabase SQL migration এই প্যাকেজে স্বয়ংক্রিয়ভাবে চালানো হয় না।
+- APK নেই; Android-এ HTTPS website Chrome থেকে Add to Home Screen করে PWA হিসেবে ইনস্টল করা যাবে।
