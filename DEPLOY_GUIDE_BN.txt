@@ -1,0 +1,25 @@
+VERCEL PREVIEW DEPLOYMENT — SHAHIN APP
+=====================================
+
+1. ZIP extract করুন। index.html, manifest.webmanifest, sw.js এবং icons/ একই project root-এ রাখুন।
+2. Vercel-এর Preview deployment ব্যবহার করুন। Production deployment overwrite করবেন না।
+3. Supabase SQL চালানোর আগে database backup নিন এবং public.businesses / app_state / PIN RPC schema হাতে মিলিয়ে নিন।
+4. ATC_NON_DESTRUCTIVE_MIGRATION.sql কেবল schema যাচাই ও staging test-এর পর চালাবেন। এটি নতুন ATC টেবিল যোগ করে; পুরোনো PIN RPC-কে নিরাপদ role-scoped RPC-তে রূপান্তর করে না।
+5. ORIGINAL_PIN_CLOUD_SETUP_REFERENCE_ONLY.sql শুধু reference। বর্তমান database-এর schema না মিলিয়ে চালাবেন না।
+6. Gemini API key না থাকলেও local rule-based support চলে; এটি ChatGPT-ধরনের general AI নয়। OCR browser support-এর ওপর নির্ভরশীল; না থাকলে manual entry ব্যবহার করুন।
+7. Android PWA: HTTPS Preview URL Chrome-এ খুলুন → ⋮ → Install app / Add to Home screen।
+8. Native APK এই প্যাকেজে নেই; Android build/signing আলাদা করে করতে হবে।
+
+Preview পরীক্ষার তালিকা
+----------------------
+- Admin, Dealer, Manager, DSR PIN login ও role permission
+- পুরোনো ডেটা/পণ্য/হিসাব অক্ষত আছে কি না
+- DSR sales, damage value, cash, today due, previous due, grand due
+- কোম্পানি থেকে মাল গ্রহণ ও challan
+- central stock allocation এবং general stock আলাদা থাকে কি না
+- DSR edit/delete করলে general stock অকারণে বদলায় কি না
+- একই সময়ে দুই ডিভাইস থেকে edit করলে conflict/data loss হয় কি না
+- PDF/print/share, voice permission, scanner manual fallback
+- PWA install, refresh, offline behavior
+
+সব পরীক্ষা পাস না করা পর্যন্ত production deploy করবেন না।
