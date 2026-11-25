@@ -1,0 +1,22 @@
+SHAHIN APP Fresh Source Package
+
+সম্পন্ন:
+- নতুন Vite frontend skeleton ও mobile-first blue/white design
+- Dashboard, navigation, demo sales/cash, stock view, product entry
+- DSR statement-এর নির্ধারিত ৭টি হিসাব ও formula
+- Manual challan entry এবং AI OCR review/confirm UI
+- Gemini scan API endpoint
+- Floating AI support chat ও Gemini API endpoint
+- Fresh Supabase initial schema ও starter RLS policies
+- Vercel configuration ও deployment guide
+
+এখনও Production-ready নয়:
+- Frontend থেকে Supabase CRUD/Auth/Role integration
+- Atomic stock posting ও stock transfer RPC
+- পূর্ণ DSR vehicle allocation, return/damage ledger
+- Due carry-forward and shop ledger
+- Live database-backed role-aware AI support
+- Admin panel, audit workflow, backup/restore
+- Automated integration tests, real Android APK
+
+এটি নতুন সোর্সের কার্যকর প্রাথমিক ভিত্তি, সম্পূর্ণ পরীক্ষিত Production Final নয়।
