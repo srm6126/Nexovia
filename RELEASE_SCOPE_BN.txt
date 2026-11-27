@@ -1,9 +1,0 @@
-RELEASE SCOPE
-=============
-This is an updated Web/PWA source package, not a native APK and not a claim of complete production readiness.
-
-The dashboard now exposes Scanner and AI Support. Server endpoints use existing PIN sessions and call Gemini using GEMINI_API_KEY configured privately in Vercel.
-
-Data safety: no destructive SQL migration is included or run. Existing app_state JSON is preserved. The old pin_save_state RPC still replaces the complete JSON document; multi-user conflict safety requires a separately reviewed database migration and client revision protocol.
-
-Stock: current application retains its legacy stock model plus additive companyStock, dsrVehicleStock, packaging and receipt fields. It is not yet a fully transactional three-ledger stock system. Do not use unverified allocations as an audited stock ledger.
