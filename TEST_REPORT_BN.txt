@@ -1,0 +1,14 @@
+SHAHIN APP — PACKAGE CHECK
+
+যাচাই করা হয়েছে:
+- ZIP root-এ index.html আছে।
+- CSS ও JavaScript index.html-এর ভেতরে embedded; external assets/app.js বা style.css dependency নেই।
+- manifest.webmanifest ও sw.js root-relative path-এ আছে।
+- JavaScript syntax Node.js check-এ PASS।
+- প্রথম Admin PIN 612600 কোডে সেট করা আছে।
+
+যা এই package check প্রমাণ করে না:
+- Cloudflare account-এ deploy সফল হয়েছে কি না।
+- Supabase live sync, secure server-side authentication, RLS permissions, multi-device sync।
+- AI Support, OCR scanner, notification/webhook-এর live API execution।
+- পূর্ণ business production readiness।
